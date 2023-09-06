@@ -9,7 +9,7 @@ const getBoletos = async (req, res) => {
   const [boletos, total] = await Promise.all([
     Boleto.find({})
       .sort({ nombre: 1 })
-      .populate('boletoCreated', 'nombre , email')
+      .populate('fiesta', 'nombre,tipoEvento,cantidad,fecha,lugar,img,realizada,')
       .skip(desde)
       .limit(cant),
     Boleto.countDocuments(),
@@ -25,10 +25,11 @@ const getBoletos = async (req, res) => {
 const getAllBoletos = async (req, res) => {
   const [boletos, total] = await Promise.all([
     Boleto.find({})
+      .populate('fiesta', 'uid nombre tipoEvento cantidad fecha lugar img realizada ')
       .sort({ nombre: 1 }),
     Boleto.countDocuments(),
   ])
-
+  console.log('22');
   res.json({
     ok: true,
     boletos,
