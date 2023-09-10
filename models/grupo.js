@@ -1,35 +1,14 @@
 const { Schema, model } = require('mongoose')
-const FiestaSchema = Schema({
+const GrupoSchema = Schema({
   nombre: {
     type: String,
     required: true,
   },
-  evento: {
-    type: Schema.Types.ObjectId,
-    ref: "Evento",
-  },
-  cantidad: {
-    type: Number,
-    required: true,
-  },
-
-  fecha: {
-    type: Number,
-    required: true,
-  },
-  lugar: {
+  clave: {
     type: String,
     required: true,
   },
-  img: {
-    type: String,
-    default: 'fiesta-default.jpg',
 
-  },
-  realizada: {
-    type: Boolean,
-    default: false,
-  },
   activated: {
     type: Boolean,
     default: false,
@@ -47,9 +26,9 @@ const FiestaSchema = Schema({
 
 })
 
-FiestaSchema.method('toJSON', function () {
+GrupoSchema.method('toJSON', function () {
   const { __v, _id, password, ...object } = this.toObject()
   object.uid = _id
   return object
 })
-module.exports = model('Fiesta', FiestaSchema)
+module.exports = model('Grupo', GrupoSchema)
