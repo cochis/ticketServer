@@ -1,0 +1,153 @@
+{
+  "configVersion": 1,
+  "timestamp": 1694315017516,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main.ec32a6ccd176ac26.js",
+        "/manifest.webmanifest",
+        "/polyfills.0a14238993673413.js",
+        "/runtime.27d1470444a5ae9a.js",
+        "/scripts.3a384ad5c5dd731b.js",
+        "/styles.39bb6f045fdeff40.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/css/animate.css",
+        "/assets/css/bootstrap-icons.css",
+        "/assets/css/bootstrap.min.css",
+        "/assets/css/fontello.css",
+        "/assets/css/templatemo-topic-listing.css",
+        "/assets/font/fontello.eot",
+        "/assets/font/fontello.svg",
+        "/assets/font/fontello.ttf",
+        "/assets/font/fontello.woff",
+        "/assets/font/fontello.woff2",
+        "/assets/fonts/bootstrap-icons.woff",
+        "/assets/fonts/bootstrap-icons.woff2",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/businesswoman-using-tablet-analysis.jpg",
+        "/assets/images/colleagues-working-cozy-office-medium-shot.jpg",
+        "/assets/images/faq_graphic.jpg",
+        "/assets/images/loading.gif",
+        "/assets/images/qr.jpeg",
+        "/assets/images/rear-view-young-college-student.jpg",
+        "/assets/images/topics/colleagues-working-cozy-office-medium-shot.png",
+        "/assets/images/topics/undraw_Compose_music_re_wpiw.png",
+        "/assets/images/topics/undraw_Educator_re_ju47.png",
+        "/assets/images/topics/undraw_Finance_re_gnv2.png",
+        "/assets/images/topics/undraw_Graduation_re_gthn.png",
+        "/assets/images/topics/undraw_Group_video_re_btu7.png",
+        "/assets/images/topics/undraw_Podcast_audience_re_4i5q.png",
+        "/assets/images/topics/undraw_Redesign_feedback_re_jvm0.png",
+        "/assets/images/topics/undraw_Remote_design_team_re_urdx.png",
+        "/assets/images/topics/undraw_happy_music_g6wc.png",
+        "/assets/images/topics/undraw_online_ad_re_ol62.png",
+        "/assets/images/topics/undraw_viral_tweet_gndb.png",
+        "/assets/js/bootstrap.bundle.min.js",
+        "/assets/js/click-scroll.js",
+        "/assets/js/custom.js",
+        "/assets/js/jquery.min.js",
+        "/assets/js/jquery.sticky.js"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/css/animate.css": "3e0f20bb8fcc8721f621b503f7d42527bd1f8c0f",
+    "/assets/css/bootstrap-icons.css": "1ce683e78b48dfd6a85e2b4314d85c9a52388f25",
+    "/assets/css/bootstrap.min.css": "7abed070e37ce060c0a561575f1d41a7f248fc74",
+    "/assets/css/fontello.css": "0632d6e1eeab178511434017f932a43175701ae8",
+    "/assets/css/templatemo-topic-listing.css": "c7e6f20b1a8b4703541f72e35480e407247b547b",
+    "/assets/font/fontello.eot": "a0b8756474b0338a5c8b41a3d8aa74697d5c0453",
+    "/assets/font/fontello.svg": "f86e9cbca997a3ed26cad369d45a32453ef6e5cc",
+    "/assets/font/fontello.ttf": "5b2c182f46298afc9e40ae535c7f83f3d73e8afc",
+    "/assets/font/fontello.woff": "05edf7a4dacf0397d323c7cc06941fe361e9743d",
+    "/assets/font/fontello.woff2": "56c29f1dd4c1c1f75f6f76446d5cda1d6814ee55",
+    "/assets/fonts/bootstrap-icons.woff": "a77e6a2f335f3fcb4f2930794907c88ed7de7ca1",
+    "/assets/fonts/bootstrap-icons.woff2": "3a284b0618771f29da8eb6be900e99439253dce0",
+    "/assets/icons/icon-128x128.png": "b1f06c7d714abb4a0cc4d1f7c954feb26826e4c4",
+    "/assets/icons/icon-144x144.png": "96a0d629765c1bc85d9263c6bc83094ca776d267",
+    "/assets/icons/icon-152x152.png": "b1fbbee3902eb96a7658e3bb006f31f78ca5a44c",
+    "/assets/icons/icon-192x192.png": "e4211163bf0911688fbfb80278d8ff4d2f77691d",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "279825a1ac4377032ae996a1832c641e33ccf1b6",
+    "/assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
+    "/assets/images/businesswoman-using-tablet-analysis.jpg": "610aec239228882ce4f7be6fe277de8ef426a758",
+    "/assets/images/colleagues-working-cozy-office-medium-shot.jpg": "990cb87f1f6f066b63b352e9923e318f809a3c16",
+    "/assets/images/faq_graphic.jpg": "07e50f3aa9b810d96f734d7629def2a279a0a3b2",
+    "/assets/images/loading.gif": "c6bbb0c42808f8200c8c472750b4d68b32dd4079",
+    "/assets/images/qr.jpeg": "ab9217e9063a149202ab445f584f7b2113d2d645",
+    "/assets/images/rear-view-young-college-student.jpg": "8d3c91711b6827e0233fe93612c0940a74e4876a",
+    "/assets/images/topics/colleagues-working-cozy-office-medium-shot.png": "a651357c213adf1364244220bb9d46ba6f3c71f9",
+    "/assets/images/topics/undraw_Compose_music_re_wpiw.png": "14c40b57a51ac0cc47213ba2ffd90a8caa193242",
+    "/assets/images/topics/undraw_Educator_re_ju47.png": "9d122777b0856c984cb76cf7ef36307108a862c5",
+    "/assets/images/topics/undraw_Finance_re_gnv2.png": "b3177a318956ae4278751e1859f224d3989db579",
+    "/assets/images/topics/undraw_Graduation_re_gthn.png": "616f4dae2667b13f1ed7814b339ff5ca6183f0f7",
+    "/assets/images/topics/undraw_Group_video_re_btu7.png": "a9d7737aa1da41ad33642afaaf1b4b0e5ccfb0bb",
+    "/assets/images/topics/undraw_Podcast_audience_re_4i5q.png": "c30198b477c21a6536e4c45d08c2e653745af353",
+    "/assets/images/topics/undraw_Redesign_feedback_re_jvm0.png": "b3afc08561bc27e9bdf552bc4a8e581eee342368",
+    "/assets/images/topics/undraw_Remote_design_team_re_urdx.png": "ccf140f2b867503c4bf19afd1558e2a8ae2a7593",
+    "/assets/images/topics/undraw_happy_music_g6wc.png": "e651e47c7eada26f8968166d405e912656eed078",
+    "/assets/images/topics/undraw_online_ad_re_ol62.png": "8ba6ed65ef30c7bdd9d81d0ae5188cad5d0639c4",
+    "/assets/images/topics/undraw_viral_tweet_gndb.png": "610ed83ae709945d8a697b595a58a704bbe171eb",
+    "/assets/js/bootstrap.bundle.min.js": "5c8f6cb983397deb65673b961a8657cfd6113ad9",
+    "/assets/js/click-scroll.js": "ca038dfc2651086f11b15c6c40560b9448ff09eb",
+    "/assets/js/custom.js": "71853c6197a6a7f222db0f1978c7cb232b87c5ee",
+    "/assets/js/jquery.min.js": "da49460a365d995ef121403cece389dafe496505",
+    "/assets/js/jquery.sticky.js": "7fd0ecfd2534f00a8a97f8db64fc9ece30303863",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/index.html": "ba9cbd92ead7828849bca00c70aa7147c7113769",
+    "/main.ec32a6ccd176ac26.js": "54ff412a3352e86bbbbcdef7cb119d8e45c456ce",
+    "/manifest.webmanifest": "8f18cf8b92e195b36e5b40aac70918b4729bd03f",
+    "/polyfills.0a14238993673413.js": "e8e41c297a3fb24560fa851e08d4e483cac81e10",
+    "/runtime.27d1470444a5ae9a.js": "1f8559a6703c1381145e668c808cb3c0e9e63728",
+    "/scripts.3a384ad5c5dd731b.js": "8aa86e89b2ed1d914d2ebfa9c482816219e9e7ac",
+    "/styles.39bb6f045fdeff40.css": "919d30ca4f4682c92a98536bb4f48a61c427028a"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
