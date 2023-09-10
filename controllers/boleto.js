@@ -29,7 +29,7 @@ const getAllBoletos = async (req, res) => {
       .sort({ nombre: 1 }),
     Boleto.countDocuments(),
   ])
-  console.log('22');
+
   res.json({
     ok: true,
     boletos,
