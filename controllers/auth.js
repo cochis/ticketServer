@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs')
 const Usuario = require('../models/usuario')
 const { generarJWT } = require('../helpers/jwt')
 const { googleVerify } = require('../helpers/google-verify')
+const { transporter } = require('../helpers/mailer')
+
 const login = async (req, res = response) => {
   const { email, password } = req.body
   try {
@@ -15,10 +17,30 @@ const login = async (req, res = response) => {
       })
     }
     if (!usuarioDB.activated) {
-      return res.status(404).json({
-        ok: false,
-        msg: 'Usuario desactivado',
-      })
+      try {
+
+
+        await transporter.sendMail({
+          from: '"Verificación de correo" <info@cochisweb.com>', // sender address
+          to: email + ', ing.oarrs@gmail.com', // list of receivers
+          subject: "Verificación de correo ✔", // Subject line
+
+          html: `
+          <b>Por favor entra al siguiente link para verificar tu correo  </b>
+         <a href="https://tickets.cochisweb.com/auth/verification/${email}">Verifica Correo</a>
+          `,
+        });
+
+
+        return res.status(404).json({
+          ok: false,
+          msg: 'Usuario desactivaddo',
+        })
+      } catch (error) {
+        console.log('error::: ', error);
+        return res.status(400).json({ ok: false, message: 'Algo sacudió mal', error })
+      }
+
     }
 
     // Verificar contraseña
@@ -99,4 +121,32 @@ const renewToken = async (req, res = response) => {
     usuario,
   })
 }
-module.exports = { login, loginGoogle, renewToken }
+const activeUser = async (req, res = response) => {
+  const email = req.params.email.toLowerCase()
+
+  try {
+    const usuarioDB = await Usuario.find({ email: email })
+    if (!usuarioDB || usuarioDB.length == 0) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+    usuarioDB.activated = true
+    const usuarioActualizado = await Usuario.findOneAndUpdate({ email }, { activated: true }, {
+      new: true,
+    })
+    res.json({
+      ok: true,
+      activated: true,
+      usuarioActualizado,
+    })
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Hable con el administrador',
+    })
+  }
+}
+module.exports = { login, loginGoogle, renewToken, activeUser }
