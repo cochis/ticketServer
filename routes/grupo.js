@@ -11,18 +11,20 @@ const {
   actualizarGrupo,
   isActive,
   getGrupoById,
-  getAllGrupos
+  getAllGrupos,
+  getGruposByEmail
 } = require("../controllers/grupo");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
 router.get("/", validarJWT, getGrupos);
 router.get("/all", validarJWT, getAllGrupos);
+router.get("/email/:email", validarJWT, getGruposByEmail);
 router.get("/:uid", validarJWT, getGrupoById);
 router.post(
   "/",
   [
-    // validarAdminJWT,
+    validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("clave", "La clave es obligatoria").not().isEmpty(),
 

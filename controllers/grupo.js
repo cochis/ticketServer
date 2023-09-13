@@ -9,7 +9,7 @@ const getGrupos = async (req, res) => {
   const [grupos, total] = await Promise.all([
     Grupo.find({})
       .sort({ nombre: 1 })
-      .populate('grupoCreated', 'nombre , email')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .skip(desde)
       .limit(cant),
     Grupo.countDocuments(),
@@ -25,6 +25,7 @@ const getGrupos = async (req, res) => {
 const getAllGrupos = async (req, res) => {
   const [grupos, total] = await Promise.all([
     Grupo.find({})
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Grupo.countDocuments(),
   ])
@@ -41,12 +42,15 @@ const getAllGrupos = async (req, res) => {
 const crearGrupo = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
-
+  const campos = {
+    ...req.body,
+    usuarioCreated: req.uid
+  }
   try {
 
 
     const grupo = new Grupo({
-      ...req.body
+      ...campos
     })
 
 
@@ -155,6 +159,29 @@ const getGrupoById = async (req, res = response) => {
     })
   }
 }
+const getGruposByEmail = async (req, res = response) => {
+  const email = req.params.email
+
+  try {
+    const grupoDB = await Grupo.find({ usuarioCreated: email })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    if (!grupoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un salon',
+      })
+    }
+    res.json({
+      ok: true,
+      grupos: grupoDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 module.exports = {
   getGrupos,
@@ -163,5 +190,6 @@ module.exports = {
   isActive,
   getGrupoById,
   getAllGrupos,
+  getGruposByEmail
 
 }

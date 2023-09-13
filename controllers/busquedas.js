@@ -11,6 +11,7 @@ const Grupo = require('../models/grupo')
 const Evento = require('../models/evento')
 
 
+
 //getCiclos Ciclo
 const getTodo = async (req, res = response) => {
   const busqueda = req.params.busqueda
@@ -31,56 +32,219 @@ const getTodo = async (req, res = response) => {
 const getDocumentosColeccion = async (req, res = response) => {
   const busqueda = req.params.busqueda
   const tabla = req.params.tabla
+  const admin = req.params.admin
+  const uid = req.uid
+  console.log('uid::: ', uid);
+  console.log('admin::: ', admin);
+
+
+
   const regex = new RegExp(busqueda, 'i')
 
 
   let data = []
   switch (tabla) {
     case 'usuarios':
-      data = await Usuario.find({
-        $or: [
-          { nombre: regex },
-          { apellidoPaterno: regex },
-          { apellidoMaterno: regex }
-        ],
-      })
+      if (admin === 'false') {
+        data = await Usuario.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { apellidoPaterno: regex },
+                  { apellidoMaterno: regex }
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+
+      } else {
+        data = await Usuario.find(
+          {
+            $or: [
+              { nombre: regex },
+              { apellidoPaterno: regex },
+              { apellidoMaterno: regex }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
       break
     case 'salones':
-      data = await Salon.find({
-        $or: [
-          { nombre: regex },
-          { img: regex },
-          { direccion: regex },
-          { lat: regex },
-          { long: regex },
-          { telefono: regex }
-        ],
-      })
+      if (admin === 'false') {
+        data = await Salon.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { img: regex },
+                  { direccion: regex },
+                  { lat: regex },
+                  { long: regex },
+                  { telefono: regex }
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      } else {
+        data = await Salon.find(
+          {
+            $or: [
+              { nombre: regex },
+              { img: regex },
+              { direccion: regex },
+              { lat: regex },
+              { long: regex },
+              { telefono: regex }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
       break
     case 'fiestas':
-      data = await Fiesta.find({
-        $or: [
-          { nombre: regex },
-          { cantidad: regex },
-          { fecha: regex },
-          { lugar: regex },
-
-        ],
-      })
+      if (admin === 'false') {
+        data = await Fiesta.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { cantidad: regex },
+                  { fecha: regex },
+                  { lugar: regex },
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      } else {
+        data = await Fiesta.find(
+          {
+            $or: [
+              { nombre: regex },
+              { cantidad: regex },
+              { fecha: regex },
+              { lugar: regex },
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
       break
     case 'boletos':
-      data = await Boleto.find({
-        $or: [
-          { nombre: regex },
-          { cantidad: regex },
-          { fecha: regex },
-          { lugar: regex },
-
-        ],
-      })
+      if (admin === 'false') {
+        data = await Boleto.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { cantidad: regex },
+                  { fecha: regex },
+                  { lugar: regex },
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      } else {
+        data = await Boleto.find(
+          {
+            $or: [
+              { nombre: regex },
+              { cantidad: regex },
+              { fecha: regex },
+              { lugar: regex },
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
       break
-
-
+    case 'roles':
+      if (admin === 'false') {
+        data = await Role.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { clave: regex },
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      } else {
+        data = await Role.find(
+          {
+            $or: [
+              { nombre: regex },
+              { clave: regex },
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
+      break
+    case 'grupos':
+      if (admin === 'false') {
+        data = await Grupo.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { clave: regex },
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      } else {
+        data = await Grupo.find(
+          {
+            $or: [
+              { nombre: regex },
+              { clave: regex },
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
+      break
+    case 'eventos':
+      if (admin === 'false') {
+        data = await Evento.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { clave: regex },
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      } else {
+        data = await Evento.find(
+          {
+            $or: [
+              { nombre: regex },
+              { clave: regex },
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
+      break
     default:
       res.status(400).json({
         ok: false,

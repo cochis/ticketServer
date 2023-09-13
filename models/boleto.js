@@ -15,6 +15,15 @@ const BoletoSchema = Schema({
     type: Boolean,
     default: false,
   },
+  envidad: {
+    type: Boolean,
+    default: false,
+  },
+  usuarioCreated: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
   activated: {
     type: Boolean,
     default: false,

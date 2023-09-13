@@ -34,6 +34,7 @@ const validarAdminJWT = (req, res, next) => {
 
   try {
     const { usuario } = jwt.verify(token, process.env.JWT_SECRET)
+
     if (
       usuario.role !== 'ADMIN_ROLE'
     ) {

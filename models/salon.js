@@ -12,19 +12,63 @@ const SalonSchema = Schema({
     type: String,
     required: true,
   },
-  lat: {
+  calle: {
+    type: String,
+
+  },
+  numeroInt: {
+    type: String,
+
+  },
+  numeroExt: {
+    type: String,
+
+  },
+  municipioDelegacion: {
+    type: String,
+
+  },
+  coloniaBarrio: {
+    type: String,
+
+  },
+  cp: {
     type: Number,
 
   },
+  estado: {
+    type: String,
+
+  },
+  pais: {
+    type: String,
+
+  },
+  comoLlegar: {
+    type: String,
+
+  },
+  lat: {
+    type: Number,
+    required: true,
+  },
   long: {
     type: Number,
-
+    required: true,
   },
   telefono: {
     type: Number,
     required: true,
   },
-
+  email: {
+    type: String,
+    required: true,
+  },
+  usuarioCreated: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
   activated: {
     type: Boolean,
     default: false,

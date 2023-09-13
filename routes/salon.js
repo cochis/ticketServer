@@ -11,7 +11,8 @@ const {
   actualizarSalon,
   isActive,
   getSalonById,
-  getAllSalons
+  getAllSalons,
+  getSalonByEmail
 } = require("../controllers/salon");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -19,10 +20,11 @@ const router = Router();
 router.get("/", validarJWT, getSalons);
 router.get("/all", validarJWT, getAllSalons);
 router.get("/:uid", validarJWT, getSalonById);
+router.get("/email/:email", validarJWT, getSalonByEmail);
 router.post(
   "/",
   [
-
+    validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("direccion", "La direccion es obligatoria").not().isEmpty(),
     check("telefono", "El telefono es obligatorio").not().isEmpty(),

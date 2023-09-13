@@ -11,18 +11,23 @@ const {
   actualizarRole,
   isActive,
   getRoleById,
-  getAllRoles
+  getAllRoles,
+  getRoleForSln,
+  getRoleByClave
 } = require("../controllers/role");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
 router.get("/", validarJWT, getRoles);
 router.get("/all", validarJWT, getAllRoles);
+router.get("/init", getAllRoles);
+router.get("/all/salon", validarJWT, getRoleForSln);
 router.get("/:uid", validarJWT, getRoleById);
+router.get("/clave/:clave", validarJWT, getRoleByClave);
 router.post(
   "/",
   [
-    // validarAdminJWT,
+    validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("clave", "La clave es obligatoria").not().isEmpty(),
 

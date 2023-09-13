@@ -9,7 +9,7 @@ const getEventos = async (req, res) => {
   const [eventos, total] = await Promise.all([
     Evento.find({})
       .sort({ nombre: 1 })
-      .populate('eventoCreated', 'nombre , email')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .skip(desde)
       .limit(cant),
     Evento.countDocuments(),
@@ -25,6 +25,7 @@ const getEventos = async (req, res) => {
 const getAllEventos = async (req, res) => {
   const [eventos, total] = await Promise.all([
     Evento.find({})
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Evento.countDocuments(),
   ])
@@ -41,12 +42,19 @@ const getAllEventos = async (req, res) => {
 const crearEvento = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
+  console.log('uid::: ', uid);
+  campos = {
+    ...req.body,
+    usuarioCreated: req.uid
+  }
+
+  console.log('campos::: ', campos);
 
   try {
 
 
     const evento = new Evento({
-      ...req.body
+      ...campos
     })
 
 
@@ -155,6 +163,31 @@ const getEventoById = async (req, res = response) => {
     })
   }
 }
+const getEventosByEmail = async (req, res = response) => {
+  const email = req.params.email
+  console.log('email::: ', email);
+
+  try {
+    const eventoDB = await Evento.find({ usuarioCreated: email })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    console.log('eventoDB::: ', eventoDB);
+    if (!eventoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un salon',
+      })
+    }
+    res.json({
+      ok: true,
+      eventos: eventoDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 module.exports = {
   getEventos,
@@ -163,5 +196,6 @@ module.exports = {
   isActive,
   getEventoById,
   getAllEventos,
+  getEventosByEmail
 
 }

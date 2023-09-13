@@ -11,12 +11,12 @@ const router = Router();
 
 router.get("/:busqueda", validarJWT, getTodo);
 router.get(
-  "/coleccion/:tabla/:busqueda",
+  "/coleccion/:tabla/:busqueda/:admin?",
   validarJWT,
   getDocumentosColeccion
 );
 router.get(
-  "/coleccion-catalogo/:tabla/:busqueda",
+  "/coleccion-catalogo/:tabla/:busqueda/:admin?",
   validarJWT,
   getDocumentosColeccionCatalogo
 );

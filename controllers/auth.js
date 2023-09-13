@@ -34,7 +34,7 @@ const login = async (req, res = response) => {
 
         return res.status(404).json({
           ok: false,
-          msg: 'Usuario desactivaddo',
+          msg: 'Usuario desactivado',
         })
       } catch (error) {
         console.log('error::: ', error);
@@ -59,6 +59,7 @@ const login = async (req, res = response) => {
       ok: true,
       token,
       role: usuarioDB.role,
+      email: usuarioDB.email,
       uid: usuarioDB._id,
     })
   } catch (error) {

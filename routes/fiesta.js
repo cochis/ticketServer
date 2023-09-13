@@ -11,13 +11,17 @@ const {
   actualizarFiesta,
   isActive,
   getFiestaById,
-  getAllFiestas
+  getAllFiestas,
+  getFiestaByEmail,
+  getFiestasByAnfitrion
 } = require("../controllers/fiesta");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
 router.get("/", validarJWT, getFiestas);
 router.get("/all", validarJWT, getAllFiestas);
+router.get("/email/:email", validarJWT, getFiestaByEmail);
+router.get("/anfitrion/:uid", validarJWT, getFiestasByAnfitrion);
 router.get("/:uid", validarJWT, getFiestaById);
 router.post(
   "/",
@@ -27,7 +31,7 @@ router.post(
     check("evento", "El tipo de evento es obligatorio").not().isEmpty(),
     check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
     check("fecha", "La fecha es obligatoria").not().isEmpty(),
-    check("lugar", "El lugar es obligatorio").not().isEmpty(),
+
 
 
     validarCampos,
@@ -43,7 +47,7 @@ router.put(
     check("evento", "El tipo de evento es obligatorio").not().isEmpty(),
     check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
     check("fecha", "La fecha es obligatoria").not().isEmpty(),
-    check("lugar", "El lugar es obligatorio").not().isEmpty(),
+
     validarCampos,
   ],
   actualizarFiesta

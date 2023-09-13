@@ -26,7 +26,11 @@ const TicketSchema = Schema({
     type: Number,
     required: true
   },
-
+  usuarioCreated: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
   activated: {
     type: Boolean,
     default: false,

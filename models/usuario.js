@@ -32,6 +32,12 @@ const UsuarioSchema = Schema({
     ref: "Salon",
 
   },
+  usuarioCreated: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    default: null
+
+  },
   google: {
     type: Boolean,
     default: false,

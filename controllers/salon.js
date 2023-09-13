@@ -9,7 +9,7 @@ const getSalons = async (req, res) => {
   const [salons, total] = await Promise.all([
     Salon.find({})
       .sort({ nombre: 1 })
-      .populate('salonCreated', 'nombre , email')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .skip(desde)
       .limit(cant),
     Salon.countDocuments(),
@@ -25,6 +25,7 @@ const getSalons = async (req, res) => {
 const getAllSalons = async (req, res) => {
   const [salons, total] = await Promise.all([
     Salon.find({})
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Salon.countDocuments(),
   ])
@@ -41,12 +42,15 @@ const getAllSalons = async (req, res) => {
 const crearSalon = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
-
+  const campos = {
+    ...req.body,
+    usuarioCreated: req.uid
+  }
   try {
 
 
     const salon = new Salon({
-      ...req.body
+      ...campos
     })
 
 
@@ -78,17 +82,10 @@ const actualizarSalon = async (req, res = response) => {
         msg: 'No exite un salon',
       })
     }
-    const { password, google, email, ...campos } = req.body
-    if (!salonDB.google) {
-      campos.email = email
-    } else if (salonDB.email !== email) {
-      return res.status(400).json({
-        ok: false,
-        msg: 'El salon de Google  no se puede actualizar',
-      })
-    }
+    const { ...campos } = req.body
 
 
+    console.log('campos::: ', campos);
     const salonActualizado = await Salon.findByIdAndUpdate(uid, campos, {
       new: true,
     })
@@ -155,6 +152,28 @@ const getSalonById = async (req, res = response) => {
     })
   }
 }
+const getSalonByEmail = async (req, res = response) => {
+  const email = req.params.email
+
+  try {
+    const salonDB = await Salon.find({ email: email })
+    if (!salonDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un salon',
+      })
+    }
+    res.json({
+      ok: true,
+      salons: salonDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 module.exports = {
   getSalons,
@@ -163,5 +182,6 @@ module.exports = {
   isActive,
   getSalonById,
   getAllSalons,
+  getSalonByEmail
 
 }

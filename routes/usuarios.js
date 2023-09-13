@@ -12,7 +12,8 @@ const {
   isActive,
   getUsuarioById,
   getAllUsuarios,
-  actualizarPassUsuario
+  actualizarPassUsuario,
+  getUsuarioByCreatedUid
 } = require("../controllers/usuarios");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -44,6 +45,14 @@ router.put(
     validarCampos,
   ],
   actualizarUsuario
+);
+router.get(
+  "/email/:user",
+  [
+    validarJWT,
+
+  ],
+  getUsuarioByCreatedUid
 );
 router.put(
   "/pass/:id",

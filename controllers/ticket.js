@@ -40,12 +40,15 @@ const getAllTickets = async (req, res) => {
 const crearTicket = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
-
+  const campos = {
+    ...req.body,
+    usuarioCreated: req.uid
+  }
   try {
 
 
     const ticket = new Ticket({
-      ...req.body
+      ...campos
     })
 
 

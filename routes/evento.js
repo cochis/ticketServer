@@ -11,7 +11,8 @@ const {
   actualizarEvento,
   isActive,
   getEventoById,
-  getAllEventos
+  getAllEventos,
+  getEventosByEmail
 } = require("../controllers/evento");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -19,10 +20,11 @@ const router = Router();
 router.get("/", validarJWT, getEventos);
 router.get("/all", validarJWT, getAllEventos);
 router.get("/:uid", validarJWT, getEventoById);
+router.get("/email/:email", validarJWT, getEventosByEmail);
 router.post(
   "/",
   [
-
+    validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("clave", "La clave es obligatoria").not().isEmpty(),
 

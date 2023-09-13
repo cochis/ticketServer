@@ -7,12 +7,10 @@ const getUsuarios = async (req, res) => {
   const desde = Number(req.query.desde) || 0
   const cant = Number(req.query.cant) || 10
   const [usuarios, total] = await Promise.all([
-    Usuario.find(
-      {},
-      'nombre apellidoPaterno apellidoMaterno clave email activated dateCreated lastEdited role google usuarioCreated img',
-    )
+    Usuario.find({})
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('role', 'nombre clave _id')
       .sort({ nombre: 1 })
-      .populate('usuarioCreated', 'nombre , email')
       .skip(desde)
       .limit(cant),
     Usuario.countDocuments(),
@@ -27,9 +25,9 @@ const getUsuarios = async (req, res) => {
 }
 const getAllUsuarios = async (req, res) => {
   const [usuarios, total] = await Promise.all([
-    Usuario.find(
-      {}
-    )
+    Usuario.find({})
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('role', 'nombre clave _id')
       .sort({ nombre: 1 }),
     Usuario.countDocuments(),
   ])
@@ -201,6 +199,8 @@ const getUsuarioById = async (req, res = response) => {
   const uid = req.params.uid
   try {
     const usuarioDB = await Usuario.findById(uid)
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('role', 'nombre clave _id')
     if (!usuarioDB) {
       return res.status(404).json({
         ok: false,
@@ -218,6 +218,31 @@ const getUsuarioById = async (req, res = response) => {
     })
   }
 }
+const getUsuarioByCreatedUid = async (req, res = response) => {
+  const user = req.params.user
+  console.log('user::: ', user);
+  try {
+    const usuarioDB = await Usuario.find({ usuarioCreated: user })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('role', 'nombre clave _id')
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+    console.log('usuarioDB::: ', usuarioDB);
+    res.json({
+      ok: true,
+      usuarios: usuarioDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 module.exports = {
   getUsuarios,
@@ -226,5 +251,6 @@ module.exports = {
   isActive,
   getUsuarioById,
   getAllUsuarios,
-  actualizarPassUsuario
+  actualizarPassUsuario,
+  getUsuarioByCreatedUid
 }

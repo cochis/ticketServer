@@ -22,7 +22,8 @@ router.get("/:uid", validarAdminJWT, getTicketById);
 router.post(
   "/",
   [
-    // validarAdminJWT,
+    validarJWT,
+
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("clave", "La clave es obligatoria").not().isEmpty(),
 

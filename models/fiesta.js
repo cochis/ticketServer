@@ -17,18 +17,71 @@ const FiestaSchema = Schema({
     type: Number,
     required: true,
   },
-  lugar: {
+  calle: {
     type: String,
+
+  },
+  numeroInt: {
+    type: String,
+
+  },
+  numeroExt: {
+    type: String,
+
+  },
+  municipioDelegacion: {
+    type: String,
+
+  },
+  estado: {
+    type: String,
+
+  },
+  pais: {
+    type: String,
+
+  },
+  comoLlegar: {
+    type: String,
+
+  },
+  lat: {
+    type: Number,
     required: true,
+  },
+  long: {
+    type: Number,
+    required: true,
+  },
+
+  usuarioFiesta: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+
+  },
+
+  salon: {
+    type: Schema.Types.ObjectId,
+    ref: "Salon",
+
   },
   img: {
     type: String,
     default: 'fiesta-default.jpg',
 
   },
+  activacreadated: {
+    type: Boolean,
+    default: true,
+  },
   realizada: {
     type: Boolean,
     default: false,
+  },
+  usuarioCreated: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
   },
   activated: {
     type: Boolean,

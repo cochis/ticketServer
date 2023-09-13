@@ -9,7 +9,7 @@ const getBoletos = async (req, res) => {
   const [boletos, total] = await Promise.all([
     Boleto.find({})
       .sort({ nombre: 1 })
-      .populate('fiesta', 'nombre,tipoEvento,cantidad,fecha,lugar,img,realizada,')
+      .populate('fiesta', 'nombre,tipoEvento,cantidad,fecha,lugar,img,usuarioCreated,realizada,')
       .skip(desde)
       .limit(cant),
     Boleto.countDocuments(),
@@ -42,12 +42,18 @@ const getAllBoletos = async (req, res) => {
 const crearBoleto = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
+  console.log('uid::: ', uid);
+  const campos = {
+    ...req.body,
+    usuarioCreated: req.uid
+  }
 
+  console.log('campos::: ', campos);
   try {
 
 
     const boleto = new Boleto({
-      ...req.body
+      ...campos
     })
 
 
@@ -156,6 +162,27 @@ const getBoletoById = async (req, res = response) => {
     })
   }
 }
+const getBoletoByFiesta = async (req, res = response) => {
+  const uid = req.params.uid
+  try {
+    const boletoDB = await Boleto.find({ fiesta: uid })
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un boleto',
+      })
+    }
+    res.json({
+      ok: true,
+      boleto: boletoDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 module.exports = {
   getBoletos,
@@ -164,5 +191,6 @@ module.exports = {
   isActive,
   getBoletoById,
   getAllBoletos,
+  getBoletoByFiesta
 
 }

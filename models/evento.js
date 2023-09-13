@@ -8,7 +8,11 @@ const EventoSchema = Schema({
     type: String,
     required: true,
   },
-
+  usuarioCreated: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
   activated: {
     type: Boolean,
     default: false,

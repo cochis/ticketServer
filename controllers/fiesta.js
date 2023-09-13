@@ -9,7 +9,7 @@ const getFiestas = async (req, res) => {
   const [fiestas, total] = await Promise.all([
     Fiesta.find({})
       .sort({ nombre: 1 })
-      .populate('fiestaCreated', 'nombre , email')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .skip(desde)
       .limit(cant),
     Fiesta.countDocuments(),
@@ -25,6 +25,7 @@ const getFiestas = async (req, res) => {
 const getAllFiestas = async (req, res) => {
   const [fiestas, total] = await Promise.all([
     Fiesta.find({})
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Fiesta.countDocuments(),
   ])
@@ -42,11 +43,13 @@ const crearFiesta = async (req, res = response) => {
 
   const uid = req.uid
 
+  const campos = {
+    ...req.body,
+    usuarioCreated: req.uid
+  }
   try {
-
-
     const fiesta = new Fiesta({
-      ...req.body
+      ...campos
     })
 
 
@@ -139,6 +142,7 @@ const getFiestaById = async (req, res = response) => {
   const uid = req.params.uid
   try {
     const fiestaDB = await Fiesta.findById(uid)
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
     if (!fiestaDB) {
       return res.status(404).json({
         ok: false,
@@ -156,6 +160,61 @@ const getFiestaById = async (req, res = response) => {
     })
   }
 }
+const getFiestaByEmail = async (req, res = response) => {
+  const email = req.params.email
+  console.log('email::: ', email);
+
+  try {
+    const fiestaDB = await Fiesta.find({ usuarioCreated: email })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    console.log('fiestaDB::: ', fiestaDB);
+    if (!fiestaDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exiten fiestas',
+      })
+    }
+    console.log('fiestaDB::: ', fiestaDB);
+    res.json({
+      ok: true,
+      fiestas: fiestaDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
+const getFiestasByAnfitrion = async (req, res = response) => {
+  const uid = req.params.uid
+  console.log('email::: ', uid);
+
+  try {
+    const fiestaDB = await Fiesta.find({ usuarioFiesta: uid })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    console.log('fiestaDB::: ', fiestaDB);
+    if (!fiestaDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exiten fiestas',
+      })
+    }
+    console.log('fiestaDB::: ', fiestaDB);
+    res.json({
+      ok: true,
+      fiestas: fiestaDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
+
+
+
 
 module.exports = {
   getFiestas,
@@ -164,5 +223,7 @@ module.exports = {
   isActive,
   getFiestaById,
   getAllFiestas,
+  getFiestaByEmail,
+  getFiestasByAnfitrion
 
 }

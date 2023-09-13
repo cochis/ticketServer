@@ -9,7 +9,7 @@ const getRoles = async (req, res) => {
   const [roles, total] = await Promise.all([
     Role.find({})
       .sort({ nombre: 1 })
-      .populate('roleCreated', 'nombre , email')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .skip(desde)
       .limit(cant),
     Role.countDocuments(),
@@ -25,9 +25,11 @@ const getRoles = async (req, res) => {
 const getAllRoles = async (req, res) => {
   const [roles, total] = await Promise.all([
     Role.find({})
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Role.countDocuments(),
   ])
+
 
   res.json({
     ok: true,
@@ -39,14 +41,18 @@ const getAllRoles = async (req, res) => {
 
 //crearRole Role
 const crearRole = async (req, res = response) => {
-  const { email, password } = req.body
+
   const uid = req.uid
+  const campos = {
+    ...req.body,
+    usuarioCreated: req.uid
+  }
 
   try {
 
 
     const role = new Role({
-      ...req.body
+      ...campos
     })
 
 
@@ -138,6 +144,7 @@ const getRoleById = async (req, res = response) => {
   const uid = req.params.uid
   try {
     const roleDB = await Role.findById(uid)
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
     if (!roleDB) {
       return res.status(404).json({
         ok: false,
@@ -155,6 +162,57 @@ const getRoleById = async (req, res = response) => {
     })
   }
 }
+const getRoleByClave = async (req, res = response) => {
+  const clave = req.params.clave
+  try {
+    const roleDB = await Role.find({ clave: clave })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    if (!roleDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un role',
+      })
+    }
+    res.json({
+      ok: true,
+      role: roleDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
+const getRoleForSln = async (req, res = response) => {
+  const uid = req.params.uid
+  try {
+    const roleDB = await Role.find({
+      $or: [
+        { "clave": "USRROL" },
+        { "clave": "CHCROL" }
+      ]
+    })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    if (!roleDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un role',
+      })
+    }
+    res.json({
+      ok: true,
+      roles: roleDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
+
+
 
 module.exports = {
   getRoles,
@@ -163,5 +221,6 @@ module.exports = {
   isActive,
   getRoleById,
   getAllRoles,
-
+  getRoleForSln,
+  getRoleByClave
 }
