@@ -4,6 +4,32 @@ const Role = require('../models/role')
 const { generarJWT } = require('../helpers/jwt')
 //getRoles Role
 const getRoles = async (req, res) => {
+
+  try {
+    const desde = Number(req.query.desde) || 0
+    const cant = Number(req.query.cant) || 10
+    const [roles, total] = await Promise.all([
+      Role.find({})
+        .sort({ nombre: 1 })
+        .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+        .skip(desde)
+        .limit(cant),
+      Role.countDocuments(),
+    ])
+
+    res.json({
+      ok: true,
+      roles,
+      uid: req.uid,
+      total,
+    })
+  } catch (error) {
+    console.log('error::: ', error);
+    res.json({
+      ok: false,
+      error
+    })
+  }
   const desde = Number(req.query.desde) || 0
   const cant = Number(req.query.cant) || 10
   const [roles, total] = await Promise.all([
@@ -23,20 +49,31 @@ const getRoles = async (req, res) => {
   })
 }
 const getAllRoles = async (req, res) => {
-  const [roles, total] = await Promise.all([
-    Role.find({})
-      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-      .sort({ nombre: 1 }),
-    Role.countDocuments(),
-  ])
+
+  try {
+    const [roles, total] = await Promise.all([
+      Role.find({})
+        .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+        .sort({ nombre: 1 }),
+      Role.countDocuments(),
+    ])
 
 
-  res.json({
-    ok: true,
-    roles,
-    uid: req.uid,
-    total,
-  })
+    res.json({
+      ok: true,
+      roles,
+      uid: req.uid,
+      total,
+    })
+  } catch (error) {
+    console.log('error::: ', error);
+    res.json({
+      ok: false,
+      error
+    })
+
+  }
+
 }
 
 //crearRole Role

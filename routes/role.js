@@ -19,8 +19,8 @@ const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
 
-router.get("/", getAllRoles);
-router.get("/rol/all", getAllRoles);
+router.get("/", getRoles);
+router.get("/all", getAllRoles);
 router.get("/all/salon", getRoleForSln);
 router.get("/:uid", getRoleById);
 router.get("/clave/:clave", getRoleByClave);
