@@ -20,9 +20,9 @@ const router = Router();
 
 
 router.get("/", validarJWT, getRoles);
+router.get("/rol/all", getAllRoles);
 router.get("/all/salon", validarJWT, getRoleForSln);
 router.get("/:uid", validarJWT, getRoleById);
-router.get("/all", getAllRoles);
 router.get("/clave/:clave", validarJWT, getRoleByClave);
 router.post(
   "/",
