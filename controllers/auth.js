@@ -157,10 +157,11 @@ const existUser = async (req, res = response) => {
         msg: 'No exite un usuario',
       })
     }
-
+    const token = await generarJWT(usuarioDB)
     res.json({
       ok: true,
       exist: true,
+      token: token,
       usuarioDB,
     })
   } catch (error) {
