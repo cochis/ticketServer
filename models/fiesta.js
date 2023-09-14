@@ -33,6 +33,10 @@ const FiestaSchema = Schema({
     type: String,
 
   },
+  coloniaBarrio: {
+    type: String,
+
+  },
   estado: {
     type: String,
 
@@ -47,11 +51,11 @@ const FiestaSchema = Schema({
   },
   lat: {
     type: Number,
-    required: true,
+
   },
   long: {
     type: Number,
-    required: true,
+
   },
 
   usuarioFiesta: {

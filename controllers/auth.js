@@ -7,9 +7,11 @@ const { transporter } = require('../helpers/mailer')
 
 const login = async (req, res = response) => {
   const { email, password } = req.body
+  console.log('req.body::: ', req.body);
   try {
     // Verificar email
     const usuarioDB = await Usuario.findOne({ email })
+    console.log('usuarioDB::: ', usuarioDB);
     if (!usuarioDB) {
       return res.status(404).json({
         ok: false,
@@ -18,20 +20,15 @@ const login = async (req, res = response) => {
     }
     if (!usuarioDB.activated) {
       try {
-
-
         await transporter.sendMail({
           from: '"Verificación de correo" <info@cochisweb.com>', // sender address
           to: email + ', ing.oarrs@gmail.com', // list of receivers
           subject: "Verificación de correo ✔", // Subject line
-
           html: `
           <b>Por favor entra al siguiente link para verificar tu correo  </b>
          <a href="https://tickets.cochisweb.com/auth/verification/${email}">Verifica Correo</a>
           `,
         });
-
-
         return res.status(404).json({
           ok: false,
           msg: 'Usuario desactivado',
@@ -40,7 +37,6 @@ const login = async (req, res = response) => {
         console.log('error::: ', error);
         return res.status(400).json({ ok: false, message: 'Algo sacudió mal', error })
       }
-
     }
 
     // Verificar contraseña
@@ -58,8 +54,8 @@ const login = async (req, res = response) => {
     return res.json({
       ok: true,
       token,
-      role: usuarioDB.role,
       email: usuarioDB.email,
+      role: usuarioDB.role,
       uid: usuarioDB._id,
     })
   } catch (error) {

@@ -50,11 +50,11 @@ const SalonSchema = Schema({
   },
   lat: {
     type: Number,
-    required: true,
+
   },
   long: {
     type: Number,
-    required: true,
+
   },
   telefono: {
     type: Number,
@@ -71,7 +71,7 @@ const SalonSchema = Schema({
   },
   activated: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   dateCreated: {
     type: Number,
