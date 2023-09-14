@@ -103,7 +103,9 @@ const actualizarUsuario = async (req, res = response) => {
       })
     }
 
-
+    console.log('password::: ', campos);
+    console.log('password::: ', password);
+    cam
     const usuarioActualizado = await Usuario.findByIdAndUpdate(uid, campos, {
       new: true,
     })
@@ -122,6 +124,8 @@ const actualizarUsuario = async (req, res = response) => {
 //Actualizar Pass  Usuario
 const actualizarPassUsuario = async (req, res = response) => {
   //Validar token y comporbar si es el susuario
+
+  console.log('cambiopass');
   const uid = req.params.id
   try {
     const usuarioDB = await Usuario.findById(uid)
@@ -133,9 +137,11 @@ const actualizarPassUsuario = async (req, res = response) => {
       })
     }
     const campos = req.body
+    console.log('campos::: ', campos);
 
     const salt = bcrypt.genSaltSync()
     campos.password = bcrypt.hashSync(campos.password, salt)
+    console.log('campos::: ', campos);
     let usuarioDB2 = {
       nombre: usuarioDB.nombre,
       apellidoPaterno: usuarioDB.apellidoPaterno,
