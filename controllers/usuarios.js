@@ -103,9 +103,6 @@ const actualizarUsuario = async (req, res = response) => {
       })
     }
 
-    console.log('password::: ', campos);
-    console.log('password::: ', password);
-    cam
     const usuarioActualizado = await Usuario.findByIdAndUpdate(uid, campos, {
       new: true,
     })
