@@ -1,5 +1,5 @@
 db.usuarios.updateMany({ email: "info@cochisweb.com" }, { $set: { role: "650373d9db5868019b55ebd1" } })
-db.fiestas.updateMany({ nombre: "REUNION SEP 2023" }, { $set: { cp: 57000 } })
+db.fiestas.updateMany({ nombre: "REUNION SEP 2023" }, { $set: { realizada: false } })
 db.usuarios.deleteOne({ email: "luffy@luffy.com" })
 db.usuarios.deleteOne({ email: "luffy@luffy.com" })
 
