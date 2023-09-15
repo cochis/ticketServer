@@ -37,6 +37,10 @@ const FiestaSchema = Schema({
     type: String,
 
   },
+  cp: {
+    type: Number,
+
+  },
   estado: {
     type: String,
 
