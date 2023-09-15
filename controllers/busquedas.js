@@ -36,6 +36,7 @@ const getDocumentosColeccion = async (req, res = response) => {
   const uid = req.uid
   console.log('uid::: ', uid);
   console.log('admin::: ', admin);
+  console.log('tabla::: ', tabla);
 
 
 
@@ -184,6 +185,33 @@ const getDocumentosColeccion = async (req, res = response) => {
         ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       } else {
         data = await Role.find(
+          {
+            $or: [
+              { nombre: regex },
+              { clave: regex },
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      }
+      break
+    case 'salones':
+      console.log('entro');
+      if (admin === 'false') {
+        data = await Salon.find(
+          {
+            $and: [
+              {
+                $or: [
+                  { nombre: regex },
+                  { email: regex },
+                ]
+              },
+              { "usuarioCreated": uid }
+            ]
+          }
+        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      } else {
+        data = await Salon.find(
           {
             $or: [
               { nombre: regex },
