@@ -111,6 +111,80 @@ const actualizarBoleto = async (req, res = response) => {
     })
   }
 }
+const registrarAsistencia = async (req, res = response) => {
+  //Validar token y comporbar si es el sboleto
+  const uid = req.params.id
+  try {
+    const boletoDB = await Boleto.findById(uid)
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un boleto',
+      })
+    }
+    const { password, google, email, ...campos } = req.body
+    if (!boletoDB.google) {
+      campos.email = email
+    } else if (boletoDB.email !== email) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El boleto de Google  no se puede actualizar',
+      })
+    }
+
+
+    const boletoActualizado = await Boleto.findByIdAndUpdate(uid, campos, {
+      new: true,
+    })
+    res.json({
+      ok: true,
+      boletoActualizado,
+    })
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
+const confirmaBoleto = async (req, res = response) => {
+  //Validar token y comporbar si es el sboleto
+  const uid = req.params.id
+  try {
+    const boletoDB = await Boleto.findById(uid)
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un boleto',
+      })
+    }
+    const { password, google, email, ...campos } = req.body
+    if (!boletoDB.google) {
+      campos.email = email
+    } else if (boletoDB.email !== email) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El boleto de Google  no se puede actualizar',
+      })
+    }
+
+
+    const boletoActualizado = await Boleto.findByIdAndUpdate(uid, campos, {
+      new: true,
+    })
+    res.json({
+      ok: true,
+      boletoActualizado,
+    })
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 
 const isActive = async (req, res = response) => {
@@ -191,6 +265,8 @@ module.exports = {
   isActive,
   getBoletoById,
   getAllBoletos,
-  getBoletoByFiesta
+  getBoletoByFiesta,
+  confirmaBoleto,
+  registrarAsistencia
 
 }

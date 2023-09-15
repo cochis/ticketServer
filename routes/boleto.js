@@ -12,7 +12,9 @@ const {
   isActive,
   getBoletoById,
   getAllBoletos,
-  getBoletoByFiesta
+  getBoletoByFiesta,
+  confirmaBoleto,
+  registrarAsistencia
 } = require("../controllers/boleto");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -20,7 +22,8 @@ const router = Router();
 router.get("/", validarJWT, getBoletos);
 router.get("/all", validarJWT, getAllBoletos);
 router.get("/:uid", validarJWT, getBoletoById);
-router.get("/fiesta/:uid", validarJWT, getBoletoByFiesta);
+router.get("/fiesta/:uid", getBoletoByFiesta);
+router.get("/confirma-fiesta/:uid", confirmaBoleto);
 router.post(
   "/",
 
@@ -45,6 +48,18 @@ router.put(
     validarCampos,
   ],
   actualizarBoleto
+);
+router.put(
+  "/registrar-asistencia/:id",
+  [
+
+    check("fiesta", "La fiesta es obligatoria").not().isEmpty(),
+
+
+    check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
+    validarCampos,
+  ],
+  registrarAsistencia
 );
 
 
