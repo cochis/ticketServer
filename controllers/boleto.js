@@ -258,6 +258,33 @@ const getBoletoByFiesta = async (req, res = response) => {
   }
 }
 
+
+const getBoletosByEmail = async (req, res = response) => {
+  const email = req.params.email
+  console.log('email::: ', email);
+
+  try {
+    const boletoDB = await Boleto.find({ usuarioCreated: email })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    console.log('boletoDB::: ', boletoDB);
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un salon',
+      })
+    }
+    res.json({
+      ok: true,
+      eventos: boletoDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
+
 module.exports = {
   getBoletos,
   crearBoleto,
@@ -267,6 +294,7 @@ module.exports = {
   getAllBoletos,
   getBoletoByFiesta,
   confirmaBoleto,
-  registrarAsistencia
+  registrarAsistencia,
+  getBoletosByEmail
 
 }

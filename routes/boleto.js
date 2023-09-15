@@ -14,7 +14,8 @@ const {
   getAllBoletos,
   getBoletoByFiesta,
   confirmaBoleto,
-  registrarAsistencia
+  registrarAsistencia,
+  getBoletosByEmail
 } = require("../controllers/boleto");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -22,6 +23,7 @@ const router = Router();
 router.get("/", validarJWT, getBoletos);
 router.get("/all", validarJWT, getAllBoletos);
 router.get("/:uid", validarJWT, getBoletoById);
+router.get("/email/:email", validarJWT, getBoletosByEmail);
 router.get("/fiesta/:uid", getBoletoByFiesta);
 router.get("/confirma-fiesta/:uid", confirmaBoleto);
 router.post(
