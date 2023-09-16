@@ -52,7 +52,7 @@ router.put(
   actualizarBoleto
 );
 router.put(
-  "/registrar-asistencia/:id",
+  "/registrar-asistencias/:id",
   [
 
 

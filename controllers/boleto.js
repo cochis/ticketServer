@@ -122,16 +122,7 @@ const registrarAsistencia = async (req, res = response) => {
         msg: 'No exite un boleto',
       })
     }
-    const { password, google, email, ...campos } = req.body
-    if (!boletoDB.google) {
-      campos.email = email
-    } else if (boletoDB.email !== email) {
-      return res.status(400).json({
-        ok: false,
-        msg: 'El boleto de Google  no se puede actualizar',
-      })
-    }
-
+    const { ...campos } = req.body
 
     const boletoActualizado = await Boleto.findByIdAndUpdate(uid, campos, {
       new: true,
