@@ -229,6 +229,7 @@ const getBoletoById = async (req, res = response) => {
 }
 const getBoletoByFiesta = async (req, res = response) => {
   const uid = req.params.uid
+  console.log('entoroo');
   try {
     const boletoDB = await Boleto.find({ fiesta: uid })
     if (!boletoDB) {

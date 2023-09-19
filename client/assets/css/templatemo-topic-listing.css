@@ -284,18 +284,18 @@ strong {
   left: 0;
 }
 
-.sticky-wrapper.is-sticky .navbar {
+/* .sticky-wrapper.is-sticky .navbar {
   background-color: var(--secondary-color);
 }
 
 .navbar {
   background: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-  /* background: linear-gradient(15deg, #80d0c7 0%, #13547a 100%); */
+ 
   border-bottom: 1px solid rgba(128, 208, 199, 0.35);
   z-index: 9;
-}
+} */
 
-.navbar-brand,
+/* .navbar-brand,
 .navbar-brand:hover {
   font-size: var(--h3-font-size);
   font-weight: var(--font-weight-bold);
@@ -306,7 +306,8 @@ strong {
 .navbar-brand span {
   font-family: var(--title-font-family);
 }
-
+ */
+/* 
 .navbar-expand-lg .navbar-nav .nav-link {
   border-radius: var(--border-radius-large);
   margin: 3px;
@@ -366,7 +367,8 @@ strong {
   letter-spacing: 0.5px;
   position: relative;
 }
-
+ */
+/* 
 .navbar .dropdown-item.active,
 .navbar .dropdown-item:active,
 .navbar .dropdown-item:focus,
@@ -391,16 +393,17 @@ strong {
   position: relative;
   left: 2px;
   border: 0;
-}
+} */
 
 @media screen and (min-width: 992px) {
-  .navbar .dropdown:hover .dropdown-menu {
+  /* .navbar .dropdown:hover .dropdown-menu {
     opacity: 1;
     margin-top: 0;
     pointer-events: auto;
-  }
+  } */
 }
 
+/* 
 .navbar-icon {
   background: var(--white-color);
   border-radius: var(--border-radius-large);
@@ -460,9 +463,9 @@ strong {
   width: 30px;
   height: 2px;
   position: relative;
-}
+} */
 
-.navbar-toggler .navbar-toggler-icon:before,
+/* .navbar-toggler .navbar-toggler-icon:before,
 .navbar-toggler .navbar-toggler-icon:after {
   transition: top 300ms 350ms ease, -webkit-transform 300ms 50ms ease;
   transition: top 300ms 350ms ease, transform 300ms 50ms ease;
@@ -474,16 +477,16 @@ strong {
   width: 30px;
   height: 2px;
   content: '';
-}
+} */
 
-.navbar-toggler .navbar-toggler-icon::before {
+/* .navbar-toggler .navbar-toggler-icon::before {
   top: -8px;
 }
 
 .navbar-toggler .navbar-toggler-icon::after {
   top: 8px;
 }
-
+ */
 
 /*---------------------------------------
   HERO        
@@ -1075,12 +1078,12 @@ blockquote {
     padding-bottom: 50px;
   }
 
-  .navbar {
+  /*   .navbar {
     background-color: var(--secondary-color);
   }
 
   .navbar-nav .dropdown-menu {
-    position: relative;
+    position: static;
     left: 10px;
     opacity: 1;
     pointer-events: auto;
@@ -1104,7 +1107,7 @@ blockquote {
   .nav-tabs .nav-link {
     font-size: var(--copyright-font-size);
     padding: 10px;
-  }
+  } */
 
   .featured-section {
     border-radius: 0 0 80px 80px;
