@@ -77,6 +77,7 @@ const crearBoleto = async (req, res = response) => {
 const actualizarBoleto = async (req, res = response) => {
   //Validar token y comporbar si es el sboleto
   const uid = req.params.id
+  console.log('uid::: ', uid);
   try {
     const boletoDB = await Boleto.findById(uid)
     if (!boletoDB) {

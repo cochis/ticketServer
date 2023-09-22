@@ -38,19 +38,6 @@ router.post(
   ],
   crearBoleto
 );
-
-router.put(
-  "/:id",
-  [
-    validarJWT,
-    check("fiesta", "La fiesta es obligatoria").not().isEmpty(),
-
-
-    check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
-    validarCampos,
-  ],
-  actualizarBoleto
-);
 router.put(
   "/registro/:id",
   [
@@ -74,6 +61,19 @@ router.put(
   ],
   registrarAsistencia
 );
+router.put(
+  "/:id",
+  [
+    validarJWT,
+    check("fiesta", "La fiesta es obligatoria").not().isEmpty(),
+
+
+    check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
+    validarCampos,
+  ],
+  actualizarBoleto
+);
+
 
 
 router.put(

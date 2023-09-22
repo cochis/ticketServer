@@ -1,7 +1,7 @@
 {
-  "name": "backend-server",
-  "version": "1.0.1",
-  "description": "Colegio Libertadores de América",
+  "name": "Ticket Server",
+  "version": "1.0.3.8",
+  "description": "Tickets Server",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
