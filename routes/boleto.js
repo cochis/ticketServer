@@ -41,10 +41,7 @@ router.post(
 router.post(
   "/registro/:id",
   [
-
-    check("fiesta", "La fiesta es necesaria").not().isEmpty(),
-
-
+    check("fiesta", "La fiesta es obligatoria").not().isEmpty(),
     check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
     validarCampos,
   ],
