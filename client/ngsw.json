@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1695088739237,
+  "timestamp": 1695399986794,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.2261235b274eca36.js",
+        "/main.0a1d09d334ca88ba.js",
         "/manifest.webmanifest",
         "/polyfills.0a14238993673413.js",
         "/runtime.8f33b8458085c89f.js",
         "/scripts.3a384ad5c5dd731b.js",
-        "/styles.759b81c19374c388.css"
+        "/styles.9af43f30142f3373.css"
       ],
       "patterns": []
     },
@@ -89,7 +89,7 @@
     "/assets/css/bootstrap.min.css": "7abed070e37ce060c0a561575f1d41a7f248fc74",
     "/assets/css/fontello.css": "1f8605d4b09de17937d17345c31aed487fc6b86a",
     "/assets/css/templatemo-topic-listing.css": "99560375fed62d7462772aeca19d58dfc0148c73",
-    "/assets/examples/ex.txt": "673c9af87a684a062e56300aaf32f0ed207513fd",
+    "/assets/examples/ex.txt": "55a141a7e71782e078139248f9b19c27700da578",
     "/assets/font/fontello.eot": "8532f6f1c4db78883daf995ed0141d52cebbaf3c",
     "/assets/font/fontello.svg": "a62d7b439437e6c4eedea8a0ce71543f4ba6f2cf",
     "/assets/font/fontello.ttf": "dcc60097effd00e3fa8ff575f5853b6c86acdd6c",
@@ -131,13 +131,13 @@
     "/assets/js/jquery.sticky.js": "7fd0ecfd2534f00a8a97f8db64fc9ece30303863",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "a1e7b746688237d8bff8f1c594dc27ef07602b96",
-    "/main.2261235b274eca36.js": "5d5cc9f3e29723c134f9448d2efceca9b02f44cb",
+    "/index.html": "99e14f9d64c65660f4413e9c98af3f5f343a34f3",
+    "/main.0a1d09d334ca88ba.js": "567d55da115cd4d9ada2af37befcabb8c2cae5b5",
     "/manifest.webmanifest": "8f18cf8b92e195b36e5b40aac70918b4729bd03f",
     "/polyfills.0a14238993673413.js": "e8e41c297a3fb24560fa851e08d4e483cac81e10",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
     "/scripts.3a384ad5c5dd731b.js": "8aa86e89b2ed1d914d2ebfa9c482816219e9e7ac",
-    "/styles.759b81c19374c388.css": "7becfca22a190ea2d2b3c4da0e952a700675ac00"
+    "/styles.9af43f30142f3373.css": "c1ecce6ce388bd8cd9d03357bf5b2e2c25d6c35d"
   },
   "navigationUrls": [
     {

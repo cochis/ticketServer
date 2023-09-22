@@ -258,7 +258,7 @@ const getBoletosByEmail = async (req, res = response) => {
   try {
     const boletoDB = await Boleto.find({ usuarioCreated: email })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-    console.log('boletoDB::: ', boletoDB);
+    console.log('boletoDffdfdffdB::: ', boletoDB);
     if (!boletoDB) {
       return res.status(404).json({
         ok: false,
