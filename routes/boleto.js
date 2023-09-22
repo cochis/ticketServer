@@ -38,7 +38,7 @@ router.post(
   ],
   crearBoleto
 );
-router.put(
+router.post(
   "/registro/:id",
   [
 
