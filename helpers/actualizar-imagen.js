@@ -5,7 +5,7 @@ const Fiesta = require('../models/fiesta')
 
 
 const borrarImagen = (path) => {
-  console.log('path::: ', path);
+
   if (fs.existsSync(path)) {
     fs.unlinkSync(path)
   }

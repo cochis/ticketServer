@@ -34,9 +34,7 @@ const getDocumentosColeccion = async (req, res = response) => {
   const tabla = req.params.tabla
   const admin = req.params.admin
   const uid = req.uid
-  console.log('uid::: ', uid);
-  console.log('admin::: ', admin);
-  console.log('tabla::: ', tabla);
+
 
 
 
@@ -195,7 +193,7 @@ const getDocumentosColeccion = async (req, res = response) => {
       }
       break
     case 'salones':
-      console.log('entro');
+
       if (admin === 'false') {
         data = await Salon.find(
           {

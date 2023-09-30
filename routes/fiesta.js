@@ -13,7 +13,8 @@ const {
   getFiestaById,
   getAllFiestas,
   getFiestaByEmail,
-  getFiestasByAnfitrion
+  getFiestasByAnfitrion,
+  getFiestasBySalon
 } = require("../controllers/fiesta");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -22,6 +23,7 @@ router.get("/", validarJWT, getFiestas);
 router.get("/all", validarJWT, getAllFiestas);
 router.get("/email/:email", validarJWT, getFiestaByEmail);
 router.get("/anfitrion/:uid", validarJWT, getFiestasByAnfitrion);
+router.get("/salon/:uid", validarJWT, getFiestasBySalon);
 router.get("/:uid", validarJWT, getFiestaById);
 router.post(
   "/",

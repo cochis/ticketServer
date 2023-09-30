@@ -13,7 +13,8 @@ const {
   getUsuarioById,
   getAllUsuarios,
   actualizarPassUsuario,
-  getUsuarioByCreatedUid
+  getUsuarioByCreatedUid,
+  crearUsuarioSalon
 } = require("../controllers/usuarios");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -24,13 +25,24 @@ router.get("/:uid", validarJWT, getUsuarioById);
 router.post(
   "/",
   [
-    // validarAdminJWT,
+
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("password", "El password es obligatorio").not().isEmpty(),
     check("email", "El email es obligatorio ").isEmail().not().isEmpty(),
     validarCampos,
   ],
   crearUsuario
+);
+router.post(
+  "/salon/:uid",
+  [
+    validarJWT,
+    check("nombre", "El nombre es obligatorio").not().isEmpty(),
+    check("password", "El password es obligatorio").not().isEmpty(),
+    check("email", "El email es obligatorio ").isEmail().not().isEmpty(),
+    validarCampos,
+  ],
+  crearUsuarioSalon
 );
 
 router.put(

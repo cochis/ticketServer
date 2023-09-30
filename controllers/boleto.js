@@ -42,13 +42,13 @@ const getAllBoletos = async (req, res) => {
 const crearBoleto = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
-  console.log('uid::: ', uid);
+
   const campos = {
     ...req.body,
     usuarioCreated: req.uid
   }
 
-  console.log('campos::: ', campos);
+
   try {
 
 
@@ -77,7 +77,7 @@ const crearBoleto = async (req, res = response) => {
 const actualizarBoleto = async (req, res = response) => {
   //Validar token y comporbar si es el sboleto
   const uid = req.params.id
-  console.log('uid::: ', uid);
+
   try {
     const boletoDB = await Boleto.findById(uid)
     if (!boletoDB) {
@@ -230,7 +230,7 @@ const getBoletoById = async (req, res = response) => {
 }
 const getBoletoByFiesta = async (req, res = response) => {
   const uid = req.params.uid
-  console.log('entoroo');
+
   try {
     const boletoDB = await Boleto.find({ fiesta: uid })
     if (!boletoDB) {
@@ -254,12 +254,13 @@ const getBoletoByFiesta = async (req, res = response) => {
 
 const getBoletosByEmail = async (req, res = response) => {
   const email = req.params.email
-  console.log('email::: ', email);
+
 
   try {
     const boletoDB = await Boleto.find({ usuarioCreated: email })
+
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-    console.log('boletoDffdfdffdB::: ', boletoDB);
+      .populate('fiesta')
     if (!boletoDB) {
       return res.status(404).json({
         ok: false,
@@ -268,7 +269,7 @@ const getBoletosByEmail = async (req, res = response) => {
     }
     res.json({
       ok: true,
-      eventos: boletoDB,
+      boletos: boletoDB,
     })
   } catch (error) {
     res.status(500).json({

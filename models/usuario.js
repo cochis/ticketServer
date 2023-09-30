@@ -27,17 +27,17 @@ const UsuarioSchema = Schema({
     ref: "Role",
     required: true
   },
-  salon: {
+  salon: [{
     type: Schema.Types.ObjectId,
     ref: "Salon",
 
-  },
-  usuarioCreated: {
+  }],
+  usuarioCreated: [{
     type: Schema.Types.ObjectId,
     ref: "Usuario",
     default: null
 
-  },
+  }],
   google: {
     type: Boolean,
     default: false,

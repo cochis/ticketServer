@@ -85,7 +85,7 @@ const actualizarSalon = async (req, res = response) => {
     const { ...campos } = req.body
 
 
-    console.log('campos::: ', campos);
+
     const salonActualizado = await Salon.findByIdAndUpdate(uid, campos, {
       new: true,
     })
