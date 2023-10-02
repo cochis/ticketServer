@@ -26,6 +26,7 @@ const getAllFiestas = async (req, res) => {
   const [fiestas, total] = await Promise.all([
     Fiesta.find({})
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Fiesta.countDocuments(),
   ])
@@ -166,6 +167,7 @@ const getFiestaByEmail = async (req, res = response) => {
   try {
     const fiestaDB = await Fiesta.find({ usuarioCreated: email })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
       ;
     if (!fiestaDB) {
       return res.status(404).json({
@@ -218,6 +220,7 @@ const getFiestasBySalon = async (req, res = response) => {
   try {
     const fiestaDB = await Fiesta.find({ salon: uid })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+
       .populate('salon')
     if (!fiestaDB) {
       return res.status(404).json({

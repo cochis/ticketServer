@@ -25,7 +25,19 @@ const getBoletos = async (req, res) => {
 const getAllBoletos = async (req, res) => {
   const [boletos, total] = await Promise.all([
     Boleto.find({})
-      .populate('fiesta', 'uid nombre tipoEvento cantidad fecha lugar img realizada ')
+      .populate('fiesta', 'uid nombre tipoEvento cantidad fecha lugar img realizada usuarioFiesta salon')
+
+
+      .populate({
+        path: 'fiesta',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'usuarioFiesta' }
+      })
+      .populate({
+        path: 'fiesta',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'salon' }
+      })
       .sort({ nombre: 1 }),
     Boleto.countDocuments(),
   ])
@@ -261,6 +273,16 @@ const getBoletosByEmail = async (req, res = response) => {
 
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('fiesta')
+      .populate({
+        path: 'fiesta',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'usuarioFiesta' }
+      })
+      .populate({
+        path: 'fiesta',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'salon' }
+      })
     if (!boletoDB) {
       return res.status(404).json({
         ok: false,
