@@ -25,7 +25,7 @@ router.post(
   "/",
   [
     validarJWT,
-    check("nombre", "El nombre es obligatorio").not().isEmpty(),
+
     check("direccion", "La direccion es obligatoria").not().isEmpty(),
     check("telefono", "El telefono es obligatorio").not().isEmpty(),
 
@@ -39,7 +39,7 @@ router.put(
   "/:id",
   [
     validarJWT,
-    check("nombre", "El nombre es obligatorio").not().isEmpty(),
+
     check("direccion", "La direccion es obligatoria").not().isEmpty(),
     check("telefono", "El telefono es obligatorio").not().isEmpty(),
 

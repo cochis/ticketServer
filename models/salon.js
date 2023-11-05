@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 const SalonSchema = Schema({
   nombre: {
     type: String,
-    required: true,
+
   },
   img: {
     type: String,
@@ -63,6 +63,10 @@ const SalonSchema = Schema({
   email: {
     type: String,
     required: true,
+  },
+  ubicacionGoogle: {
+    type: String,
+
   },
   usuarioCreated: {
     type: Schema.Types.ObjectId,
