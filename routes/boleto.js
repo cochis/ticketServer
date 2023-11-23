@@ -22,7 +22,7 @@ const router = Router();
 
 router.get("/", validarJWT, getBoletos);
 router.get("/all", validarJWT, getAllBoletos);
-router.get("/:uid", validarJWT, getBoletoById);
+router.get("/:uid", getBoletoById);
 router.get("/email/:email", validarJWT, getBoletosByEmail);
 router.get("/fiesta/:uid", getBoletoByFiesta);
 router.get("/confirma-fiesta/:uid", confirmaBoleto);

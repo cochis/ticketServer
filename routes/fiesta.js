@@ -24,7 +24,7 @@ router.get("/all", validarJWT, getAllFiestas);
 router.get("/email/:email", validarJWT, getFiestaByEmail);
 router.get("/anfitrion/:uid", validarJWT, getFiestasByAnfitrion);
 router.get("/salon/:uid", validarJWT, getFiestasBySalon);
-router.get("/:uid", validarJWT, getFiestaById);
+router.get("/:uid", getFiestaById);
 router.post(
   "/",
   [
