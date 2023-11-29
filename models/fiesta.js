@@ -78,6 +78,11 @@ const FiestaSchema = Schema({
     default: 'fiesta-default.jpg',
 
   },
+  invitacion: {
+    type: String,
+    
+
+  },
   activacreadated: {
     type: Boolean,
     default: true,
