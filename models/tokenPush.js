@@ -4,22 +4,17 @@ const TokenPushSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: "Usuario",
   },
-  fiesta: [{
-    type: Schema.Types.ObjectId,
-    ref: "Fiesta",
-  }],
   tokenPush: {
     type: Object
   },
-  usuarioCreated
-    : {
+  fiestas: [{
     type: Schema.Types.ObjectId,
-    ref: "Usuario",
-    required: true
-  },
+    ref: "Fiesta",
+  }],
+
   activated: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   dateCreated: {
     type: Number,

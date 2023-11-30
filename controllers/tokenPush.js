@@ -38,34 +38,46 @@ const getAllTokenPushs = async (req, res) => {
 }
 //crearTokenPush TokenPush
 const crearTokenPush = async (req, res = response) => {
-  const { email, password } = req.body
-  const uid = req.uid
+  const tok = req.body.tokenPush
+  let fst = []
+  fst.push(req.body.fiesta)
   const campos = {
     ...req.body,
-    usuarioCreated: req.uid
+    fiestas: fst
+
   }
   try {
+    const tokenPushDB = await TokenPush.find({ tokenPush: tok })
 
+    if (!tokenPushDB) {
+      const tokenPush = new TokenPush({
+        ...campos
+      })
+      await tokenPush.save()
+      res.json({
+        ok: true,
+        tokenPush
+      })
+    } else {
+      console.log(' req.body.fiesta::: ', req.body.fiesta);
+      const tokenByParty = TokenPush.find({
+        fiestas: { $all: [req.body.fiesta] }
 
-    const tokenPush = new TokenPush({
-      ...campos
-    })
-
-
-    await tokenPush.save()
-
-
+      });
+      console.log('tokenByParty::: ', tokenByParty);
+    }
     res.json({
       ok: true,
-      tokenPush
+      tokenPush: tokenPushDB,
     })
   } catch (error) {
-    console.log('error', error)
     res.status(500).json({
       ok: false,
-      msg: 'Error inesperado...  revisar logs',
+      msg: 'Error inesperado',
     })
   }
+
+
 }
 //actualizarTokenPush TokenPush
 const actualizarTokenPush = async (req, res = response) => {

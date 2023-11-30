@@ -22,10 +22,7 @@ router.get("/:uid", validarAdminJWT, getTokenPushById);
 router.post(
   "/",
   [
-    validarJWT,
 
-    check("nombre", "El nombre es obligatorio").not().isEmpty(),
-    check("clave", "La clave es obligatoria").not().isEmpty(),
 
     validarCampos,
   ],
