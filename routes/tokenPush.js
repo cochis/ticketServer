@@ -11,7 +11,8 @@ const {
   actualizarTokenPush,
   isActive,
   getTokenPushById,
-  getAllTokenPushs
+  getAllTokenPushs,
+  enviarNotificacion
 } = require("../controllers/tokenPush");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -54,4 +55,5 @@ router.put(
 );
 
 
+router.post("/enviarNotificacion", [], enviarNotificacion)
 module.exports = router;
