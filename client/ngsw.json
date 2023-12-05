@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1701791550793,
+  "timestamp": 1701793283519,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.6597486c573ac333.js",
+        "/main.b1161cbad38b5495.js",
         "/manifest.webmanifest",
         "/polyfills.02ab7f5ac92f65b6.js",
         "/runtime.8f33b8458085c89f.js",
@@ -77,7 +77,7 @@
         "/assets/invitaciones/bodas/boda3.jpeg",
         "/assets/invitaciones/bodas/boda4.jpeg",
         "/assets/invitaciones/bodas/boda5.jpeg",
-        "/assets/invitaciones/xv/july.jpeg",
+        "/assets/invitaciones/xv/july.jpg",
         "/assets/invitaciones/xv/july2.jpeg",
         "/assets/invitaciones/xv/princess.png",
         "/assets/invitaciones/xv/q1.jpeg",
@@ -145,7 +145,7 @@
     "/assets/invitaciones/bodas/boda3.jpeg": "ce27bebd022e408d458994d7247ad6d78c657b1b",
     "/assets/invitaciones/bodas/boda4.jpeg": "8a563aff850ee02ff75e96c2d921b6b4b6752727",
     "/assets/invitaciones/bodas/boda5.jpeg": "30d8611581cea7804b66cf044f651d904048d9f6",
-    "/assets/invitaciones/xv/july.jpeg": "9accb6e78cacd675c3c9417da10749d2e6d5490e",
+    "/assets/invitaciones/xv/july.jpg": "9accb6e78cacd675c3c9417da10749d2e6d5490e",
     "/assets/invitaciones/xv/july2.jpeg": "db204a6411ea605a7c363783afd35817d2ae45c2",
     "/assets/invitaciones/xv/princess.png": "3db82a847bda942168b798ff38422932fece8aa7",
     "/assets/invitaciones/xv/q1.jpeg": "1065a366e96345a9dd293cc62ee4eb202e281370",
@@ -161,8 +161,8 @@
     "/assets/js/jquery.sticky.js": "58f675471d3ff898d5c16ea12796be1d6b328485",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "6a21726f83705b969beaa88c6f438fc1c52da0e5",
-    "/main.6597486c573ac333.js": "1149b3910bdb6fa5ea051916e53b68491f651aa3",
+    "/index.html": "1671fbb68d59a2a46e92e1a84c8167ddec4d8a5b",
+    "/main.b1161cbad38b5495.js": "7f393c5361b3f931b279ed97e7ff102d0e532fba",
     "/manifest.webmanifest": "6035e6a1d74886e2dd2664bdb8fd80f347911ffe",
     "/polyfills.02ab7f5ac92f65b6.js": "d91258a42c28d19ad23c999a7f3e88ca8c8ae85e",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
