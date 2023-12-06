@@ -1,7 +1,7 @@
 db.roles.updateMany({ activated: true }, { $set: { role: "6551752fae51b4c12e8d9f6e" } })
 db.fiestas.updateMany({ nombre: "REUNION SEP 2023" }, { $set: { realizada: false } })
 
-db.usuarios.updateMany({email:"info@cochisweb.com"}, {$set:{password:"$2a$10$uPPenJuOPn1kPJ/NZPY6quH2t/xACBVRvVZc10kjmToC1kR/89tka"}})
+db.fiestas.updateMany({nombre:"XV AÑOS JULIETA SHECCID"}, {$set:{img:""}})
 db.usuarios.deleteOne({ email: "vian.vicu@gmail.com" })
 db.usuarios.deleteOne({ email: "oramirez@jasu.usß" })
 db.usuarios.deleteOne({ email: "martin@mail.com" })
