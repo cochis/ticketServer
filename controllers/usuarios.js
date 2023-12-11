@@ -28,6 +28,7 @@ const getAllUsuarios = async (req, res) => {
     Usuario.find({})
 
       .populate('role', 'nombre clave _id')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Usuario.countDocuments(),
   ])
