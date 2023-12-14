@@ -279,6 +279,30 @@ const getUsuarioById = async (req, res = response) => {
     })
   }
 }
+const getUsuarioByCreador = async (req, res = response) => {
+  const creador = req.params.creador
+  try {
+    const usuarioDB = await Usuario.find({ usuarioCreated: creador })
+    .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    .populate('role', 'nombre clave _id')
+ 
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+    res.json({
+      ok: true,
+      usuarios: usuarioDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 const getUsuarioByCreatedUid = async (req, res = response) => {
   const user = req.params.user
 
@@ -318,5 +342,6 @@ module.exports = {
   getUsuarioById,
   getAllUsuarios,
   actualizarPassUsuario,
-  getUsuarioByCreatedUid
+  getUsuarioByCreatedUid,
+  getUsuarioByCreador
 }

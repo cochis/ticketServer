@@ -14,7 +14,8 @@ const {
   getAllUsuarios,
   actualizarPassUsuario,
   getUsuarioByCreatedUid,
-  crearUsuarioSalon
+  crearUsuarioSalon,
+  getUsuarioByCreador
 } = require("../controllers/usuarios");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -65,6 +66,14 @@ router.get(
 
   ],
   getUsuarioByCreatedUid
+);
+router.get(
+  "/bycreador/:creador",
+  [
+    validarJWT,
+
+  ],
+  getUsuarioByCreador
 );
 router.put(
   "/pass/:id",

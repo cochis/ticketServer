@@ -12,7 +12,8 @@ const {
   isActive,
   getSalonById,
   getAllSalons,
-  getSalonByEmail
+  getSalonByEmail,
+  getSalonByCreador
 } = require("../controllers/salon");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -21,6 +22,7 @@ router.get("/", validarJWT, getSalons);
 router.get("/all", validarJWT, getAllSalons);
 router.get("/:uid", validarJWT, getSalonById);
 router.get("/email/:email", validarJWT, getSalonByEmail);
+router.get("/creador/:uid", validarJWT, getSalonByCreador);
 router.post(
   "/",
   [
