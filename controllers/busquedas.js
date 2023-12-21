@@ -31,18 +31,18 @@ const getTodo = async (req, res = response) => {
 }
 const getDocumentosColeccion = async (req, res = response) => {
   const busqueda = req.params.busqueda
-  console.log('busqueda', busqueda)
+ 
   const tabla = req.params.tabla
-  console.log('tabla', tabla)
+ 
   const admin = req.params.admin
   const uid = req.uid
-  console.log('uid', uid)
+ 
 
 
 
 
   const regex = new RegExp(busqueda, 'i')
-  console.log('regex', regex)
+  
 
 
   let data = []
@@ -78,8 +78,6 @@ const getDocumentosColeccion = async (req, res = response) => {
       }
       break
     case 'salones':
-      console.log('admin', admin)
-      console.log('regex salones', regex)
       if (admin === 'false') {
         data = await Salon.find(
           {
@@ -106,9 +104,6 @@ const getDocumentosColeccion = async (req, res = response) => {
       }
       break
     case 'fiestas':
-      console.log('fiestas')
-      console.log('admin', admin)
-      console.log('regex', regex)
       if (admin === 'false') {
         data = await Fiesta.find(
           {
@@ -135,7 +130,6 @@ const getDocumentosColeccion = async (req, res = response) => {
             ]
           }
           ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-          console.log('data', data)
       }
       break
     case 'boletos':
@@ -195,7 +189,6 @@ const getDocumentosColeccion = async (req, res = response) => {
       }
       break
     case 'salones':
-      console.log('salones')
 
       if (admin === 'false') {
         data = await Salon.find(

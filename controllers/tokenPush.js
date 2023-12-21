@@ -61,12 +61,10 @@ const crearTokenPush = async (req, res = response) => {
         tokenPush
       })
     } else {
-      console.log(' req.body.fiesta::: ', req.body.fiesta);
       const tokenByParty = TokenPush.find({
         fiestas: { $all: [req.body.fiesta] }
 
       });
-      console.log('tokenByParty::: ', tokenByParty);
     }
     res.json({
       ok: true,
@@ -209,7 +207,6 @@ const enviarNotificacion = async (req, res = response) => {
   webpush.sendNotification(
     pushNotification,
     JSON.stringify(payload)).then(res => {
-      console.log('enviado0');
     }).catch(err => {
       console.log('err', err);
 
