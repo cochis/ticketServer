@@ -1,6 +1,10 @@
 {
   "configVersion": 1,
+<<<<<<< HEAD
   "timestamp": 1703611553374,
+=======
+  "timestamp": 1703182419745,
+>>>>>>> refs/remotes/origin/main
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +17,11 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
+<<<<<<< HEAD
         "/main.937f672fb3ceee5e.js",
+=======
+        "/main.e2a19c7a694d0b14.js",
+>>>>>>> refs/remotes/origin/main
         "/manifest.webmanifest",
         "/polyfills.02ab7f5ac92f65b6.js",
         "/runtime.8f33b8458085c89f.js",
@@ -98,6 +106,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+<<<<<<< HEAD
     "/assets/css/animate.css": "3e0f20bb8fcc8721f621b503f7d42527bd1f8c0f",
     "/assets/css/animation.css": "181bbc89ec978981bf0ef8c7239710ae5b3ad6a1",
     "/assets/css/bootstrap-icons.css": "1ce683e78b48dfd6a85e2b4314d85c9a52388f25",
@@ -111,6 +120,21 @@
     "/assets/font/fontello.ttf": "8d0bae175c094c021380edca01d2a271d0d28bbf",
     "/assets/font/fontello.woff": "b375bf23eb3dd3f7cb04338990193dc5c600d221",
     "/assets/font/fontello.woff2": "1ed32ed99fe9c7d816273b981ff326d858fd4537",
+=======
+    "/assets/css/animate.css": "e2e21a68ac0d938ee7297d08877de5d29c441fe7",
+    "/assets/css/animation.css": "f763298ac4912e0e83793883936107722f130250",
+    "/assets/css/bootstrap-icons.css": "c03e6a2b93b0fdf06290c8ce5b74a669643df922",
+    "/assets/css/bootstrap.min.css": "23b14ee7d38f64aac342f05edf0c0b06291b4070",
+    "/assets/css/fontello.css": "4ff93f7b032237a8afaf6f669877a2a99628e588",
+    "/assets/css/templatemo-topic-listing.css": "af5b2aa5e4f370ae3ab0a30c6b9d88f827050cac",
+    "/assets/examples/ex.txt": "11075ff0075d8d9bdf5ec29ea44d224ecc9e3928",
+    "/assets/examples/insert-roles.json": "531ea5a4f2e19ab6c1d3e04af3de2de2a70a716d",
+    "/assets/font/fontello.eot": "8532f6f1c4db78883daf995ed0141d52cebbaf3c",
+    "/assets/font/fontello.svg": "87bf112a12bd70dae690cfdb9c63b583227eeac2",
+    "/assets/font/fontello.ttf": "dcc60097effd00e3fa8ff575f5853b6c86acdd6c",
+    "/assets/font/fontello.woff": "47eeeee2f7028003f39b1ab6a265a393e4cfc8c2",
+    "/assets/font/fontello.woff2": "c534fc4ba80934fbca8e274ff4927d730789304a",
+>>>>>>> refs/remotes/origin/main
     "/assets/fonts/bootstrap-icons.woff": "a77e6a2f335f3fcb4f2930794907c88ed7de7ca1",
     "/assets/fonts/bootstrap-icons.woff2": "3a284b0618771f29da8eb6be900e99439253dce0",
     "/assets/icons/icon-128x128.png": "8d0c1fc3d184eb0204330b789d0f3433bb4399e1",
@@ -154,16 +178,22 @@
     "/assets/invitaciones/xv/xv3.jpeg": "2d2dc3f0002af09baa1406294f003f7e7ef79686",
     "/assets/invitaciones/xv/xv4.jpeg": "0e537cb8ee1fe354d0d661c28314ebe0fb65253a",
     "/assets/invitaciones/xv/xv5.jpeg": "63be3cf85e6087be2054b6f28869ec50c913d2cf",
-    "/assets/js/bootstrap.bundle.min.js": "5c8f6cb983397deb65673b961a8657cfd6113ad9",
-    "/assets/js/click-scroll.js": "ca038dfc2651086f11b15c6c40560b9448ff09eb",
-    "/assets/js/custom.js": "71853c6197a6a7f222db0f1978c7cb232b87c5ee",
-    "/assets/js/jquery.min.js": "da49460a365d995ef121403cece389dafe496505",
-    "/assets/js/jquery.sticky.js": "7fd0ecfd2534f00a8a97f8db64fc9ece30303863",
+    "/assets/js/bootstrap.bundle.min.js": "bb4d5c07ede00143624addae0736aa3a55d879ec",
+    "/assets/js/click-scroll.js": "cda061e6f29e742a7f9aa89a82c13becf0481ca8",
+    "/assets/js/custom.js": "66928e6cbb59c3a3bce606959ef4a865fe04e642",
+    "/assets/js/jquery.min.js": "ab07e8e39fd7992b47088b22a5e4511b03374223",
+    "/assets/js/jquery.sticky.js": "58f675471d3ff898d5c16ea12796be1d6b328485",
     "/favicon.ico": "2e3ebe1307ad2943239ee8918ebd9fd531efa6a6",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
+<<<<<<< HEAD
     "/index.html": "4b4a89dd586ded181ba5c03c69606e15f3a37869",
     "/main.937f672fb3ceee5e.js": "1ce15aa91c5f5a0b14131e8c6d73dd9b21feccbb",
     "/manifest.webmanifest": "c3da65c8feff276eac217358d49eb102d1a4c9c8",
+=======
+    "/index.html": "9d66a974fce886f6da939eca3fbb46c8386d36eb",
+    "/main.e2a19c7a694d0b14.js": "0071c3763a538a682e4b95997c1475c6db82e84b",
+    "/manifest.webmanifest": "e5d2f908527318c146578ecd0b7a6bab5d4d7e5a",
+>>>>>>> refs/remotes/origin/main
     "/polyfills.02ab7f5ac92f65b6.js": "d91258a42c28d19ad23c999a7f3e88ca8c8ae85e",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
     "/scripts.3a384ad5c5dd731b.js": "8aa86e89b2ed1d914d2ebfa9c482816219e9e7ac",

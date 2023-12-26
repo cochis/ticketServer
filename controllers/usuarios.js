@@ -28,6 +28,7 @@ const getAllUsuarios = async (req, res) => {
     Usuario.find({})
 
       .populate('role', 'nombre clave _id')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Usuario.countDocuments(),
   ])
@@ -294,6 +295,30 @@ const getUsuarioById = async (req, res = response) => {
     })
   }
 }
+const getUsuarioByCreador = async (req, res = response) => {
+  const creador = req.params.creador
+  try {
+    const usuarioDB = await Usuario.find({ usuarioCreated: creador })
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('role', 'nombre clave _id')
+
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+    res.json({
+      ok: true,
+      usuarios: usuarioDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 const getUsuarioByCreatedUid = async (req, res = response) => {
   const user = req.params.user
 
@@ -353,36 +378,7 @@ const getUsuarioByEmail = async (req, res = response) => {
     })
   }
 }
-const getUsuarioByCreador = async (req, res = response) => {
-  const uid = req.params.uid
 
-  try {
-    const usuarioDB = await Usuario.find({ usuarioCreated: uid })
-
-      .populate('role', 'nombre clave _id')
-    console.log('usuarioDB::: ', usuarioDB);
-
-
-    if (!usuarioDB) {
-      return res.status(404).json({
-        ok: false,
-        msg: 'No exite un usuario',
-      })
-    }
-
-    res.json({
-      ok: true,
-      usuarios: usuarioDB,
-    })
-  } catch (error) {
-    console.log('error::: ', error);
-    res.status(500).json({
-      ok: false,
-      error: error,
-      msg: 'Error inesperado',
-    })
-  }
-}
 
 module.exports = {
   getUsuarios,

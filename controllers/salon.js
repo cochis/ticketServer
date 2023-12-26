@@ -157,6 +157,30 @@ const getSalonByEmail = async (req, res = response) => {
 
   try {
     const salonDB = await Salon.find({ email: email })
+    .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+    if (!salonDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un salon',
+      })
+    }
+    res.json({
+      ok: true,
+      salons: salonDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
+const getSalonByCreador = async (req, res = response) => {
+  const uid = req.params.uid
+
+  try {
+    const salonDB = await Salon.find({ usuarioCreated: uid })
+    .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
     if (!salonDB) {
       return res.status(404).json({
         ok: false,
@@ -182,6 +206,7 @@ module.exports = {
   isActive,
   getSalonById,
   getAllSalons,
-  getSalonByEmail
+  getSalonByEmail,
+  getSalonByCreador
 
 }

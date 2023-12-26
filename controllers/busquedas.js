@@ -31,18 +31,23 @@ const getTodo = async (req, res = response) => {
 }
 const getDocumentosColeccion = async (req, res = response) => {
   const busqueda = req.params.busqueda
+ 
   const tabla = req.params.tabla
+ 
   const admin = req.params.admin
   const uid = req.uid
+ 
 
 
 
 
   const regex = new RegExp(busqueda, 'i')
+  
 
 
   let data = []
   switch (tabla) {
+
     case 'usuarios':
       if (admin === 'false') {
         data = await Usuario.find(
@@ -80,11 +85,7 @@ const getDocumentosColeccion = async (req, res = response) => {
               {
                 $or: [
                   { nombre: regex },
-                  { img: regex },
                   { direccion: regex },
-                  { lat: regex },
-                  { long: regex },
-                  { telefono: regex }
                 ]
               },
               { "usuarioCreated": uid }
@@ -96,11 +97,7 @@ const getDocumentosColeccion = async (req, res = response) => {
           {
             $or: [
               { nombre: regex },
-              { img: regex },
               { direccion: regex },
-              { lat: regex },
-              { long: regex },
-              { telefono: regex }
             ]
           }
         ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
@@ -114,9 +111,8 @@ const getDocumentosColeccion = async (req, res = response) => {
               {
                 $or: [
                   { nombre: regex },
-                  { cantidad: regex },
-                  { fecha: regex },
-                  { lugar: regex },
+                  
+                  { calle: regex },
                 ]
               },
               { "usuarioCreated": uid }
@@ -128,12 +124,12 @@ const getDocumentosColeccion = async (req, res = response) => {
           {
             $or: [
               { nombre: regex },
-              { cantidad: regex },
-              { fecha: regex },
-              { lugar: regex },
+              { calle: regex },
+              
+              
             ]
           }
-        ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+          ).populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       }
       break
     case 'boletos':
