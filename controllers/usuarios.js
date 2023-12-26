@@ -141,6 +141,7 @@ const crearUsuarioSalon = async (req, res = response) => {
 //actualizarUsuario Usuario
 const actualizarUsuario = async (req, res = response) => {
   //Validar token y comporbar si es el susuario
+  console.log('actualizacion');
   const uid = req.params.id
   try {
     const usuarioDB = await Usuario.findById(uid)
@@ -160,6 +161,19 @@ const actualizarUsuario = async (req, res = response) => {
       })
     }
 
+    if (password && password != null && password !== undefined && password !== '') {
+      console.log(
+        'Cambio cont'
+      );
+      const salt = bcrypt.genSaltSync()
+      console.log('salt::: ', salt);
+      let pwd = bcrypt.hashSync(password, salt)
+      console.log('pwd::: ', pwd);
+
+      campos.password = pwd
+    }
+
+    console.log('campos::: ', campos);
     const usuarioActualizado = await Usuario.findByIdAndUpdate(uid, campos, {
       new: true,
     })
@@ -256,6 +270,8 @@ const isActive = async (req, res = response) => {
 }
 
 const getUsuarioById = async (req, res = response) => {
+
+  console.log('entrooooooo');
   const uid = req.params.uid
   try {
     const usuarioDB = await Usuario.findById(uid)
@@ -307,6 +323,66 @@ const getUsuarioByCreatedUid = async (req, res = response) => {
     })
   }
 }
+const getUsuarioByEmail = async (req, res = response) => {
+  const email = req.params.email
+
+  try {
+    const usuarioDB = await Usuario.find({ email: email })
+
+      .populate('role', 'nombre clave _id')
+    console.log('usuarioDB::: ', usuarioDB);
+
+
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+
+    res.json({
+      ok: true,
+      usuarios: usuarioDB,
+    })
+  } catch (error) {
+    console.log('error::: ', error);
+    res.status(500).json({
+      ok: false,
+      error: error,
+      msg: 'Error inesperado',
+    })
+  }
+}
+const getUsuarioByCreador = async (req, res = response) => {
+  const uid = req.params.uid
+
+  try {
+    const usuarioDB = await Usuario.find({ usuarioCreated: uid })
+
+      .populate('role', 'nombre clave _id')
+    console.log('usuarioDB::: ', usuarioDB);
+
+
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+
+    res.json({
+      ok: true,
+      usuarios: usuarioDB,
+    })
+  } catch (error) {
+    console.log('error::: ', error);
+    res.status(500).json({
+      ok: false,
+      error: error,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 module.exports = {
   getUsuarios,
@@ -317,5 +393,7 @@ module.exports = {
   getUsuarioById,
   getAllUsuarios,
   actualizarPassUsuario,
-  getUsuarioByCreatedUid
+  getUsuarioByCreatedUid,
+  getUsuarioByEmail,
+  getUsuarioByCreador
 }

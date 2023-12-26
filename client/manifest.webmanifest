@@ -1,8 +1,8 @@
 {
-  "name": "tp",
-  "short_name": "tp",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "TicketsParty",
+  "short_name": "TicketsParty",
+  "theme_color": "#13547a",
+  "background_color": "#80d0c7",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
