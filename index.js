@@ -25,6 +25,7 @@ dbConnection()
 
 app.use('/api/usuarios', require('./routes/usuarios'))
 app.use('/api/roles', require('./routes/role'))
+app.use('/api/contactos', require('./routes/contacto'))
 app.use('/api/login', require('./routes/auth'))
 app.use('/api/eventos', require('./routes/evento'))
 app.use('/api/grupos', require('./routes/grupo'))
