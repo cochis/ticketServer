@@ -77,7 +77,7 @@ router.get(
   getUsuarioByEmail
 );
 router.get(
-  "/bycreador/:uid",
+  "/bycreador/:creador",
   [
     validarJWT,
 

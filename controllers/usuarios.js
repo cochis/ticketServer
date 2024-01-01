@@ -297,11 +297,13 @@ const getUsuarioById = async (req, res = response) => {
 }
 const getUsuarioByCreador = async (req, res = response) => {
   const creador = req.params.creador
+  console.log('creador::: ', creador);
   try {
     const usuarioDB = await Usuario.find({ usuarioCreated: creador })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('role', 'nombre clave _id')
 
+    console.log('usuarioDB::: ', usuarioDB);
     if (!usuarioDB) {
       return res.status(404).json({
         ok: false,
