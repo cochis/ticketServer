@@ -242,9 +242,13 @@ const getBoletoById = async (req, res = response) => {
 }
 const getBoletoByFiesta = async (req, res = response) => {
   const uid = req.params.uid
+  console.log('uid::: ', uid);
 
+  const regex = new RegExp(uid, 'i')
+  console.log('regex::: ', regex);
   try {
-    const boletoDB = await Boleto.find({ fiesta: uid })
+    const boletoDB = await Boleto.find({ fiesta: ObjectId(uid) })
+    console.log('boletoDB:FGDGDFGDFGDFGDF:: ', boletoDB);
     if (!boletoDB) {
       return res.status(404).json({
         ok: false,

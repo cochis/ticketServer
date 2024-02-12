@@ -6,20 +6,27 @@ const BoletoSchema = Schema({
     required: true
   },
 
-  invitados: {
-    type: Object,
+  grupo: {
+    type: Schema.Types.ObjectId,
+    ref: "Grupo",
+    required: true
+  },
+  nombreGrupo: {
+    type: String,
 
   },
 
-  llena: {
-    type: Boolean,
-    default: false,
+  telefono: {
+    type: String,
+
   },
-  envidad: {
-    type: Boolean,
-    default: false,
+  email: {
+    type: String,
   },
-  usuarioCreated: {
+  cantidadInvitados: {
+    type: Number,
+  },
+    usuarioCreated: {
     type: Schema.Types.ObjectId,
     ref: "Usuario",
     required: true

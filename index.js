@@ -7,22 +7,16 @@ const https = require('https')
 const fs = require('fs')
 // Crear el servidor de express
 const app = express()
-
 // Configurar CORS
 app.use(cors())
 //Carpeta publoc
-
 app.use('/', express.static('client', { redirect: false }))
-
 app.use(express.static('public'))
-
 //lectura y paseo del body
 app.use(express.json())
 // Base de datos
 dbConnection()
-
 // Rutas
-
 app.use('/api/usuarios', require('./routes/usuarios'))
 app.use('/api/roles', require('./routes/role'))
 app.use('/api/contactos', require('./routes/contacto'))

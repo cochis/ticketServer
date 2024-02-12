@@ -2,10 +2,7 @@ const fs = require('fs')
 const Usuario = require('../models/usuario')
 const Salon = require('../models/salon')
 const Fiesta = require('../models/fiesta')
-
-
 const borrarImagen = (path) => {
-
   if (fs.existsSync(path)) {
     fs.unlinkSync(path)
   }
