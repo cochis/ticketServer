@@ -246,9 +246,7 @@ const getBoletoByFiesta = async (req, res = response) => {
  
   try {
     const boletoDB = await Boleto.find({fiesta: uid })
-
-    console.log('boletoDB:FGDGDFGDFGDFGDF:: ', boletoDB);
-    if (!boletoDB) {
+     if (!boletoDB) {
       return res.status(404).json({
         ok: false,
         msg: 'No exite un boleto',
