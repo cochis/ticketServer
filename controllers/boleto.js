@@ -59,6 +59,7 @@ const crearBoleto = async (req, res = response) => {
     ...req.body,
     usuarioCreated: req.uid
   }
+  console.log('campos::: ', campos);
 
 
   try {
@@ -242,11 +243,12 @@ const getBoletoById = async (req, res = response) => {
 }
 const getBoletoByFiesta = async (req, res = response) => {
   const uid = req.params.uid
-  console.log('uid::: ', uid);
- 
+
+
   try {
-    const boletoDB = await Boleto.find({fiesta: uid })
-     if (!boletoDB) {
+    const boletoDB = await Boleto.find({ fiesta: uid })
+
+    if (!boletoDB) {
       return res.status(404).json({
         ok: false,
         msg: 'No exite un boleto',

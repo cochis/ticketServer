@@ -5,31 +5,36 @@ const BoletoSchema = Schema({
     ref: "Fiesta",
     required: true
   },
-
-  grupo: {
-    type: Schema.Types.ObjectId,
-    ref: "Grupo",
-    required: true
-  },
-  nombreGrupo: {
-    type: String,
-
-  },
-
-  telefono: {
-    type: String,
-
-  },
   email: {
     type: String,
   },
   cantidadInvitados: {
     type: Number,
   },
-    usuarioCreated: {
+  grupo: {
     type: Schema.Types.ObjectId,
-    ref: "Usuario",
+    ref: "Grupo",
     required: true
+  },
+  salon: {
+    type: Schema.Types.ObjectId,
+    ref: "Salon",
+    required: true
+  },
+  whatsapp: {
+    type: String,
+  },
+  nombreGrupo: {
+    type: String,
+
+  },
+  confirmado: {
+    type: Boolean,
+
+  },
+  invitacionEnviada: {
+    type: Boolean,
+
   },
   activated: {
     type: Boolean,
@@ -39,6 +44,19 @@ const BoletoSchema = Schema({
     type: Number,
     required: true,
     default: Date.now(),
+  },
+
+
+  usuarioCreated: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
+
+
+  fechaConfirmacion: {
+    type: Number,
+
   },
   lastEdited: {
     type: Number,
