@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1708449943228,
+  "timestamp": 1708454986132,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.564349bfffdbf5d8.js",
+        "/main.55359143abffc40a.js",
         "/manifest.webmanifest",
         "/polyfills.02ab7f5ac92f65b6.js",
         "/runtime.8f33b8458085c89f.js",
@@ -119,7 +119,7 @@
     "/assets/css/bootstrap.min.css": "23b14ee7d38f64aac342f05edf0c0b06291b4070",
     "/assets/css/fontello.css": "95239652048d1e3932a363760c6d417155f6beb4",
     "/assets/css/templatemo-topic-listing.css": "af5b2aa5e4f370ae3ab0a30c6b9d88f827050cac",
-    "/assets/examples/ex.txt": "2032535817a18e2073e7a8c6884d00366f5205a9",
+    "/assets/examples/ex.txt": "ca52dcc10e4600dcaafb1f9e13e044b806d5e8b9",
     "/assets/examples/insert-roles.json": "531ea5a4f2e19ab6c1d3e04af3de2de2a70a716d",
     "/assets/examples/insert.json": "a74a85fcc40b5104f0134f5c42f709419413031b",
     "/assets/font/fontello.eot": "1ef64134f05974863b59a1acf48f998e5d3a52d2",
@@ -166,7 +166,7 @@
     "/assets/invitaciones/bodas/boda4.jpeg": "8a563aff850ee02ff75e96c2d921b6b4b6752727",
     "/assets/invitaciones/bodas/boda5.jpeg": "30d8611581cea7804b66cf044f651d904048d9f6",
     "/assets/invitaciones/xv/1.png": "d52d2491abc72677f380c93851cad48d97171ee0",
-    "/assets/invitaciones/xv/2.png": "b191b3276b74b8b85bece8b47f474968521515d8",
+    "/assets/invitaciones/xv/2.png": "22a4ea388b437807e224aaaf2df2882321cc8ef8",
     "/assets/invitaciones/xv/3.png": "d5e6b67d6c484657fb077b16122e4670883eefcb",
     "/assets/invitaciones/xv/Sarah.jpeg": "d5510d24f9a53fc8bc875601dbdacd5398b7d2a8",
     "/assets/invitaciones/xv/Sarah.png": "41b44e07b378ddca7f236e7d00face72c7a2b768",
@@ -191,8 +191,8 @@
     "/assets/js/jquery.sticky.js": "58f675471d3ff898d5c16ea12796be1d6b328485",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "6ab8ab06bba3bbc1ad109bbd9e2144c388d1f40a",
-    "/main.564349bfffdbf5d8.js": "b97a54dc5a5d86982140a5688652d65a92725923",
+    "/index.html": "3817ac383fd6cece3288827427a2698bc62d79a8",
+    "/main.55359143abffc40a.js": "4c850653f30d2152fdc917140ad3e32351ac72ba",
     "/manifest.webmanifest": "111d9680fcdd279f6a4edb5848b9b14d239253df",
     "/polyfills.02ab7f5ac92f65b6.js": "d91258a42c28d19ad23c999a7f3e88ca8c8ae85e",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",

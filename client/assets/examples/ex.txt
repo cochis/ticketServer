@@ -1,9 +1,10 @@
 db.roles.updateMany({ activated: true }, { $set: { role: "6551752fae51b4c12e8d9f6e" } })
 db.fiestas.updateMany({ nombre: "REUNION SEP 2023" }, { $set: { realizada: false } })
 
-db.fiestas.updateMany({nombre:"XV AÑOS JULIETA SHECCID"}, {$set:{img:""}})
-db.fiestas.updateMany({nombre: 'XV AÑOS DE SARAH IXCHEL SÁNCHEZ',}, {$set:{usuarioCreated: ObjectId("65d1c2a30699645d8cade4be"),}})
-db.usuarios.deleteOne({ email: "vian.vicu@gmail.com" })
+db.salons.updateMany({telefono:5529046793}, {$set:{nombre:"Salon D'Angelos"}})
+db.fiestas.updateMany({nombre:"XV AÑOS JULIETA SHECCID"}, {$set:{usuarioCreated: ObjectId("65d1c2a30699645d8cade4be"),}})
+db.usuarios.deleteOne({ email: "Adrianabautista4258@yahoo.com" })
+db.usuarios.updateMany({ email: "adrianabautista4258@yahoo.com"}, {$set:{activated:true}})
 db.usuarios.deleteOne({ email: "oramirez@jasu.usß" })
 db.usuarios.deleteOne({ email: "martin@mail.com" })
 db.usuarios.deleteOne({ email: "neza@neza.com" })
@@ -13,7 +14,7 @@ db.usuarios.insertMany([{ nombre: "OSCAR ALEJANDRO", apellidoPaterno: "RAMIREZ",
 db.boletos.drop()
 db.eventos.drop()
 db.fiestas.drop()
-db.grupos.drop()Nc
+db.grupos.drop()
 db.roles.drop()
 db.salons.drop()
 db.tickets.drop()
