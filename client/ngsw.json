@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1708455872067,
+  "timestamp": 1708456990467,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.ae8cc8b00baa44c3.js",
+        "/main.85ffca7b19d90297.js",
         "/manifest.webmanifest",
         "/polyfills.02ab7f5ac92f65b6.js",
         "/runtime.8f33b8458085c89f.js",
@@ -165,7 +165,7 @@
     "/assets/invitaciones/bodas/boda3.jpeg": "ce27bebd022e408d458994d7247ad6d78c657b1b",
     "/assets/invitaciones/bodas/boda4.jpeg": "8a563aff850ee02ff75e96c2d921b6b4b6752727",
     "/assets/invitaciones/bodas/boda5.jpeg": "30d8611581cea7804b66cf044f651d904048d9f6",
-    "/assets/invitaciones/xv/1.png": "d52d2491abc72677f380c93851cad48d97171ee0",
+    "/assets/invitaciones/xv/1.png": "fe9729207dd4e1be8ae4598dc93d91a9c17a0f59",
     "/assets/invitaciones/xv/2.png": "22a4ea388b437807e224aaaf2df2882321cc8ef8",
     "/assets/invitaciones/xv/3.png": "d5e6b67d6c484657fb077b16122e4670883eefcb",
     "/assets/invitaciones/xv/Sarah.jpeg": "d5510d24f9a53fc8bc875601dbdacd5398b7d2a8",
@@ -191,8 +191,8 @@
     "/assets/js/jquery.sticky.js": "58f675471d3ff898d5c16ea12796be1d6b328485",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "fc67e2b21c578451f216a6966313fd07970598fa",
-    "/main.ae8cc8b00baa44c3.js": "8a417b59e40ea65a07a9f956efe6e9375279b94f",
+    "/index.html": "5b8153113cf9ac80846c4b1a1b19a18c6fa54426",
+    "/main.85ffca7b19d90297.js": "ccd45cab3ecc00c9c9fbdc2fbc58901902907c88",
     "/manifest.webmanifest": "111d9680fcdd279f6a4edb5848b9b14d239253df",
     "/polyfills.02ab7f5ac92f65b6.js": "d91258a42c28d19ad23c999a7f3e88ca8c8ae85e",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
