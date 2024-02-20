@@ -2,6 +2,7 @@ db.roles.updateMany({ activated: true }, { $set: { role: "6551752fae51b4c12e8d9f
 db.fiestas.updateMany({ nombre: "REUNION SEP 2023" }, { $set: { realizada: false } })
 
 db.fiestas.updateMany({nombre:"XV AÑOS JULIETA SHECCID"}, {$set:{img:""}})
+db.fiestas.updateMany({nombre: 'XV AÑOS DE SARAH IXCHEL SÁNCHEZ',}, {$set:{usuarioCreated: ObjectId("65d1c2a30699645d8cade4be"),}})
 db.usuarios.deleteOne({ email: "vian.vicu@gmail.com" })
 db.usuarios.deleteOne({ email: "oramirez@jasu.usß" })
 db.usuarios.deleteOne({ email: "martin@mail.com" })
