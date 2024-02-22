@@ -7,7 +7,7 @@ const { generarJWT } = require('../helpers/jwt')
 const { transporter } = require('../helpers/mailer')
 const sendMail = async (req, res) => {
   console.log('req.body', req.body)
-  const { fiesta, to, sender,boleto } = req.body
+  const { fiesta, to, sender,boleto ,url_base} = req.body
   const fiestaDB = await Fiesta.findById(fiesta)
   const boletoDB = await Boleto.findById(boleto)
   console.log(fiestaDB);
@@ -304,8 +304,8 @@ const sendMail = async (req, res) => {
                               <!--[if mso]><style>.v-button {background: transparent !important;}</style><![endif]-->
                               <div align="center">
 
-
-                                <img src="./images/image-8.png" style="min-width: 300px ; max-width: 600px; width: 100%;" alt="">
+                             
+                                
                                 <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://unlayer.com" style="height:49px; v-text-anchor:middle; width:251px;" arcsize="81.5%"  stroke="f" fillcolor="#1c3861"><w:anchorlock/><center style="color:#FFFFFF;"><![endif]-->
                                 <a href="http://localhost:4200/core/invitaciones/xv/xv2/65d4c9500fdc74c4e2d32f9e/65d4d42a0fdc74c4e2d332cb" target="_blank" class="v-button"
                                   style="box-sizing: border-box;display: inline-block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1c3861; border-radius: 40px;-webkit-border-radius: 40px; -moz-border-radius: 40px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 14px;">
