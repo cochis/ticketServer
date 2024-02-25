@@ -59,7 +59,7 @@ const crearBoleto = async (req, res = response) => {
     ...req.body,
     usuarioCreated: req.uid
   }
-  console.log('campos::: ', campos);
+  // console.log('campos::: ', campos);
 
 
   try {
@@ -71,7 +71,7 @@ const crearBoleto = async (req, res = response) => {
 
 
     await boleto.save()
-
+    ß
 
     res.json({
       ok: true,

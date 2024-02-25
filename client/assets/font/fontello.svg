@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg">
-<metadata>Copyright (C) 2023 by original authors @ fontello.com</metadata>
+<metadata>Copyright (C) 2024 by original authors @ fontello.com</metadata>
 <defs>
 <font id="fontello" horiz-adv-x="1000" >
 <font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
@@ -29,6 +29,8 @@
 <glyph glyph-name="plus" unicode="&#xe80a;" d="M420 770q174 0 297-123t123-297-123-297-297-123-297 123-123 297 123 297 297 123z m52-470l200 0 0 102-200 0 0 202-102 0 0-202-202 0 0-102 202 0 0-202 102 0 0 202z" horiz-adv-x="840" />
 
 <glyph glyph-name="minus" unicode="&#xe80b;" d="M420 770q174 0 297-123t123-297-123-297-297-123-297 123-123 297 123 297 297 123z m252-368l-504 0 0-102 504 0 0 102z" horiz-adv-x="840" />
+
+<glyph glyph-name="mail" unicode="&#xe80c;" d="M580 306l258-267-789 0 259 264 135-127z m-517 355l760 0-380-362z m566-309l257 242 0-508z m-629-266l0 508 259-243z" horiz-adv-x="886" />
 
 <glyph glyph-name="menu" unicode="&#xf008;" d="M68 62q0-30 21-51t51-21h793q30 0 51 21t21 51-21 51-51 21h-793q-29 0-51-21t-21-51z m0 288q0-30 21-51t51-21h793q30 0 51 21t21 51-21 51-51 21h-793q-29 0-51-21t-21-51z m0 288q0-30 21-51t51-21h793q30 0 51 21t21 51-21 51-51 21h-793q-29 0-51-21t-21-51z" horiz-adv-x="1073.2" />
 
