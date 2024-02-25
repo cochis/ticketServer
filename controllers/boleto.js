@@ -71,7 +71,6 @@ const crearBoleto = async (req, res = response) => {
 
 
     await boleto.save()
-    ß
 
     res.json({
       ok: true,
