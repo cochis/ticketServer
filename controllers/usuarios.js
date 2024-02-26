@@ -271,8 +271,7 @@ const isActive = async (req, res = response) => {
 }
 
 const getUsuarioById = async (req, res = response) => {
-
-  console.log('entrooooooo');
+ 
   const uid = req.params.uid
   try {
     const usuarioDB = await Usuario.findById(uid)
