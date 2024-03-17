@@ -59,7 +59,7 @@ const crearBoleto = async (req, res = response) => {
     ...req.body,
     usuarioCreated: req.uid
   }
-  // console.log('campos::: ', campos);
+
 
 
   try {
@@ -246,6 +246,7 @@ const getBoletoByFiesta = async (req, res = response) => {
 
   try {
     const boletoDB = await Boleto.find({ fiesta: uid })
+
 
     if (!boletoDB) {
       return res.status(404).json({

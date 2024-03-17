@@ -142,7 +142,7 @@ const crearUsuarioSalon = async (req, res = response) => {
 //actualizarUsuario Usuario
 const actualizarUsuario = async (req, res = response) => {
   //Validar token y comporbar si es el susuario
-  console.log('actualizacion');
+
   const uid = req.params.id
   try {
     const usuarioDB = await Usuario.findById(uid)
@@ -163,18 +163,16 @@ const actualizarUsuario = async (req, res = response) => {
     }
 
     if (password && password != null && password !== undefined && password !== '') {
-      console.log(
-        'Cambio cont'
-      );
+
       const salt = bcrypt.genSaltSync()
-      console.log('salt::: ', salt);
+
       let pwd = bcrypt.hashSync(password, salt)
-      console.log('pwd::: ', pwd);
+
 
       campos.password = pwd
     }
 
-    console.log('campos::: ', campos);
+
     const usuarioActualizado = await Usuario.findByIdAndUpdate(uid, campos, {
       new: true,
     })
@@ -271,7 +269,7 @@ const isActive = async (req, res = response) => {
 }
 
 const getUsuarioById = async (req, res = response) => {
- 
+
   const uid = req.params.uid
   try {
     const usuarioDB = await Usuario.findById(uid)
@@ -296,13 +294,13 @@ const getUsuarioById = async (req, res = response) => {
 }
 const getUsuarioByCreador = async (req, res = response) => {
   const creador = req.params.creador
-  console.log('creador::: ', creador);
+
   try {
     const usuarioDB = await Usuario.find({ usuarioCreated: creador })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('role', 'nombre clave _id')
 
-    console.log('usuarioDB::: ', usuarioDB);
+
     if (!usuarioDB) {
       return res.status(404).json({
         ok: false,
@@ -356,7 +354,7 @@ const getUsuarioByEmail = async (req, res = response) => {
     const usuarioDB = await Usuario.find({ email: email })
 
       .populate('role', 'nombre clave _id')
-    console.log('usuarioDB::: ', usuarioDB);
+
 
 
     if (!usuarioDB) {

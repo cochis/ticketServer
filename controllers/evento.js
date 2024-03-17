@@ -165,13 +165,13 @@ const getEventoById = async (req, res = response) => {
 }
 const getEventosByEmail = async (req, res = response) => {
   const email = req.params.email
-  console.log('emaisssl::: ', email);
+
 
 
   try {
     const eventoDB = await Evento.find({ usuarioCreated: email })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-    console.log('eventoDB::: ', eventoDB);
+
 
     if (!eventoDB) {
       return res.status(404).json({

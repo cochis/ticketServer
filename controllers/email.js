@@ -6,12 +6,11 @@ const Boleto = require('../models/boleto')
 const { generarJWT } = require('../helpers/jwt')
 const { transporter } = require('../helpers/mailer')
 const sendMail = async (req, res) => {
-  // console.log('req.body', req.body)
+
   const { fiesta, to, sender, boleto, text_url } = req.body
   const fiestaDB = await Fiesta.findById(fiesta)
   const boletoDB = await Boleto.findById(boleto)
-  // console.log(fiestaDB);
-  // console.log('boletoDB', boletoDB)
+
   if (!fiestaDB) {
     return res.status(404).json({
       ok: false,
@@ -20,7 +19,7 @@ const sendMail = async (req, res) => {
   }
   if (boletoDB.email === null || boletoDB.email === null || boletoDB.email === '') {
 
-    // console.log('error sin mail');
+
     return res.status(404).json({
       ok: false,
       fiestaDB,
@@ -29,10 +28,10 @@ const sendMail = async (req, res) => {
 
     })
   }
-  // console.log('text_url::: ', text_url);
+
 
   let link = `${text_url}core/invitaciones${fiestaDB.invitacion}${fiestaDB._id}/${boletoDB._id}`
-  // console.log(fiestaDB);
+
 
   let nGrupo = boletoDB.nombreGrupo
   let cantP = fiestaDB.cantidad
@@ -480,12 +479,12 @@ const reSendMail = async (req, res) => {
 
   const { fiesta, to, sender, boleto, text_url } = req.body
   const fiestaDB = await Fiesta.findById(fiesta)
-  // console.log('fiestaDB::: ', fiestaDB);
+
   const boletoDB = await Boleto.findById(boleto)
-  // console.log('boletoDB::: ', boletoDB);
+
   if (boletoDB.email === null || boletoDB.email === null || boletoDB.email === '') {
 
-    // console.log('error sin mail');
+
     return res.status(500).json({
       ok: false,
       fiestaDB,
@@ -495,7 +494,7 @@ const reSendMail = async (req, res) => {
     })
   }
   let link = `${text_url}core/invitaciones${fiestaDB.invitacion}${fiestaDB._id}/${boletoDB._id}`
-  // console.log(fiestaDB);
+
 
   let nGrupo = boletoDB.nombreGrupo
 
@@ -911,8 +910,7 @@ const reSendMail = async (req, res) => {
     const boletoActualizado = await Boleto.findByIdAndUpdate(boletoDB._id, boletoDB, {
       new: true,
     })
-    // console.log('boletoDB::: ', boletoDB);
-    // console.log('boletoActualizado::: ', boletoActualizado);
+
     res.json({
       ok: true,
       fiestaDB,
@@ -921,9 +919,7 @@ const reSendMail = async (req, res) => {
       sender,
     })
   } catch (error) {
-    // console.log('error catch');
-    // console.log('fiestaDB::: ', fiestaDB);
-    // console.log('boletoDB::: ', boletoDB);
+
     return res.status(500).json({
       ok: false,
       fiestaDB,
@@ -937,17 +933,16 @@ const reSendMail = async (req, res) => {
 const sendMailByBoleto = async (req, res) => {
 
   const boleto = req.body
-  // console.log('boleto::: ', boleto);
+
   const text_url = boleto.text_url
-  // console.log('text_url::: ', text_url);
+
   const fiestaDB = await Fiesta.findById(boleto.fiesta)
-  // console.log('fiestaDB::: ', fiestaDB);
+
   const evento = fiestaDB.nombre
-  // console.log('evento::: ', evento);
-  // console.log('iestaDB.invitacion::: ', fiestaDB.invitacion);
+
   if (boleto.email === null || boleto.email === null || boleto.email === '') {
 
-    // console.log('error sin mail');
+
     return res.status(500).json({
       ok: false,
       fiestaDB,
@@ -957,10 +952,9 @@ const sendMailByBoleto = async (req, res) => {
     })
   }
   const uid = req.params.boleto
-  // console.log('uid::: ', uid);
+
   let link = `${text_url}core/invitaciones${fiestaDB.invitacion}${fiestaDB._id}/${uid}`
-  // console.log('link::: ', link);
-  // console.log(fiestaDB);
+
   const ToMail = boleto.email
   const sender = "info@cochisweb.com"
   let nGrupo = boleto.nombreGrupo
@@ -1377,7 +1371,7 @@ const sendMailByBoleto = async (req, res) => {
     const boletoActualizado = await Boleto.findByIdAndUpdate(boleto.uid, boleto, {
       new: true,
     })
-    // console.log('boletoActualizado::: ', boletoActualizado);
+
     return res.json({
       ok: true,
       fiestaDB,

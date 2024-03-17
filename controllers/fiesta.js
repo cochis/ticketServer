@@ -189,7 +189,7 @@ const getFiestaByEmail = async (req, res = response) => {
 }
 const getFiestasByAnfitrion = async (req, res = response) => {
   const uid = req.params.uid
-  console.log('uid::: ', uid);
+
 
 
   try {
