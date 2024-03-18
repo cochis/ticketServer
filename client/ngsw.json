@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1710658441933,
+  "timestamp": 1710785438742,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.ec86000f24b8a123.js",
+        "/main.12106d9d92463fed.js",
         "/manifest.webmanifest",
         "/polyfills.02ab7f5ac92f65b6.js",
         "/runtime.8f33b8458085c89f.js",
@@ -82,6 +82,7 @@
         "/assets/invitaciones/bodas/boda3.jpeg",
         "/assets/invitaciones/bodas/boda4.jpeg",
         "/assets/invitaciones/bodas/boda5.jpeg",
+        "/assets/invitaciones/pc/pc1.png",
         "/assets/invitaciones/xv/1.png",
         "/assets/invitaciones/xv/2.png",
         "/assets/invitaciones/xv/3.png",
@@ -165,6 +166,7 @@
     "/assets/invitaciones/bodas/boda3.jpeg": "ce27bebd022e408d458994d7247ad6d78c657b1b",
     "/assets/invitaciones/bodas/boda4.jpeg": "8a563aff850ee02ff75e96c2d921b6b4b6752727",
     "/assets/invitaciones/bodas/boda5.jpeg": "30d8611581cea7804b66cf044f651d904048d9f6",
+    "/assets/invitaciones/pc/pc1.png": "b9e02943589c376a7b1d019b8bb646ef125f208f",
     "/assets/invitaciones/xv/1.png": "fe9729207dd4e1be8ae4598dc93d91a9c17a0f59",
     "/assets/invitaciones/xv/2.png": "22a4ea388b437807e224aaaf2df2882321cc8ef8",
     "/assets/invitaciones/xv/3.png": "d5e6b67d6c484657fb077b16122e4670883eefcb",
@@ -191,8 +193,8 @@
     "/assets/js/jquery.sticky.js": "7fd0ecfd2534f00a8a97f8db64fc9ece30303863",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "66ab7fb3a2e557f1f5ee506857e3fcd79a8eb5a3",
-    "/main.ec86000f24b8a123.js": "a38059a5903d27f6069a8100a00b6b521628a03b",
+    "/index.html": "867ef6e0a9e9f81020e933e93bfa16de0fdfa5c6",
+    "/main.12106d9d92463fed.js": "bda3f3bf27e185c769698319b3a839e7e45b9e9f",
     "/manifest.webmanifest": "f3ee09a9f3b96c8dbc496fb3ae8595a14ab22bd1",
     "/polyfills.02ab7f5ac92f65b6.js": "d91258a42c28d19ad23c999a7f3e88ca8c8ae85e",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
