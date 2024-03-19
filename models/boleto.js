@@ -40,6 +40,10 @@ const BoletoSchema = Schema({
     type: Boolean,
     default: false,
   },
+  ocupados: {
+    type: Number,
+    default: 0
+  },
   dateCreated: {
     type: Number,
     required: true,
