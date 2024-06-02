@@ -6,6 +6,7 @@ db.fiestas.updateMany({nombre:"XV AÑOS JULIETA SHECCID"}, {$set:{usuarioCreated
 db.usuarios.deleteOne({ email: "Adrianabautista4258@yahoo.com" })
 db.usuarios.deleteOne({ nombre: "NUEVA" })
 db.grupos.deleteOne({ clave: "AMGGPO" })
+db.boletos.deleteMany({ fiesta: null })
 db.usuarios.updateMany({ email: "adrianabautista4258@yahoo.com"}, {$set:{activated:true}})
 db.usuarios.deleteOne({ email: "oramirez@jasu.usß" })
 db.usuarios.deleteOne({ email: "martin@mail.com" })
