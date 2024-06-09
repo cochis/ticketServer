@@ -22,6 +22,9 @@ MIT
 @angular/service-worker
 MIT
 
+@developer-partners/ngx-modal-dialog
+Apache-2.0
+
 @ng-bootstrap/ng-bootstrap
 MIT
 The MIT License (MIT)

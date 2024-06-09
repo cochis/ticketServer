@@ -32,6 +32,7 @@ app.use('/api/salones', require('./routes/salon'))
 app.use('/api/boletos', require('./routes/boleto'))
 app.use('/api/upload', require('./routes/uploads'))
 app.use('/api/search', require('./routes/busquedas'))
+app.use('/api/galeria', require('./routes/galeria'))
 app.get('*', function (req, res, next) {
   res.sendFile(path.resolve('client/index.html'))
 })
