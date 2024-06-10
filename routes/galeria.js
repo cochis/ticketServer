@@ -21,14 +21,14 @@ const {
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
-router.get("/", validarJWT, getGalerias);
-router.get("/all", validarJWT, getAllGalerias);
-router.get("/:uid", validarJWT, getGaleriaById);
-router.get("/email/:email", validarJWT, getGaleriaByEmail);
-router.get("/boleto/:boleto", validarJWT, getGaleriasBoleto);
-router.get("/fiesta/:fiesta", validarJWT, getGaleriasFiesta);
-router.get("/down-fiesta/:fiesta/:url", validarJWT, downloadGaleriasFiesta);
-router.get("/creador/:uid", validarJWT, getGaleriaByCreador);
+router.get("/", getGalerias);
+router.get("/all", getAllGalerias);
+router.get("/:uid", getGaleriaById);
+router.get("/email/:email", getGaleriaByEmail);
+router.get("/boleto/:boleto", getGaleriasBoleto);
+router.get("/fiesta/:fiesta", getGaleriasFiesta);
+router.get("/down-fiesta/:fiesta/:url", downloadGaleriasFiesta);
+router.get("/creador/:uid", getGaleriaByCreador);
 router.post(
   "/",
   [
