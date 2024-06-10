@@ -32,7 +32,7 @@ router.get("/creador/:uid", getGaleriaByCreador);
 router.post(
   "/",
   [
-    validarJWT,
+
 
     check("fiesta", "La fiesta es obligatoria").not().isEmpty(),
     check("boleto", "El boleto es obligatorio").not().isEmpty(),
@@ -46,7 +46,7 @@ router.post(
 router.put(
   "/:id",
   [
-    validarJWT,
+
 
     check("direccion", "La direccion es obligatoria").not().isEmpty(),
     check("telefono", "El telefono es obligatorio").not().isEmpty(),
@@ -61,8 +61,7 @@ router.put(
 router.put(
   "/isActive/:id",
   [
-    validarJWT,
-    check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
+    validarJWT, check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
     validarCampos,
   ],
   isActive
