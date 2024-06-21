@@ -42,6 +42,16 @@ const UsuarioSchema = Schema({
     type: Boolean,
     default: false,
   },
+  cantidadFiestas: {
+    type: Number,
+    default: 0
+  },
+  tipoCantidad: {
+    type: Schema.Types.ObjectId,
+    ref: "TipoCantidad",
+    required: true
+  },
+
   activated: {
     type: Boolean,
     default: false,
