@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose')
-const TipoCantidadSchema = Schema({
+const StatusCompraSchema = Schema({
   nombre: {
     type: String,
     required: true,
@@ -8,16 +8,8 @@ const TipoCantidadSchema = Schema({
     type: String,
     required: true,
   },
-  value: {
+  step: {
     type: Number,
-    required: true,
-  },
-  costo: {
-    type: Number,
-    required: true,
-  },
-  descripcion: {
-    type: String,
     required: true,
   },
   usuarioCreated: {
@@ -42,9 +34,9 @@ const TipoCantidadSchema = Schema({
 
 })
 
-TipoCantidadSchema.method('toJSON', function () {
+StatusCompraSchema.method('toJSON', function () {
   const { __v, _id, password, ...object } = this.toObject()
   object.uid = _id
   return object
 })
-module.exports = model('TipoCantidad', TipoCantidadSchema)
+module.exports = model('StatusCompra', StatusCompraSchema)

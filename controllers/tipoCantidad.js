@@ -163,6 +163,28 @@ const getTipoCantidadById = async (req, res = response) => {
     })
   }
 }
+const getTipoCantidadByClave = async (req, res = response) => {
+
+  const clave = req.params.clave
+  try {
+    const tipoCantidadDB = await TipoCantidad.find({ clave: clave })
+    if (!tipoCantidadDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un tipoCantidad',
+      })
+    }
+    res.json({
+      ok: true,
+      tipoCantidad: tipoCantidadDB[0],
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 const getTipoCantidadsByEmail = async (req, res = response) => {
   const email = req.params.email
 
@@ -198,6 +220,7 @@ module.exports = {
   isActive,
   getTipoCantidadById,
   getAllTipoCantidads,
-  getTipoCantidadsByEmail
+  getTipoCantidadsByEmail,
+  getTipoCantidadByClave
 
 }

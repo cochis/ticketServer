@@ -44,11 +44,13 @@ const UsuarioSchema = Schema({
   },
   cantidadFiestas: {
     type: Number,
-    default: 0
+    default: 0,
+    required: true
   },
-  tipoCantidad: {
+  paqueteActual: {
     type: Schema.Types.ObjectId,
     ref: "TipoCantidad",
+    default: null,
     required: true
   },
 

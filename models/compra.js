@@ -1,24 +1,34 @@
 const { Schema, model } = require('mongoose')
-const TipoCantidadSchema = Schema({
-  nombre: {
-    type: String,
-    required: true,
+const CompraSchema = Schema({
+  usuario: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
   },
-  clave: {
-    type: String,
-    required: true,
+  status: {
+    type: Schema.Types.ObjectId,
+    ref: "StatusCompra",
+    required: true
   },
-  value: {
+  paquete: {
+    type: Schema.Types.ObjectId,
+    ref: "TipoCantidad",
+    required: true
+  },
+  cantidadFiestas: {
     type: Number,
-    required: true,
+    required: true
   },
   costo: {
     type: Number,
-    required: true,
+    required: true
   },
-  descripcion: {
-    type: String,
-    required: true,
+  iva: {
+    type: Number,
+    required: true
+  },
+  paypalData: {
+    type: Object
   },
   usuarioCreated: {
     type: Schema.Types.ObjectId,
@@ -42,9 +52,9 @@ const TipoCantidadSchema = Schema({
 
 })
 
-TipoCantidadSchema.method('toJSON', function () {
+CompraSchema.method('toJSON', function () {
   const { __v, _id, password, ...object } = this.toObject()
   object.uid = _id
   return object
 })
-module.exports = model('TipoCantidad', TipoCantidadSchema)
+module.exports = model('Compra', CompraSchema)

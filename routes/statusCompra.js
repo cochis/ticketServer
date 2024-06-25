@@ -1,28 +1,30 @@
 /*
-Ruta : api/tipoCantidads
+Ruta : api/statusCompras
 */
 
 const { Router } = require("express");
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validar-campos");
 const {
-  getTipoCantidads,
-  crearTipoCantidad,
-  actualizarTipoCantidad,
+  getStatusCompras,
+  crearStatusCompra,
+  actualizarStatusCompra,
   isActive,
-  getTipoCantidadById,
-  getAllTipoCantidads,
-  getTipoCantidadsByEmail,
-  getTipoCantidadByClave
-} = require("../controllers/tipoCantidad");
+  getStatusCompraById,
+  getAllStatusCompras,
+  getStatusComprasByEmail,
+  getStatusCompraByClave,
+  getStatusCompraByStep
+} = require("../controllers/statusCompra");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
-router.get("/", validarJWT, getTipoCantidads);
-router.get("/all", validarJWT, getAllTipoCantidads);
-router.get("/:uid", validarJWT, getTipoCantidadById);
-router.get("/clave/:clave", getTipoCantidadByClave);
-router.get("/email/:email", validarJWT, getTipoCantidadsByEmail);
+router.get("/", validarJWT, getStatusCompras);
+router.get("/all", validarJWT, getAllStatusCompras);
+router.get("/:uid", validarJWT, getStatusCompraById);
+router.get("/clave/:clave", validarJWT, getStatusCompraByClave);
+router.get("/step/:step", validarJWT, getStatusCompraByStep);
+router.get("/email/:email", validarJWT, getStatusComprasByEmail);
 router.post(
   "/",
   [
@@ -32,7 +34,7 @@ router.post(
 
     validarCampos,
   ],
-  crearTipoCantidad
+  crearStatusCompra
 );
 
 router.put(
@@ -45,7 +47,7 @@ router.put(
     check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
     validarCampos,
   ],
-  actualizarTipoCantidad
+  actualizarStatusCompra
 );
 
 
