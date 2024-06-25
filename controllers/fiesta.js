@@ -27,7 +27,7 @@ const getAllFiestas = async (req, res) => {
     Fiesta.find({})
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
-      .sort({ nombre: 1 }),
+      .sort({ fecha: -1 }),
     Fiesta.countDocuments(),
   ])
 
