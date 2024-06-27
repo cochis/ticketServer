@@ -29,7 +29,11 @@ router.post(
   [
     validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
-    check("clave", "La clave es obligatoria").not().isEmpty(),
+    check("value", "El value es obligatorio").not().isEmpty(),
+    check("diseno", "El diseno es obligatorio").not().isEmpty(),
+    check("css", "El css es obligatorio").not().isEmpty(),
+    check("tipoModulo", "El tipo de modulo es obligatorio").not().isEmpty(),
+
 
     validarCampos,
   ],
@@ -41,7 +45,10 @@ router.put(
   [
     validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
-    check("clave", "La clave es obligarotira").not().isEmpty(),
+    check("value", "El value es obligatorio").not().isEmpty(),
+    check("diseno", "El diseno es obligatorio").not().isEmpty(),
+    check("css", "El css es obligatorio").not().isEmpty(),
+    check("tipoModulo", "El tipo de modulo es obligatorio").not().isEmpty(),
 
     check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
     validarCampos,
