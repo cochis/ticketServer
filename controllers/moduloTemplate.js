@@ -84,18 +84,11 @@ const crearModuloTemplate = async (req, res = response) => {
     ...req.body,
     usuarioCreated: req.uid
   }
-
   try {
-
-
     const moduloTemplate = new ModuloTemplate({
       ...campos
     })
-
-
     await moduloTemplate.save()
-
-
     res.json({
       ok: true,
       moduloTemplate

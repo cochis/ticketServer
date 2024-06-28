@@ -9,7 +9,7 @@ const ModuloTemplateSchema = Schema({
     ref: "TipoModulo",
     required: true
   },
-  value: [{
+  values: [{
     type: Object
   }],
   diseno: {
