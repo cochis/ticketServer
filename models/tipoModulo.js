@@ -8,7 +8,7 @@ const TipoModuloSchema = Schema({
     type: String,
     required: true
   },
-  value: {
+  values: {
     type: Object
   },
   usuarioCreated: {

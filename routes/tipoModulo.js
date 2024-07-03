@@ -30,7 +30,7 @@ router.post(
     validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("clave", "La clave es obligatoria").not().isEmpty(),
-    check("value", "La value es obligatoria").not().isEmpty(),
+    check("values", "La value es obligatoria").not().isEmpty(),
 
     validarCampos,
   ],
