@@ -5,33 +5,11 @@ const InvitacionSchema = Schema({
     ref: "Fiesta",
     required: true
   },
-  boleto: {
-    type: Schema.Types.ObjectId,
-    ref: "Boleto",
-    required: true
-  },
-  envios: {
+  
+  data: {
     type: Object
   },
-  templateOK: {
-    type: Boolean
-  },
-  template: {
-    type: String
-  },
-  opcion: {
-    type: Number
-  },
-  informacion: {
-    type: Object
-  },
-  reaizada: {
-    type: Boolean
-  },
-  finalizada: {
-    type: Boolean
-  },
-
+ 
 
   usuarioCreated: {
     type: Schema.Types.ObjectId,
