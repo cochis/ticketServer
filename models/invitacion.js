@@ -5,11 +5,18 @@ const InvitacionSchema = Schema({
     ref: "Fiesta",
     required: true
   },
-  
+
   data: {
     type: Object
   },
- 
+  tipoTemplate: {
+    type: String,
+    required: true
+  },
+  templateActivated: {
+    type: Boolean,
+    required: true
+  },
 
   usuarioCreated: {
     type: Schema.Types.ObjectId,

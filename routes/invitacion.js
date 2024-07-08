@@ -13,7 +13,8 @@ const {
   getInvitacionById,
   getAllInvitacions,
   getInvitacionForSln,
-  getInvitacionByClave
+  getInvitacionByClave,
+  getInvitacionByFiesta
 } = require("../controllers/invitacion");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -23,13 +24,13 @@ router.get("/", getInvitacions);
 router.get("/all", getAllInvitacions);
 router.get("/all/salon", getInvitacionForSln);
 router.get("/:uid", getInvitacionById);
+router.get("/fiesta/:id", getInvitacionByFiesta);
 router.get("/clave/:clave", getInvitacionByClave);
 router.post(
   "/",
   [
     validarJWT,
-    check("nombre", "El nombre es obligatorio").not().isEmpty(),
-    check("clave", "La clave es obligatoria").not().isEmpty(),
+
 
     validarCampos,
   ],
@@ -40,8 +41,6 @@ router.put(
   "/:id",
   [
     validarJWT,
-    check("nombre", "El nombre es obligatorio").not().isEmpty(),
-    check("clave", "La clave es obligarotira").not().isEmpty(),
 
     check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
     validarCampos,

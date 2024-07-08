@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const { response } = require('express')
 const { v4: uuidv4 } = require('uuid')
-const { actualizarImagen } = require('../helpers/actualizar-imagen')
+const { actualizarImagen, actualizarImagenTemplate } = require('../helpers/actualizar-imagen')
 const fileUpload = async (req, res = response) => {
   const tipo = req.params.tipo
   const id = req.params.id
@@ -60,6 +60,58 @@ const fileUpload = async (req, res = response) => {
     })
   })
 }
+const fileUploadTemplate = async (req, res = response) => {
+  const tipo = req.params.tipo
+  console.log('tipo::: ', tipo);
+
+  const id = req.params.id
+  console.log('id::: ', id);
+
+  const imgTemplate = req.params.imgTemplate
+  console.log('imgTemplate::: ', imgTemplate);
+
+  const tiposValidos = [
+    'invitaciones'
+  ]
+  if (!tiposValidos.includes(tipo)) {
+    return res.status(400).json({
+      ok: false,
+      msg: 'No es valido el archivo',
+    })
+  }
+  //validar si existe un archivo
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).json({
+      ok: false,
+      msg: 'No se envío ningún archivo',
+    })
+  }
+
+  const file = await req.files.imagen
+
+
+  const nombreCortado = file.name.split('.')
+  const extensionArchivo = nombreCortado[nombreCortado.length - 1]
+  const nombreArchivo = `${uuidv4()}.${extensionArchivo}`
+  const path = `./uploads/${tipo}/${nombreArchivo}`
+  console.log('path::: ', path);
+  file.mv(path, async (err) => {
+    if (err) {
+      // console.log('awuiiiiiii', err)
+      return res.status(500).json({
+        ok: false,
+        msg: 'Error al subir la imagen',
+      })
+    }
+
+    await actualizarImagenTemplate(tipo, id, nombreArchivo, imgTemplate)
+    return await res.status(200).json({
+      ok: true,
+      msg: 'Archivo subido',
+      nombreArchivo,
+    })
+  })
+}
 const fileUploadGaleria = async (req, res = response) => {
   const fiesta = req.params.fiesta
   // console.log('fiesta::: ', fiesta);
@@ -105,7 +157,7 @@ const retornaImagen = (req, res = response) => {
   const tipo = req.params.tipo
   const foto = req.params.foto
   const pathImg = path.join(__dirname, `../uploads/${tipo}/${foto}`)
-  // console.log('pathImg::: ', pathImg);
+  console.log('pathImg::: ', pathImg);
   if (fs.existsSync(pathImg)) {
     res.sendFile(pathImg)
   } else {
@@ -117,5 +169,6 @@ const retornaImagen = (req, res = response) => {
 module.exports = {
   fileUpload,
   retornaImagen,
+  fileUploadTemplate,
   fileUploadGaleria
 }

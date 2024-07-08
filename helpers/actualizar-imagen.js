@@ -3,9 +3,17 @@ const Usuario = require('../models/usuario')
 const Salon = require('../models/salon')
 const Fiesta = require('../models/fiesta')
 const Galeria = require('../models/galeria')
+const Invitacion = require('../models/invitacion')
+
 const borrarImagen = (path) => {
+  // console.log('path::: ', path);
+
   if (fs.existsSync(path)) {
+    // console.log('borro');
     fs.unlinkSync(path)
+  } else {
+    // console.log('no borro');
+
   }
 }
 const actualizarImagen = async (tipo, id, nombreArchivo) => {
@@ -18,7 +26,6 @@ const actualizarImagen = async (tipo, id, nombreArchivo) => {
       }
       pathViejo = `./uploads/usuarios/${usuario.img}`
       if (usuario.img && usuario.img !== '') {
-
         borrarImagen(pathViejo)
       }
       usuario.img = nombreArchivo
@@ -67,6 +74,58 @@ const actualizarImagen = async (tipo, id, nombreArchivo) => {
       await galeria.save()
       return true
       break
+    default:
+      break
+  }
+}
+const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) => {
+  console.log('imgTemplate::: ', imgTemplate);
+  let pathViejo = ''
+  switch (tipo) {
+    case 'invitaciones':
+      var invitacion = await Invitacion.findOne({ fiesta: id })
+      if (!invitacion) {
+        return false
+      }
+      switch (imgTemplate) {
+        case 'mensajeImg':
+          if (invitacion.data.mensajeImg !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.mensajeImg}`
+            borrarImagen(pathViejo)
+          }
+          invitacion.data.mensajeImg = nombreArchivo
+          console.log('invitacion::: antes de guardar ', invitacion);
+          await invitacion.save()
+
+          return true
+          break;
+        case 'img1':
+          if (invitacion.data.img1 !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.img1}`
+            borrarImagen(pathViejo)
+          }
+          invitacion.data.img1 = nombreArchivo
+          console.log('invitacion::: antes de guardar ', invitacion);
+          await invitacion.save()
+
+          return true
+          break;
+
+        default:
+          break;
+      }
+      if (invitacion.data.mensajeImg !== '') {
+        pathViejo = `./uploads/invitaciones/${invitacion.data.mensajeImg}`
+        borrarImagen(pathViejo)
+      }
+      invitacion.data.mensajeImg = nombreArchivo
+      console.log('invitacion::: antes de guardar ', invitacion);
+      await invitacion.save()
+
+      return true
+      break
+
+
 
     default:
       break
@@ -75,4 +134,5 @@ const actualizarImagen = async (tipo, id, nombreArchivo) => {
 
 module.exports = {
   actualizarImagen,
+  actualizarImagenTemplate
 }
