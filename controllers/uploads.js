@@ -27,12 +27,8 @@ const fileUpload = async (req, res = response) => {
   }
 
   const file = await req.files.imagen
-  // console.log('file::: ', file);
   const nombreCortado = file.name.split('.')
-  // console.log('nombreCortado::: ', nombreCortado);
   const extensionArchivo = nombreCortado[nombreCortado.length - 1]
-  // console.log('extensionArchivo::: ', extensionArchivo);
-
   // if (!extencionValida.includes(extensionArchivo)) {
   //   return res.status(400).json({
   //     ok: false,
@@ -41,9 +37,7 @@ const fileUpload = async (req, res = response) => {
   // }
 
   const nombreArchivo = `${uuidv4()}.${extensionArchivo}`
-  // console.log('nombreArchivo::: ', nombreArchivo);
   const path = `./uploads/${tipo}/${nombreArchivo}`
-  // console.log('path::: ', path);
   file.mv(path, async (err) => {
     if (err) {
       // console.log('err', err)
@@ -62,13 +56,8 @@ const fileUpload = async (req, res = response) => {
 }
 const fileUploadTemplate = async (req, res = response) => {
   const tipo = req.params.tipo
-  console.log('tipo::: ', tipo);
-
   const id = req.params.id
-  console.log('id::: ', id);
-
   const imgTemplate = req.params.imgTemplate
-  console.log('imgTemplate::: ', imgTemplate);
 
   const tiposValidos = [
     'invitaciones'
@@ -86,24 +75,19 @@ const fileUploadTemplate = async (req, res = response) => {
       msg: 'No se envío ningún archivo',
     })
   }
-
   const file = await req.files.imagen
-
-
   const nombreCortado = file.name.split('.')
   const extensionArchivo = nombreCortado[nombreCortado.length - 1]
   const nombreArchivo = `${uuidv4()}.${extensionArchivo}`
   const path = `./uploads/${tipo}/${nombreArchivo}`
-  console.log('path::: ', path);
   file.mv(path, async (err) => {
     if (err) {
-      // console.log('awuiiiiiii', err)
+        console.log('err', err)
       return res.status(500).json({
         ok: false,
         msg: 'Error al subir la imagen',
       })
     }
-
     await actualizarImagenTemplate(tipo, id, nombreArchivo, imgTemplate)
     return await res.status(200).json({
       ok: true,
@@ -111,6 +95,12 @@ const fileUploadTemplate = async (req, res = response) => {
       nombreArchivo,
     })
   })
+
+
+
+
+
+
 }
 const fileUploadGaleria = async (req, res = response) => {
   const fiesta = req.params.fiesta
@@ -157,7 +147,7 @@ const retornaImagen = (req, res = response) => {
   const tipo = req.params.tipo
   const foto = req.params.foto
   const pathImg = path.join(__dirname, `../uploads/${tipo}/${foto}`)
-  console.log('pathImg::: ', pathImg);
+
   if (fs.existsSync(pathImg)) {
     res.sendFile(pathImg)
   } else {

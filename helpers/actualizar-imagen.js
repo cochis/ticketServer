@@ -79,7 +79,6 @@ const actualizarImagen = async (tipo, id, nombreArchivo) => {
   }
 }
 const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) => {
-  console.log('imgTemplate::: ', imgTemplate);
   let pathViejo = ''
   switch (tipo) {
     case 'invitaciones':
@@ -94,9 +93,9 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
             borrarImagen(pathViejo)
           }
           invitacion.data.mensajeImg = nombreArchivo
-          console.log('invitacion::: antes de guardar ', invitacion);
+      
           await invitacion.save()
-
+ 
           return true
           break;
         case 'img1':
@@ -105,7 +104,7 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
             borrarImagen(pathViejo)
           }
           invitacion.data.img1 = nombreArchivo
-          console.log('invitacion::: antes de guardar ', invitacion);
+          
           await invitacion.save()
 
           return true
@@ -114,18 +113,6 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
         default:
           break;
       }
-      if (invitacion.data.mensajeImg !== '') {
-        pathViejo = `./uploads/invitaciones/${invitacion.data.mensajeImg}`
-        borrarImagen(pathViejo)
-      }
-      invitacion.data.mensajeImg = nombreArchivo
-      console.log('invitacion::: antes de guardar ', invitacion);
-      await invitacion.save()
-
-      return true
-      break
-
-
 
     default:
       break
