@@ -93,9 +93,9 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
             borrarImagen(pathViejo)
           }
           invitacion.data.mensajeImg = nombreArchivo
-      
+
           await invitacion.save()
- 
+
           return true
           break;
         case 'img1':
@@ -104,7 +104,48 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
             borrarImagen(pathViejo)
           }
           invitacion.data.img1 = nombreArchivo
-          
+
+          await invitacion.save()
+
+          return true
+          break;
+        case 'donde1Img':
+          if (invitacion.data.donde1Img !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.donde1Img}`
+            borrarImagen(pathViejo)
+          }
+          invitacion.data.donde1Img = nombreArchivo
+
+          await invitacion.save()
+        case 'donde2Img':
+          if (invitacion.data.donde2Img !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.donde2Img}`
+            borrarImagen(pathViejo)
+          }
+          invitacion.data.donde2Img = nombreArchivo
+
+          await invitacion.save()
+
+          return true
+          break;
+        case 'donde3Img':
+          if (invitacion.data.donde3Img !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.donde3Img}`
+            borrarImagen(pathViejo)
+          }
+          invitacion.data.donde3Img = nombreArchivo
+
+          await invitacion.save()
+
+          return true
+          break;
+        case 'hospedajeImg':
+          if (invitacion.data.hospedajeImg !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.hospedajeImg}`
+            borrarImagen(pathViejo)
+          }
+          invitacion.data.hospedajeImg = nombreArchivo
+
           await invitacion.save()
 
           return true
