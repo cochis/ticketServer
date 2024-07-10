@@ -65,7 +65,6 @@ const getGaleriasBoleto = async (req, res) => {
 }
 const getGaleriasFiesta = async (req, res) => {
   const fiesta = req.params.fiesta
-  // console.log(' fiesta ::: ', fiesta);
   const [galerias, total] = await Promise.all([
     Galeria.find({ fiesta: fiesta })
       .sort({ dateCreated: 1 })

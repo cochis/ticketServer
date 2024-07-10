@@ -47,7 +47,7 @@ const crearCompra = async (req, res = response) => {
     ...req.body,
     usuarioCreated: req.uid
   }
-  console.log('campos::: ', campos);
+ 
 
 
 
