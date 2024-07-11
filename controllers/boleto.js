@@ -127,6 +127,7 @@ const actualizarBoleto = async (req, res = response) => {
 const registrarAsistencia = async (req, res = response) => {
   //Validar token y comporbar si es el sboleto
   const uid = req.params.id
+
   try {
     const boletoDB = await Boleto.findById(uid)
     if (!boletoDB) {
