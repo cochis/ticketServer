@@ -53,6 +53,10 @@ const UsuarioSchema = Schema({
     default: null,
     required: true
   },
+  pushNotification:{
+    type:Object,
+    default:null
+  },
 
   activated: {
     type: Boolean,

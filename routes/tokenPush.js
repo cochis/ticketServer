@@ -12,7 +12,9 @@ const {
   isActive,
   getTokenPushById,
   getAllTokenPushs,
-  enviarNotificacion
+  enviarNotificacion,
+  enviarNotificacionToUser,
+  enviarNotificacionToBoleto
 } = require("../controllers/tokenPush");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -20,6 +22,8 @@ const router = Router();
 router.get("/", validarJWT, getTokenPushs);
 router.get("/all", validarJWT, getAllTokenPushs);
 router.get("/:uid", validarAdminJWT, getTokenPushById);
+router.post("/user/:uid" ,[], enviarNotificacionToUser);
+router.post("/boleto/:uid" ,[], enviarNotificacionToBoleto);
 router.post(
   "/",
   [

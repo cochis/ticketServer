@@ -2,6 +2,8 @@ const { response } = require('express')
 const webpush = require('web-push')
 const bcrypt = require('bcryptjs')
 const TokenPush = require('../models/tokenPush')
+const Usuario = require('../models/usuario')
+const Boleto = require('../models/boleto')
 const { generarJWT } = require('../helpers/jwt')
 
 //getTokenPushs TokenPush
@@ -168,8 +170,8 @@ const getTokenPushById = async (req, res = response) => {
 const enviarNotificacion = async (req, res = response) => {
 
   const vapidKey = {
-    "publicKey": "BAwwprLFrUAauFfAZFT3l1eKC7WnVkiveFGH_Fy2DsdlW2McLSICBjTYovXap_zkEaVzC2AmA7zAw2YwWWEdp1U",
-    "privateKey": "VjO9gqbVyXyv085LVxE7g6wlHNSDHy8IQkf3h_9eV1g"
+    "publicKey": process.env.PUBLICKEY,
+    "privateKey": process.env.PRIVATEDKEY
   }
 
   webpush.setVapidDetails(
@@ -180,20 +182,21 @@ const enviarNotificacion = async (req, res = response) => {
 
 
   const pushNotification = {
-    endpoint: 'https://fcm.googleapis.com/fcm/send/elcN8evu1dA:APA91bGo_Inr7jq1kKaGpHNuBpd4b8_Uide06NJ3wWx0LH8dhmWJFvEqdnCcvupYS5HqiJFKiWn6fOW50zn-2JzGzNkN2bOZ7g22eiLhGhgOTNnCNYZi1CkoWMVMY7QWv_Tme1LK5wQR',
+    endpoint: "https://fcm.googleapis.com/fcm/send/dYsRc_IsvMc:APA91bEhkUKIv24i5L-rn6InEf48Gp6OJ68ch9huJShfIKsH2cj3d6-JxQVRvfdev2xFT8uqZL7BR7swYZtk83lhExHaF8vCYaB_93adJ4CSkbGDzdBukuteEyUPhja7LfsBjjPIwrDJ",
     keys: {
-      auth: 'gq8FTani72L2FNCDXmoJ-w',
-      p256dh: 'BOZn_4q4tJSyBtTUOS5RIxCueoEP5YP4rLrIUdhER1sfN5M2O7iBYYMgwhp0MUJtl1Csplb9DihjvCkjkPsY0y0'
+      p256dh: "BCZW46pJuh2IQobGyO7Ikk2lIQLGwn8UoFwdFiZFRdgsbG8cx1jDpr2DIp6YzuQoLu9BJAcDpOHdHhd3wVabonA",
+      auth: "SHNX1ESj3FFU2f-FNRmnOg"
     }
-
-
+    
+    
   }
+ 
   const payload = {
-    "notifiaction": {
-      "title": "Falt poco par la fiesta",
+    "notification": {
+      "title": "Saludo",
       "body": "Que pacho",
       "vibrate": [100, 50, 100],
-      "image": "http://localhost:4200/assets/invitaciones/xv/july.jpeg",
+       "image": "http://localhost:4200/assets/invitaciones/xv/july.jpeg",
       "data": {
         "dateOfArrival": Date.now(),
         "primaryKey": 1
@@ -206,9 +209,20 @@ const enviarNotificacion = async (req, res = response) => {
   }
   webpush.sendNotification(
     pushNotification,
-    JSON.stringify(payload)).then(res => {
+    JSON.stringify(payload)).then(ress => {
+      
+      return res.status(200).json({
+        ok: true,
+        payload: payload,
+        res: ress
+      })
+
     }).catch(err => {
       console.log('err', err);
+      res.status(500).json({
+        ok: false,
+        msg: err,
+      })
 
     })
 
@@ -234,6 +248,191 @@ const enviarNotificacion = async (req, res = response) => {
     })
   } */
 }
+const enviarNotificacionToUser = async (req, res = response) => {
+
+
+  const uid = req.params.uid
+ const payload = {
+   ...req.body 
+  }
+ 
+  try {
+    const usuarioDB = await Usuario.findById(uid) 
+ 
+   
+    let PN =  usuarioDB.pushNotification 
+    
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+
+
+    const vapidKey = {
+      "publicKey": process.env.PUBLICKEY,
+      "privateKey": process.env.PRIVATEDKEY
+    }
+  
+    webpush.setVapidDetails(
+      'mailto:info@cochisweb.com',
+      vapidKey.publicKey,
+      vapidKey.privateKey
+    );
+
+
+
+ 
+   
+    webpush.sendNotification(
+      PN,
+      JSON.stringify(payload)).then(ress => {
+ 
+        return res.status(200).json({
+          ok: true,
+          payload: payload,
+          res: ress
+        })
+  
+      }).catch(err => {
+        console.log('err', err);
+        res.status(500).json({
+          ok: false,
+          msg: err,
+        })
+  
+      })
+  
+
+ 
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: error,
+    })
+  }
+
+ 
+
+
+  /* try {
+    const tokenPushDB = await TokenPush.findById(uid)
+    if (!tokenPushDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un tokenPush',
+      })
+    }
+    res.json({
+      ok: true,
+      tokenPush: tokenPushDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  } */
+}
+const enviarNotificacionToBoleto = async (req, res = response) => {
+
+
+  const uid = req.params.uid
+ const payload = {
+   ...req.body 
+  }
+ 
+  try {
+
+
+
+    const boletoDB = await Boleto.findById(uid)
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un boleto',
+      })
+    }
+    
+ 
+ 
+   
+    let PN =  boletoDB.pushNotification 
+    
+    
+
+
+    const vapidKey = {
+      "publicKey": process.env.PUBLICKEY,
+      "privateKey": process.env.PRIVATEDKEY
+    }
+  
+    webpush.setVapidDetails(
+      'mailto:info@cochisweb.com',
+      vapidKey.publicKey,
+      vapidKey.privateKey
+    );
+
+
+
+ 
+   
+    webpush.sendNotification(
+      PN,
+      JSON.stringify(payload)).then(ress => {
+    
+        return res.status(200).json({
+          ok: true,
+          payload: payload,
+          res: ress
+        })
+  
+      }).catch(err => {
+        console.log('err', err);
+        res.status(500).json({
+          ok: false,
+          msg: err,
+        })
+  
+      })
+  
+
+ 
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: error,
+    })
+  }
+
+ 
+
+
+  /* try {
+    const tokenPushDB = await TokenPush.findById(uid)
+    if (!tokenPushDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un tokenPush',
+      })
+    }
+    res.json({
+      ok: true,
+      tokenPush: tokenPushDB,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  } */
+}
+
+
+
 module.exports = {
   getTokenPushs,
   getAllTokenPushs,
@@ -241,6 +440,8 @@ module.exports = {
   actualizarTokenPush,
   isActive,
   getTokenPushById,
-  enviarNotificacion
+  enviarNotificacion,
+  enviarNotificacionToUser,
+  enviarNotificacionToBoleto
 
 }

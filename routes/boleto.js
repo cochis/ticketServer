@@ -15,7 +15,8 @@ const {
   getBoletoByFiesta,
   confirmaBoleto,
   registrarAsistencia,
-  getBoletosByEmail
+  getBoletosByEmail,
+  setPushNotificationBoleto
 } = require("../controllers/boleto");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -57,6 +58,14 @@ router.put(
     validarCampos,
   ],
   registrarAsistencia
+);
+router.put(
+  "/registrar-push-notification/:id",
+  [
+    check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
+    validarCampos,
+  ],
+  setPushNotificationBoleto
 );
 router.put(
   "/:id",

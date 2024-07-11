@@ -49,7 +49,10 @@ const BoletoSchema = Schema({
     required: true,
     default: Date.now(),
   },
-
+  pushNotification:{
+    type:Object,
+    default:null
+  },
 
   usuarioCreated: {
     type: Schema.Types.ObjectId,
