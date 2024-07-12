@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1720733746269,
+  "timestamp": 1720807391680,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,6 +11,7 @@
         "ignoreVary": true
       },
       "urls": [
+        "/custom-sw.js",
         "/favicon.ico",
         "/index.html",
         "/main.4e5122d2ca86427f.js",
@@ -211,6 +212,7 @@
     "/assets/js/custom.js": "66928e6cbb59c3a3bce606959ef4a865fe04e642",
     "/assets/js/jquery.min.js": "ab07e8e39fd7992b47088b22a5e4511b03374223",
     "/assets/js/jquery.sticky.js": "58f675471d3ff898d5c16ea12796be1d6b328485",
+    "/custom-sw.js": "8e622dbf5ee128594a39fc32892530baf283d3a5",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
     "/index.html": "c8fd1f0f34e61968d3b04b3bc24f71811b8f6e5a",
