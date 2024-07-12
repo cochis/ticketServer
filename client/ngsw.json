@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1720807391680,
+  "timestamp": 1720813449553,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "/custom-sw.js",
         "/favicon.ico",
         "/index.html",
-        "/main.4e5122d2ca86427f.js",
+        "/main.ed9498a3c0ee0969.js",
         "/manifest.webmanifest",
         "/polyfills.02ab7f5ac92f65b6.js",
         "/runtime.8f33b8458085c89f.js",
@@ -63,6 +63,7 @@
         "/assets/images/lg.png",
         "/assets/images/loading.gif",
         "/assets/images/logo.png",
+        "/assets/images/permiso.jpg",
         "/assets/images/qr.jpeg",
         "/assets/images/qr.png",
         "/assets/images/rear-view-young-college-student.jpg",
@@ -157,6 +158,7 @@
     "/assets/images/lg.png": "10846c4f7dc1d82535f884681586f35f7fe31d62",
     "/assets/images/loading.gif": "c6bbb0c42808f8200c8c472750b4d68b32dd4079",
     "/assets/images/logo.png": "4d9d522e490cddbd739f00b744503a9d00fbb71b",
+    "/assets/images/permiso.jpg": "8fe0d4c3ac113d3ce25f63b3f8bb5d93d5a99c85",
     "/assets/images/qr.jpeg": "44f7232bdae4bc2a2f773eb5adf2f37338aab325",
     "/assets/images/qr.png": "c8a553d5fe7f1f43d15e1d999e4a65fecfb5a9c6",
     "/assets/images/rear-view-young-college-student.jpg": "8d3c91711b6827e0233fe93612c0940a74e4876a",
@@ -215,8 +217,8 @@
     "/custom-sw.js": "8e622dbf5ee128594a39fc32892530baf283d3a5",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "c8fd1f0f34e61968d3b04b3bc24f71811b8f6e5a",
-    "/main.4e5122d2ca86427f.js": "5a89ae6c9f0a6682951e7271dcba95f365093f91",
+    "/index.html": "a085fd31ded709e9e1e022bc3889abe5190d8499",
+    "/main.ed9498a3c0ee0969.js": "e0814e50ac31a42e6c325767f55d7eb5eeed06c1",
     "/manifest.webmanifest": "111d9680fcdd279f6a4edb5848b9b14d239253df",
     "/polyfills.02ab7f5ac92f65b6.js": "d91258a42c28d19ad23c999a7f3e88ca8c8ae85e",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
