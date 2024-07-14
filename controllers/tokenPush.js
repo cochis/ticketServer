@@ -281,8 +281,8 @@ const enviarNotificacionToUser = async (req, res = response) => {
     );
 
 
-    let PN = usuarioDB.pushNotification
-    console.log('PN::: ', PN);
+    console.log('usuarioDB.pushNotification::: ', usuarioDB.pushNotification);
+
     var ressPush = []
     var ressError = []
     if (usuarioDB.pushNotification.length > 0) {
@@ -346,24 +346,18 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
     ...req.body
   }
 
+  console.log('payload::: ', payload);
   try {
-
-
-
     const boletoDB = await Boleto.findById(uid)
+
+
+
     if (!boletoDB) {
       return res.status(404).json({
         ok: false,
-        msg: 'No exite un boleto',
+        msg: 'No exite un usuario',
       })
     }
-
-
-
-
-    let PN = boletoDB.pushNotification
-
-
 
 
     const vapidKey = {
@@ -378,28 +372,32 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
     );
 
 
+    console.log('boletoDB.pushNotification::: ', boletoDB.pushNotification);
+
+    var ressPush = []
+    var ressError = []
+    if (boletoDB.pushNotification.length > 0) {
+
+      boletoDB.pushNotification.forEach(element => {
+        webpush.sendNotification(element, JSON.stringify(payload)).then(resPush => {
+          console.log('resPush::: ', resPush);
 
 
+          ressPush.push(resPush)
+        }).catch(err => {
+          console.log('err', err);
+          ressError.push(err)
 
-    webpush.sendNotification(
-      PN,
-      JSON.stringify(payload)).then(ress => {
-
-        return res.status(200).json({
-          ok: true,
-          payload: payload,
-          res: ress
         })
+      });
+    }
 
-      }).catch(err => {
-        console.log('err', err);
-        res.status(500).json({
-          ok: false,
-          msg: err,
-        })
 
-      })
-
+    return await res.status(200).json({
+      ok: true,
+      res: ressPush,
+      resError: ressError
+    })
 
 
   } catch (error) {
@@ -409,7 +407,6 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
       msg: error,
     })
   }
-
 
 
 
