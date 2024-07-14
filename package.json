@@ -1,6 +1,6 @@
 {
   "name": "Ticket CochisWeb",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Tickets Server",
   "main": "index.js",
   "scripts": {

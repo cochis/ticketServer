@@ -187,16 +187,16 @@ const enviarNotificacion = async (req, res = response) => {
       p256dh: "BCZW46pJuh2IQobGyO7Ikk2lIQLGwn8UoFwdFiZFRdgsbG8cx1jDpr2DIp6YzuQoLu9BJAcDpOHdHhd3wVabonA",
       auth: "SHNX1ESj3FFU2f-FNRmnOg"
     }
-    
-    
+
+
   }
- 
+
   const payload = {
     "notification": {
       "title": "Saludo",
       "body": "Que pacho",
       "vibrate": [100, 50, 100],
-       "image": "http://localhost:4200/assets/invitaciones/xv/july.jpeg",
+      "image": "http://localhost:4200/assets/invitaciones/xv/july.jpeg",
       "data": {
         "dateOfArrival": Date.now(),
         "primaryKey": 1
@@ -210,7 +210,7 @@ const enviarNotificacion = async (req, res = response) => {
   webpush.sendNotification(
     pushNotification,
     JSON.stringify(payload)).then(ress => {
-      
+
       return res.status(200).json({
         ok: true,
         payload: payload,
@@ -252,16 +252,15 @@ const enviarNotificacionToUser = async (req, res = response) => {
 
 
   const uid = req.params.uid
- const payload = {
-   ...req.body 
+  const payload = {
+    ...req.body
   }
- 
+
   try {
-    const usuarioDB = await Usuario.findById(uid) 
- 
-   
-    let PN =  usuarioDB.pushNotification 
-    
+    const usuarioDB = await Usuario.findById(uid)
+
+
+
     if (!usuarioDB) {
       return res.status(404).json({
         ok: false,
@@ -274,7 +273,7 @@ const enviarNotificacionToUser = async (req, res = response) => {
       "publicKey": process.env.PUBLICKEY,
       "privateKey": process.env.PRIVATEDKEY
     }
-  
+
     webpush.setVapidDetails(
       'mailto:info@cochisweb.com',
       vapidKey.publicKey,
@@ -282,30 +281,33 @@ const enviarNotificacionToUser = async (req, res = response) => {
     );
 
 
+    let PN = usuarioDB.pushNotification
+    console.log('PN::: ', PN);
+    var ressPush = []
+    var ressError = []
+    if (usuarioDB.pushNotification.length > 0) {
 
- 
-   
-    webpush.sendNotification(
-      PN,
-      JSON.stringify(payload)).then(ress => {
- 
-        return res.status(200).json({
-          ok: true,
-          payload: payload,
-          res: ress
-        })
-  
-      }).catch(err => {
-        console.log('err', err);
-        res.status(500).json({
-          ok: false,
-          msg: err,
-        })
-  
-      })
-  
+      usuarioDB.pushNotification.forEach(element => {
+        webpush.sendNotification(element, JSON.stringify(payload)).then(resPush => {
 
- 
+
+          ressPush.push(resPush)
+        }).catch(err => {
+          console.log('err', err);
+          ressError.push(err)
+
+        })
+      });
+    }
+
+
+    res.status(200).json({
+      ok: true,
+      res: ressPush,
+      resError: ressError
+    })
+
+
   } catch (error) {
     console.log('error', error)
     res.status(500).json({
@@ -314,7 +316,7 @@ const enviarNotificacionToUser = async (req, res = response) => {
     })
   }
 
- 
+
 
 
   /* try {
@@ -340,10 +342,10 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
 
 
   const uid = req.params.uid
- const payload = {
-   ...req.body 
+  const payload = {
+    ...req.body
   }
- 
+
   try {
 
 
@@ -355,20 +357,20 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
         msg: 'No exite un boleto',
       })
     }
-    
- 
- 
-   
-    let PN =  boletoDB.pushNotification 
-    
-    
+
+
+
+
+    let PN = boletoDB.pushNotification
+
+
 
 
     const vapidKey = {
       "publicKey": process.env.PUBLICKEY,
       "privateKey": process.env.PRIVATEDKEY
     }
-  
+
     webpush.setVapidDetails(
       'mailto:info@cochisweb.com',
       vapidKey.publicKey,
@@ -377,29 +379,29 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
 
 
 
- 
-   
+
+
     webpush.sendNotification(
       PN,
       JSON.stringify(payload)).then(ress => {
-    
+
         return res.status(200).json({
           ok: true,
           payload: payload,
           res: ress
         })
-  
+
       }).catch(err => {
         console.log('err', err);
         res.status(500).json({
           ok: false,
           msg: err,
         })
-  
-      })
-  
 
- 
+      })
+
+
+
   } catch (error) {
     console.log('error', error)
     res.status(500).json({
@@ -408,7 +410,7 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
     })
   }
 
- 
+
 
 
   /* try {
