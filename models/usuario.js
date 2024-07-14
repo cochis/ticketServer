@@ -45,17 +45,16 @@ const UsuarioSchema = Schema({
   cantidadFiestas: {
     type: Number,
     default: 0,
-    required: true
+
   },
   paqueteActual: {
     type: Schema.Types.ObjectId,
-    ref: "TipoCantidad",
-    default: null,
-    required: true
+    ref: "TipoCantidad"
+
   },
-  pushNotification:{
-    type:Object,
-    default:null
+  pushNotification: {
+    type: Object,
+    default: null
   },
 
   activated: {

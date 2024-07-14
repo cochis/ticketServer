@@ -24,7 +24,7 @@ const getInvitacions = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    // console.log('error::: ', error);
     res.json({
       ok: false,
       error
@@ -66,7 +66,7 @@ const getAllInvitacions = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    // console.log('error::: ', error);
     res.json({
       ok: false,
       error
@@ -101,7 +101,7 @@ const crearInvitacion = async (req, res = response) => {
       invitacion
     })
   } catch (error) {
-    console.log('error', error)
+    // console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -140,7 +140,7 @@ const actualizarInvitacion = async (req, res = response) => {
       invitacionActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    // console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -169,7 +169,7 @@ const isActive = async (req, res = response) => {
       invitacionActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    // console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

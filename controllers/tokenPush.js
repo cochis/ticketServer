@@ -112,7 +112,7 @@ const actualizarTokenPush = async (req, res = response) => {
       tokenPushActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    // console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -139,7 +139,7 @@ const isActive = async (req, res = response) => {
       tokenPushActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    // console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -218,7 +218,7 @@ const enviarNotificacion = async (req, res = response) => {
       })
 
     }).catch(err => {
-      console.log('err', err);
+      // console.log('err', err);
       res.status(500).json({
         ok: false,
         msg: err,
@@ -281,7 +281,7 @@ const enviarNotificacionToUser = async (req, res = response) => {
     );
 
 
-    console.log('usuarioDB.pushNotification::: ', usuarioDB.pushNotification);
+    // console.log('usuarioDB.pushNotification::: ', usuarioDB.pushNotification);
 
     var ressPush = []
     var ressError = []
@@ -293,7 +293,7 @@ const enviarNotificacionToUser = async (req, res = response) => {
 
           ressPush.push(resPush)
         }).catch(err => {
-          console.log('err', err);
+          // console.log('err', err);
           ressError.push(err)
 
         })
@@ -309,7 +309,7 @@ const enviarNotificacionToUser = async (req, res = response) => {
 
 
   } catch (error) {
-    console.log('error', error)
+    // console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: error,
@@ -346,7 +346,7 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
     ...req.body
   }
 
-  console.log('payload::: ', payload);
+  // console.log('payload::: ', payload);
   try {
     const boletoDB = await Boleto.findById(uid)
 
@@ -372,7 +372,7 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
     );
 
 
-    console.log('boletoDB.pushNotification::: ', boletoDB.pushNotification);
+    // console.log('boletoDB.pushNotification::: ', boletoDB.pushNotification);
 
     var ressPush = []
     var ressError = []
@@ -380,12 +380,12 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
 
       boletoDB.pushNotification.forEach(element => {
         webpush.sendNotification(element, JSON.stringify(payload)).then(resPush => {
-          console.log('resPush::: ', resPush);
+          // console.log('resPush::: ', resPush);
 
 
           ressPush.push(resPush)
         }).catch(err => {
-          console.log('err', err);
+          // console.log('err', err);
           ressError.push(err)
 
         })
@@ -401,7 +401,7 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
 
 
   } catch (error) {
-    console.log('error', error)
+    // console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: error,

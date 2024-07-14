@@ -82,7 +82,7 @@ const fileUploadTemplate = async (req, res = response) => {
   const path = `./uploads/${tipo}/${nombreArchivo}`
   file.mv(path, async (err) => {
     if (err) {
-        console.log('err', err)
+      console.log('err', err)
       return res.status(500).json({
         ok: false,
         msg: 'Error al subir la imagen',
@@ -147,11 +147,10 @@ const retornaImagen = (req, res = response) => {
   const tipo = req.params.tipo
   const foto = req.params.foto
   const pathImg = path.join(__dirname, `../uploads/${tipo}/${foto}`)
-
-  if (fs.existsSync(pathImg)) {
+  if (fs.existsSync(pathImg) && foto != '') {
     res.sendFile(pathImg)
   } else {
-    const noFound = path.join(__dirname, `../uploads/notImage.jpg`)
+    const noFound = path.join(__dirname, `../uploads/notImage.png`)
     res.sendFile(noFound)
   }
 }
