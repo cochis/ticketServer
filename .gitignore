@@ -1,6 +1,11 @@
 node_modules/
 
-uploads/
+uploads/fiestas/
+uploads/galerias/
+uploads/invitaciones/
+uploads/salones/
+uploads/usuarios/
+uploads/zips/
 client-dev/
 node_modules/
 .env
