@@ -1,11 +1,10 @@
-node_modules/
-
 uploads/fiestas/
 uploads/galerias/
 uploads/invitaciones/
 uploads/salones/
 uploads/usuarios/
 uploads/zips/
-client-dev/
+client-dev/node_modules/
+client-dev/dist/
 node_modules/
 .env
