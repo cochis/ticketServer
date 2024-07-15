@@ -372,7 +372,7 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
     );
 
 
-    // console.log('boletoDB.pushNotification::: ', boletoDB.pushNotification);
+ 
 
     var ressPush = []
     var ressError = []
@@ -390,14 +390,20 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
 
         })
       });
+      return await res.status(200).json({
+        ok: true,
+        res: ressPush,
+        resError: ressError
+      })
+    }else {
+      return await res.status(200).json({
+        ok: false,
+        message:'Favor de pedir que acepten las notificaciones en sus dispositivos'
+      })
+
     }
 
 
-    return await res.status(200).json({
-      ok: true,
-      res: ressPush,
-      resError: ressError
-    })
 
 
   } catch (error) {
