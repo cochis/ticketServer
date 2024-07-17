@@ -10,7 +10,7 @@ const getUsuarios = async (req, res) => {
     Usuario.find({})
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('role', 'nombre clave _id')
-      .sort({ nombre: 1 })
+      .sort({ apellidoPaterno: -1 })
       .skip(desde)
       .limit(cant),
     Usuario.countDocuments(),
@@ -29,7 +29,7 @@ const getAllUsuarios = async (req, res) => {
 
       .populate('role', 'nombre clave _id')
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-      .sort({ nombre: 1 }),
+      .sort({ apellidoPaterno: 1 }),
     Usuario.countDocuments(),
   ])
 
