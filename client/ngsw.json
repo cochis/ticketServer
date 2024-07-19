@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1721365735080,
+  "timestamp": 1721418749108,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.e3c52e310322ed95.js",
+        "/main.5753cacee39b777a.js",
         "/manifest.webmanifest",
         "/polyfills.02ab7f5ac92f65b6.js",
         "/runtime.8f33b8458085c89f.js",
         "/scripts.3a384ad5c5dd731b.js",
-        "/styles.d8915dd702b6a603.css"
+        "/styles.bf8919db137f4ad2.css"
       ],
       "patterns": []
     },
@@ -60,6 +60,7 @@
         "/assets/images/faq_graphic.jpg",
         "/assets/images/fiesta.jpeg",
         "/assets/images/lg.png",
+        "/assets/images/link-ubicacion.png",
         "/assets/images/loading.gif",
         "/assets/images/logo.png",
         "/assets/images/qr.jpeg",
@@ -78,6 +79,7 @@
         "/assets/images/topics/undraw_online_ad_re_ol62.png",
         "/assets/images/topics/undraw_viral_tweet_gndb.png",
         "/assets/images/tp.png",
+        "/assets/images/ubicacion.png",
         "/assets/images/xv/Registro-Civil-CDMX.webp",
         "/assets/images/xv/hospedaje.jpeg",
         "/assets/images/xv/hotel.jpg",
@@ -155,6 +157,7 @@
     "/assets/images/faq_graphic.jpg": "07e50f3aa9b810d96f734d7629def2a279a0a3b2",
     "/assets/images/fiesta.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
     "/assets/images/lg.png": "10846c4f7dc1d82535f884681586f35f7fe31d62",
+    "/assets/images/link-ubicacion.png": "e8f501e2ca14257af7945f9763516e0a789569b8",
     "/assets/images/loading.gif": "c6bbb0c42808f8200c8c472750b4d68b32dd4079",
     "/assets/images/logo.png": "4d9d522e490cddbd739f00b744503a9d00fbb71b",
     "/assets/images/qr.jpeg": "44f7232bdae4bc2a2f773eb5adf2f37338aab325",
@@ -173,6 +176,7 @@
     "/assets/images/topics/undraw_online_ad_re_ol62.png": "8ba6ed65ef30c7bdd9d81d0ae5188cad5d0639c4",
     "/assets/images/topics/undraw_viral_tweet_gndb.png": "610ed83ae709945d8a697b595a58a704bbe171eb",
     "/assets/images/tp.png": "22fddac495c14ec58c9e79130138117db094e8d6",
+    "/assets/images/ubicacion.png": "f0f0dc9e4f9e6b8fcb0d1da4213b27e50c789c81",
     "/assets/images/xv/Registro-Civil-CDMX.webp": "4b4d1d2b46e724755e53469c91d809517d0d841f",
     "/assets/images/xv/hospedaje.jpeg": "886c310fd4e79b941dff2cc68502553e85f18573",
     "/assets/images/xv/hotel.jpg": "aa4f3e89460803a4ade175fdffc828ec5e430962",
@@ -215,13 +219,13 @@
     "/assets/js/jquery.sticky.js": "7fd0ecfd2534f00a8a97f8db64fc9ece30303863",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "497278f60f7bf295c835707e6ef675cdc4cbf6cc",
-    "/main.e3c52e310322ed95.js": "6a8d7467b8d31bb8db62bf6f8645abd168b31bd1",
+    "/index.html": "da6541addb6634746eb92f637cece4b1d4526c5b",
+    "/main.5753cacee39b777a.js": "baf2fda7e85952e39c4b037f37a0a16653fd3bbd",
     "/manifest.webmanifest": "f3ee09a9f3b96c8dbc496fb3ae8595a14ab22bd1",
     "/polyfills.02ab7f5ac92f65b6.js": "d91258a42c28d19ad23c999a7f3e88ca8c8ae85e",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
     "/scripts.3a384ad5c5dd731b.js": "8aa86e89b2ed1d914d2ebfa9c482816219e9e7ac",
-    "/styles.d8915dd702b6a603.css": "af91cc8b631858deb5b897af4afb2f6d53c3e94e"
+    "/styles.bf8919db137f4ad2.css": "e946ec2ef98975675abf0fa839942fc96240c879"
   },
   "navigationUrls": [
     {

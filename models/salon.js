@@ -33,7 +33,7 @@ const SalonSchema = Schema({
 
   },
   cp: {
-    type: Number,
+    type: String,
 
   },
   estado: {
