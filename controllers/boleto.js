@@ -25,14 +25,8 @@ const getBoletos = async (req, res) => {
 const getAllBoletos = async (req, res) => {
   const [boletos, total] = await Promise.all([
     Boleto.find({})
-      .populate('fiesta', 'uid nombre tipoEvento cantidad fecha lugar img realizada usuarioFiesta salon')
 
 
-      .populate({
-        path: 'fiesta',
-        // Get friends of friends - populate the 'friends' array for every friend
-        populate: { path: 'usuarioFiesta' }
-      })
       .populate({
         path: 'fiesta',
         // Get friends of friends - populate the 'friends' array for every friend
@@ -319,8 +313,8 @@ const setPushNotificationBoleto = async (req, res = response) => {
         msg: 'No exite un boleto',
       })
     }
-    const {  ...campos } = req.body
-    
+    const { ...campos } = req.body
+
     const boletoActualizado = await Boleto.findByIdAndUpdate(uid, campos, {
       new: true,
     })

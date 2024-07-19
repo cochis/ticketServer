@@ -14,7 +14,8 @@ const {
   getAllFiestas,
   getFiestaByEmail,
   getFiestasByAnfitrion,
-  getFiestasBySalon
+  getFiestasBySalon,
+  actualizarFiestaByUsr
 } = require("../controllers/fiesta");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -53,6 +54,15 @@ router.put(
     validarCampos,
   ],
   actualizarFiesta
+);
+router.put(
+  "/usuario/:id",
+  [
+    validarJWT,
+    check("nombre", "El nombre es obligatorio").not().isEmpty(),
+    validarCampos,
+  ],
+  actualizarFiestaByUsr
 );
 
 

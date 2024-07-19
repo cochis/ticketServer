@@ -46,6 +46,8 @@ const crearUsuario = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
 
+  req.body.cantidadFiestas = (req.body.cantidadFiestas === '') ? undefined : req.body.cantidadFiestas
+  req.body.paqueteActual = (req.body.paqueteActual === '') ? undefined : req.body.paqueteActual
 
   try {
     const existeEmail = await Usuario.findOne({ email })
@@ -278,7 +280,8 @@ const getUsuarioById = async (req, res = response) => {
   try {
     const usuarioDB = await Usuario.findById(uid)
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-      .populate('role', 'nombre clave _id')
+      .populate('role')
+      .populate('salon')
     if (!usuarioDB) {
       return res.status(404).json({
         ok: false,

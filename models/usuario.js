@@ -49,7 +49,8 @@ const UsuarioSchema = Schema({
   },
   paqueteActual: {
     type: Schema.Types.ObjectId,
-    ref: "TipoCantidad"
+    ref: "TipoCantidad",
+    default: null
 
   },
   pushNotification: {

@@ -109,12 +109,12 @@ const fileUploadGaleria = async (req, res = response) => {
   // console.log('boleto::: ', boleto);
   // console.log('req.body::: ', req.body);
 
-
-  return await res.status(200).json({
-    ok: true,
-    msg: 'Archivo subido',
-
-  })
+  /* 
+    return await res.status(200).json({
+      ok: true,
+      msg: 'Archivo subido',
+  
+    }) */
   //validar si existe un archivo
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).json({

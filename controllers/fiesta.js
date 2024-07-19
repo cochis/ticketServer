@@ -107,6 +107,43 @@ const actualizarFiesta = async (req, res = response) => {
     })
   }
 }
+const actualizarFiestaByUsr = async (req, res = response) => {
+  //Validar token y comporbar si es el sfiesta
+  const uid = req.params.id
+  try {
+    const fiestaDB = await Fiesta.findById(uid)
+    if (!fiestaDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un fiesta',
+      })
+    }
+    const { password, google, email, ...campos } = req.body
+    if (!fiestaDB.google) {
+      campos.email = email
+    } else if (fiestaDB.email !== email) {
+      return res.status(400).json({
+        ok: false,
+        msg: 'El fiesta de Google  no se puede actualizar',
+      })
+    }
+
+
+    const fiestaActualizado = await Fiesta.findByIdAndUpdate(uid, campos, {
+      new: true,
+    })
+    res.json({
+      ok: true,
+      fiestaActualizado,
+    })
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 
 const isActive = async (req, res = response) => {
@@ -168,6 +205,7 @@ const getFiestaByEmail = async (req, res = response) => {
     const fiestaDB = await Fiesta.find({ usuarioCreated: email })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('salon')
       ;
     if (!fiestaDB) {
       return res.status(404).json({
@@ -195,6 +233,7 @@ const getFiestasByAnfitrion = async (req, res = response) => {
   try {
     const fiestaDB = await Fiesta.find({ usuarioFiesta: uid })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('salon')
     if (!fiestaDB) {
       return res.status(404).json({
@@ -221,7 +260,7 @@ const getFiestasBySalon = async (req, res = response) => {
   try {
     const fiestaDB = await Fiesta.find({ salon: uid })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-
+      .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('salon')
     if (!fiestaDB) {
       return res.status(404).json({
@@ -254,6 +293,7 @@ module.exports = {
   getAllFiestas,
   getFiestaByEmail,
   getFiestasByAnfitrion,
-  getFiestasBySalon
+  getFiestasBySalon,
+  actualizarFiestaByUsr
 
 }

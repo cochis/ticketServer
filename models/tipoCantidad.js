@@ -4,6 +4,10 @@ const TipoCantidadSchema = Schema({
     type: String,
     required: true,
   },
+  tipo: {
+    type: String,
+    required: true,
+  },
   clave: {
     type: String,
     required: true,

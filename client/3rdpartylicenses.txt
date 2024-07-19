@@ -505,6 +505,9 @@ THE SOFTWARE.
 encode-utf8
 MIT
 
+ngx-pagination
+MIT
+
 qrcode
 MIT
 The MIT License (MIT)
