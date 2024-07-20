@@ -11,6 +11,9 @@ const BoletoSchema = Schema({
   cantidadInvitados: {
     type: Number,
   },
+  mesa: {
+    type: String,
+  },
   grupo: {
     type: Schema.Types.ObjectId,
     ref: "Grupo",
