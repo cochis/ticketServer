@@ -92,7 +92,7 @@ const downloadGaleriasFiesta = async (req, res = response) => {
 
   }
   // console.log('url::: ', url);
-  const galerias = await Galeria.find({ fiesta: fiesta })
+  const galerias = await Galeria.find({ fiesta: fiesta, activated: true })
   const JSZip = require('jszip');
   const fs = require('fs');
 
