@@ -69,7 +69,7 @@ const routes = [
 
   // Add more routes as needed
 ];
-app.get('/sitemap.xml', (req, res) => {
+app.get('/api/sitemap.xml', (req, res) => {
   const root = xmlbuilder.create('urlset', { version: '1.0', encoding: 'UTF-8' });
   root.att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
 
