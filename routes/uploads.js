@@ -7,7 +7,7 @@ const expressFileUpload = require('express-fileupload')
 
 const { validarJWT } = require('../middlewares/validar-jwt')
 
-const { fileUpload, retornaImagen, fileUploadGaleria, fileUploadTemplate } = require('../controllers/uploads')
+const { fileUpload, retornaImagen, fileUploadGaleria, fileUploadTemplate, deleteGaleria } = require('../controllers/uploads')
 const router = Router()
 
 router.use(expressFileUpload())
@@ -15,5 +15,6 @@ router.put('/:tipo/:id', fileUpload)
 router.put('/:tipo/:id/:imgTemplate', fileUploadTemplate)
 router.get('/:tipo/:foto', retornaImagen)
 router.get('/:fiesta/:boleto', fileUploadGaleria)
+router.get('/remove/:tipo/:foto', deleteGaleria)
 
 module.exports = router
