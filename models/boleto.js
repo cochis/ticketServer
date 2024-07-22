@@ -53,8 +53,8 @@ const BoletoSchema = Schema({
     default: Date.now(),
   },
   pushNotification: [{
-    type: Object,
-    default: []
+    type: Schema.Types.ObjectId,
+    ref: "Push"
   }],
 
   usuarioCreated: {

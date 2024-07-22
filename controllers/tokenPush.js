@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const TokenPush = require('../models/tokenPush')
 const Usuario = require('../models/usuario')
 const Boleto = require('../models/boleto')
+const Push = require('../models/push')
 const { generarJWT } = require('../helpers/jwt')
 
 //getTokenPushs TokenPush
@@ -339,53 +340,54 @@ const enviarNotificacionToUser = async (req, res = response) => {
   } */
 }
 const enviarNotificacionToBoleto = async (req, res = response) => {
-
-
   const uid = req.params.uid
   const payload = {
     ...req.body
   }
-
-  // console.log('payload::: ', payload);
   try {
     const boletoDB = await Boleto.findById(uid)
-
-
-
     if (!boletoDB) {
       return res.status(404).json({
         ok: false,
         msg: 'No exite un usuario',
       })
     }
-
-
     const vapidKey = {
       "publicKey": process.env.PUBLICKEY,
       "privateKey": process.env.PRIVATEDKEY
     }
-
     webpush.setVapidDetails(
       'mailto:info@cochisweb.com',
       vapidKey.publicKey,
       vapidKey.privateKey
     );
-
-
- 
-
     var ressPush = []
     var ressError = []
     if (boletoDB.pushNotification.length > 0) {
-
-      boletoDB.pushNotification.forEach(element => {
-        webpush.sendNotification(element, JSON.stringify(payload)).then(resPush => {
-          // console.log('resPush::: ', resPush);
+      boletoDB.pushNotification.forEach(async element => {
+        const pushDB = await Push.findById(element._id)
+        if (!pushDB) {
+          return res.status(400).json({
+            ok: false, message: 'No se encontro push'
+          })
+        }
+        
+        let ps = {
+          endpoint: pushDB.endpoint,
+          expirationTime:null,
+          keys: pushDB.keys
+        }
+        
+        console.log('webpush', webpush.setVapidDetails)
+        console.log('ps', ps)
+        console.log('payload', payload)
+        webpush.sendNotification(ps, JSON.stringify(payload)).then(resPush => {
+          
 
 
           ressPush.push(resPush)
         }).catch(err => {
-          // console.log('err', err);
+          
           ressError.push(err)
 
         })
@@ -395,10 +397,10 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
         res: ressPush,
         resError: ressError
       })
-    }else {
+    } else {
       return await res.status(200).json({
         ok: false,
-        message:'Favor de pedir que acepten las notificaciones en sus dispositivos'
+        message: 'Favor de pedir que acepten las notificaciones en sus dispositivos'
       })
 
     }
