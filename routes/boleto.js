@@ -16,7 +16,8 @@ const {
   confirmaBoleto,
   registrarAsistencia,
   getBoletosByEmail,
-  setPushNotificationBoleto
+  setPushNotificationBoleto,
+  isVista
 } = require("../controllers/boleto");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -90,6 +91,15 @@ router.put(
     validarCampos,
   ],
   isActive
+);
+router.put(
+  "/isVista/:id",
+  [
+    check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
+    validarCampos,
+    
+  ],
+  isVista
 );
 
 

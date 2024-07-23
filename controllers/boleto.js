@@ -118,6 +118,39 @@ const actualizarBoleto = async (req, res = response) => {
     })
   }
 }
+const setPushBoleto = async (req, res = response) => {
+  //Validar token y comporbar si es el sboleto
+  const uid = req.params.id
+
+  try {
+    const boletoDB = await Boleto.findById(uid)
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un boleto',
+      })
+    }
+    let bl = {
+      ...boletoDB,
+      pushNotification: req.body.pushNotification
+
+    }
+
+    const boletoActualizado = await Boleto.findByIdAndUpdate(uid, bl, {
+      new: true,
+    })
+    res.json({
+      ok: true,
+      boletoActualizado,
+    })
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 const registrarAsistencia = async (req, res = response) => {
   //Validar token y comporbar si es el sboleto
   const uid = req.params.id
@@ -199,6 +232,34 @@ const isActive = async (req, res = response) => {
     const campos = req.body
     campos.activated = !boletoDB.activated
     const boletoActualizado = await Boleto.findByIdAndUpdate(uid, campos, {
+      new: true,
+    })
+    res.json({
+      ok: true,
+      boletoActualizado,
+    })
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Hable con el administrador',
+    })
+  }
+}
+
+const isVista = async (req, res = response) => {
+  const uid = req.params.id
+  try {
+    const boletoDB = await Boleto.findById(uid)
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un boleto',
+      })
+    }
+   
+    boletoDB.vista = true
+    const boletoActualizado = await Boleto.findByIdAndUpdate(uid, boletoDB, {
       new: true,
     })
     res.json({
@@ -342,6 +403,8 @@ module.exports = {
   confirmaBoleto,
   registrarAsistencia,
   getBoletosByEmail,
-  setPushNotificationBoleto
+  setPushNotificationBoleto,
+  isVista,
+  setPushBoleto
 
 }
