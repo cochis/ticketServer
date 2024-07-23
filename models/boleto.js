@@ -52,6 +52,10 @@ const BoletoSchema = Schema({
     required: true,
     default: Date.now(),
   },
+  vista: {
+    type: Boolean,
+    default: false,
+  },
   pushNotification: [{
     type: Schema.Types.ObjectId,
     ref: "Push"
