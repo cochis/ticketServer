@@ -146,17 +146,20 @@ const fileUploadGaleria = async (req, res = response) => {
 }
 const deleteGaleria = async (req, res = response) => {
   const tipo = req.params.tipo
+  console.log('tipo', tipo)
   const foto = req.params.foto
+  console.log('foto', foto)
 
   try {
-    const galeriaDB = await Galeria.findOne({ img: foto })
+    const galeriaDB = await Galeria.findById(foto)
+    console.log('galeriaDB', galeriaDB)
     if (!galeriaDB) {
       return res.status(404).json({
         ok: false,
         msg: 'No existe la foto',
       })
     }
-    const path = `./uploads/${tipo}/${foto}`
+    const path = `./uploads/${tipo}/${galeriaDB.img}`
 
     let glDB = {
       fiesta: galeriaDB.fiesta.toString(),
@@ -166,6 +169,7 @@ const deleteGaleria = async (req, res = response) => {
       activated: false,
       lastEdited: Date.now()
     }
+    console.log('glDB', glDB)
 
 
 

@@ -15,6 +15,6 @@ router.put('/:tipo/:id', fileUpload)
 router.put('/:tipo/:id/:imgTemplate', fileUploadTemplate)
 router.get('/:tipo/:foto', retornaImagen)
 router.get('/:fiesta/:boleto', fileUploadGaleria)
-router.get('/remove/:tipo/:foto', deleteGaleria)
+router.patch('/remove/:tipo/:foto', deleteGaleria)
 
 module.exports = router
