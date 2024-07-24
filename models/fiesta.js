@@ -91,6 +91,10 @@ const FiestaSchema = Schema({
     type: Boolean,
     default: false,
   },
+  galeria: {
+    type: Boolean,
+    default: false,
+  },
   usuarioCreated: {
     type: Schema.Types.ObjectId,
     ref: "Usuario",
