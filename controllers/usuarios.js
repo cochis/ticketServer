@@ -354,6 +354,64 @@ const getUsuarioByCreatedUid = async (req, res = response) => {
     })
   }
 }
+const deleteUserUid = async (req, res = response) => {
+  const user = req.params.user
+
+  try {
+    const usuarioDB = await Usuario.find({ usuarioCreated: user })
+
+      .populate('role', 'nombre clave _id')
+
+
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+
+    res.json({
+      ok: true,
+      usuarios: usuarioDB,
+    })
+  } catch (error) {
+    console.log('error::: ', error);
+    res.status(500).json({
+      ok: false,
+      error: error,
+      msg: 'Error inesperado',
+    })
+  }
+}
+const deleteUsersOfUser = async (req, res = response) => {
+  const user = req.params.user
+
+  try {
+    const usuarioDB = await Usuario.find({ usuarioCreated: user })
+
+      .populate('role', 'nombre clave _id')
+
+
+    if (!usuarioDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un usuario',
+      })
+    }
+
+    res.json({
+      ok: true,
+      usuarios: usuarioDB,
+    })
+  } catch (error) {
+    console.log('error::: ', error);
+    res.status(500).json({
+      ok: false,
+      error: error,
+      msg: 'Error inesperado',
+    })
+  }
+}
 const getUsuarioByEmail = async (req, res = response) => {
   const email = req.params.email
 
