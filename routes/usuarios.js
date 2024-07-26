@@ -16,7 +16,8 @@ const {
   getUsuarioByCreatedUid,
   crearUsuarioSalon,
   getUsuarioByEmail,
-  getUsuarioByCreador
+  getUsuarioByCreador,
+  deleteUsersOfUser
 } = require("../controllers/usuarios");
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -83,6 +84,14 @@ router.get(
 
   ],
   getUsuarioByCreador
+);
+router.delete(
+  "/deleteUsers/:user",
+  [
+    validarJWT,
+
+  ],
+  deleteUsersOfUser
 );
 router.put(
   "/pass/:id",

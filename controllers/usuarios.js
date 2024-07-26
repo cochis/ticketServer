@@ -387,11 +387,7 @@ const deleteUsersOfUser = async (req, res = response) => {
   const user = req.params.user
 
   try {
-    const usuarioDB = await Usuario.find({ usuarioCreated: user })
-
-      .populate('role', 'nombre clave _id')
-
-
+    const usuarioDB = await Usuario.deleteMany({ usuarioCreated: user })
     if (!usuarioDB) {
       return res.status(404).json({
         ok: false,
@@ -401,7 +397,7 @@ const deleteUsersOfUser = async (req, res = response) => {
 
     res.json({
       ok: true,
-      usuarios: usuarioDB,
+      usuario: user
     })
   } catch (error) {
     console.log('error::: ', error);
@@ -455,5 +451,7 @@ module.exports = {
   actualizarPassUsuario,
   getUsuarioByCreatedUid,
   getUsuarioByEmail,
-  getUsuarioByCreador
+  getUsuarioByCreador,
+  deleteUsersOfUser
+
 }

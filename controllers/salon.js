@@ -157,7 +157,7 @@ const getSalonByEmail = async (req, res = response) => {
 
   try {
     const salonDB = await Salon.find({ email: email })
-    .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
     if (!salonDB) {
       return res.status(404).json({
         ok: false,
@@ -180,7 +180,7 @@ const getSalonByCreador = async (req, res = response) => {
 
   try {
     const salonDB = await Salon.find({ usuarioCreated: uid })
-    .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
     if (!salonDB) {
       return res.status(404).json({
         ok: false,
@@ -198,6 +198,28 @@ const getSalonByCreador = async (req, res = response) => {
     })
   }
 }
+const deleteSalonByUser = async (req, res = response) => {
+  const user = req.params.user
+
+  try {
+    const salonDB = await Salon.deleteMany({ usuarioCreated: user })
+    if (!salonDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un salon',
+      })
+    }
+    res.json({
+      ok: true,
+      usuario: user,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 module.exports = {
   getSalons,
@@ -207,6 +229,7 @@ module.exports = {
   getSalonById,
   getAllSalons,
   getSalonByEmail,
-  getSalonByCreador
+  getSalonByCreador,
+  deleteSalonByUser
 
 }

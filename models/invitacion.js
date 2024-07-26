@@ -13,6 +13,11 @@ const InvitacionSchema = Schema({
     type: String,
     required: true
   },
+  usuarioFiesta: {
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
+    required: true
+  },
   templateActivated: {
     type: Boolean,
     required: true

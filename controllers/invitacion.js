@@ -271,6 +271,28 @@ const getInvitacionByFiesta = async (req, res = response) => {
     })
   }
 }
+const deleteInvitacionByUser = async (req, res = response) => {
+  const user = req.params.user
+  try {
+    const invitacionDB = await Invitacion.deleteMany({ $or: [{ userCreated: user }, { usuarioFiesta: user }] })
+
+    if (!invitacionDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un invitacion',
+      })
+    }
+    res.json({
+      ok: true,
+      usuario: user,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 
 
 module.exports = {
@@ -282,5 +304,6 @@ module.exports = {
   getAllInvitacions,
   getInvitacionForSln,
   getInvitacionByClave,
-  getInvitacionByFiesta
+  getInvitacionByFiesta,
+  deleteInvitacionByUser
 }

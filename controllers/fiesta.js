@@ -253,6 +253,32 @@ const getFiestasByAnfitrion = async (req, res = response) => {
     })
   }
 }
+const deleteFiestasByUser = async (req, res = response) => {
+  const user = req.params.user
+
+
+  try {
+
+
+    const fiestaDB = await Fiesta.deleteMany({ $or: [{ userCreated: user }, { usuarioFiesta: user }] })
+    if (!fiestaDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exiten fiestas',
+      })
+    }
+
+    res.json({
+      ok: true,
+      usuario: user,
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Error inesperado',
+    })
+  }
+}
 const getFiestasBySalon = async (req, res = response) => {
   const uid = req.params.uid
 

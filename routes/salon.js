@@ -13,7 +13,8 @@ const {
   getSalonById,
   getAllSalons,
   getSalonByEmail,
-  getSalonByCreador
+  getSalonByCreador,
+  deleteSalonByUser
 } = require("../controllers/salon");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
@@ -23,6 +24,7 @@ router.get("/all", validarJWT, getAllSalons);
 router.get("/:uid", validarJWT, getSalonById);
 router.get("/email/:email", validarJWT, getSalonByEmail);
 router.get("/creador/:uid", validarJWT, getSalonByCreador);
+router.delete("/deleteSalonByUser/:user", validarJWT, deleteSalonByUser);
 router.post(
   "/",
   [
