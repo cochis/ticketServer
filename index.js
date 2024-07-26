@@ -109,6 +109,7 @@ app.use('/api/boletos', require('./routes/boleto'))
 app.use('/api/upload', require('./routes/uploads'))
 app.use('/api/search', require('./routes/busquedas'))
 app.use('/api/galeria', require('./routes/galeria'))
+app.use('/api/logs', require('./routes/log'))
 app.get('*', function (req, res, next) {
   res.sendFile(path.resolve('client/index.html'))
 })

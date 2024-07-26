@@ -463,7 +463,7 @@ const sendMail = async (req, res) => {
         sender,
       })
     } catch (error) {
-      // console.log('error', error)
+      console.log('error', error)
       res.status(500).json({
         ok: false,
         msg: 'Error inesperado',
@@ -1402,7 +1402,7 @@ const sendMailByBoleto = async (req, res) => {
       sender,
     })
   } catch (error) {
-    // console.log('error', error)
+    console.log('error', error)
     return res.status(500).json({
       ok: false,
       fiestaDB,

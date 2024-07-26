@@ -42,7 +42,7 @@ const fileUpload = async (req, res = response) => {
   const path = `./uploads/${tipo}/${nombreArchivo}`
   file.mv(path, async (err) => {
     if (err) {
-      // console.log('err', err)
+      console.log('err', err)
       return res.status(500).json({
         ok: false,
         msg: 'Error al subir la imagen',
@@ -146,13 +146,9 @@ const fileUploadGaleria = async (req, res = response) => {
 }
 const deleteGaleria = async (req, res = response) => {
   const tipo = req.params.tipo
-  console.log('tipo', tipo)
   const foto = req.params.foto
-  console.log('foto', foto)
-
   try {
     const galeriaDB = await Galeria.findById(foto)
-    console.log('galeriaDB', galeriaDB)
     if (!galeriaDB) {
       return res.status(404).json({
         ok: false,
@@ -169,12 +165,8 @@ const deleteGaleria = async (req, res = response) => {
       activated: false,
       lastEdited: Date.now()
     }
-    console.log('glDB', glDB)
-
-
-
-    if (fs.existsSync(path)) {
-      console.log('borro');
+     if (fs.existsSync(path)) {
+    
       fs.unlinkSync(path)
 
       const galeriaActualizada = await Galeria.findByIdAndUpdate(galeriaDB._id.toString(), glDB, {
@@ -185,7 +177,6 @@ const deleteGaleria = async (req, res = response) => {
         msg: 'Archivo borrado',
       })
     } else {
-      console.log('no borro');
       return await res.status(400).json({
         ok: false,
         msg: 'Error al borrar foto',

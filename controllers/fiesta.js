@@ -200,6 +200,7 @@ const getFiestaById = async (req, res = response) => {
 }
 const getFiestaByEmail = async (req, res = response) => {
   const email = req.params.email
+ 
 
   try {
     const fiestaDB = await Fiesta.find({ usuarioCreated: email })
@@ -207,6 +208,7 @@ const getFiestaByEmail = async (req, res = response) => {
       .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('salon')
       ;
+    
     if (!fiestaDB) {
       return res.status(404).json({
         ok: false,

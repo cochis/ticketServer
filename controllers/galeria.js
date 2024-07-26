@@ -174,7 +174,7 @@ const crearGaleria = async (req, res = response) => {
       galeria
     })
   } catch (error) {
-    // console.log('error', error)
+    console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -206,7 +206,7 @@ const actualizarGaleria = async (req, res = response) => {
       galeriaActualizado,
     })
   } catch (error) {
-    // console.log('error', error)
+    console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -235,7 +235,7 @@ const isActive = async (req, res = response) => {
       galeriaActualizado,
     })
   } catch (error) {
-    // console.log('error', error)
+    console.log('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
