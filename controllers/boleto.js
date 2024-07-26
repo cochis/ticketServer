@@ -257,9 +257,34 @@ const isVista = async (req, res = response) => {
         msg: 'No exite un boleto',
       })
     }
-   
+
     boletoDB.vista = true
     const boletoActualizado = await Boleto.findByIdAndUpdate(uid, boletoDB, {
+      new: true,
+    })
+    res.json({
+      ok: true,
+      boletoActualizado,
+    })
+  } catch (error) {
+    console.log('error', error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Hable con el administrador',
+    })
+  }
+}
+const cambiarBoletos = async (req, res = response) => {
+  const uid = req.params.id
+  try {
+    const boletoDB = await Boleto.findById(uid)
+    if (!boletoDB) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'No exite un boleto',
+      })
+    }
+    const boletoActualizado = await Boleto.findByIdAndUpdate(uid, campos, {
       new: true,
     })
     res.json({
@@ -405,6 +430,7 @@ module.exports = {
   getBoletosByEmail,
   setPushNotificationBoleto,
   isVista,
-  setPushBoleto
+  setPushBoleto,
+  cambiarBoletos
 
 }

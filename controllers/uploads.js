@@ -172,6 +172,8 @@ const deleteGaleria = async (req, res = response) => {
       const galeriaActualizada = await Galeria.findByIdAndUpdate(galeriaDB._id.toString(), glDB, {
         new: true,
       })
+
+      
       return await res.status(200).json({
         ok: true,
         msg: 'Archivo borrado',
