@@ -84,7 +84,7 @@ router.put(
 router.put(
   "/:id",
   [
-    validarJWT,
+
     check("fiesta", "La fiesta es obligatoria").not().isEmpty(),
 
 
