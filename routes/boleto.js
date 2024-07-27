@@ -23,10 +23,10 @@ const {
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
-router.get("/", getBoletos);
-router.get("/all", getAllBoletos);
+router.get("/", validarJWT, getBoletos);
+router.get("/all", validarJWT, getAllBoletos);
 router.get("/:uid", getBoletoById);
-router.get("/email/:email", getBoletosByEmail);
+router.get("/email/:email", validarJWT, getBoletosByEmail);
 router.get("/fiesta/:uid", getBoletoByFiesta);
 router.get("/confirma-fiesta/:uid", confirmaBoleto);
 router.post(
