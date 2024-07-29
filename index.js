@@ -88,6 +88,7 @@ dbConnection()
 // Rutas
 app.use('/api/usuarios', require('./routes/usuarios'))
 app.use('/api/roles', require('./routes/role'))
+app.use('/api/tipo-centros', require('./routes/tipoCentro'))
 app.use('/api/pushes', require('./routes/push'))
 app.use('/api/contactos', require('./routes/contacto'))
 app.use('/api/login', require('./routes/auth'))

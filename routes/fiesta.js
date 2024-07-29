@@ -32,7 +32,7 @@ router.post(
     validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("evento", "El tipo de evento es obligatorio").not().isEmpty(),
-    check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
+
     check("fecha", "La fecha es obligatoria").not().isEmpty(),
 
 
@@ -48,7 +48,7 @@ router.put(
     validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("evento", "El tipo de evento es obligatorio").not().isEmpty(),
-    check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
+
     check("fecha", "La fecha es obligatoria").not().isEmpty(),
 
     validarCampos,

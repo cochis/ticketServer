@@ -10,6 +10,7 @@ const getUsuarios = async (req, res) => {
     Usuario.find({})
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('role', 'nombre clave _id')
+      .populate('tipoCentro', 'nombre clave _id')
       .sort({ apellidoPaterno: -1 })
       .skip(desde)
       .limit(cant),
@@ -29,6 +30,7 @@ const getAllUsuarios = async (req, res) => {
 
       .populate('role', 'nombre clave _id')
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('tipoCentro', 'nombre clave _id')
       .sort({ apellidoPaterno: 1 }),
     Usuario.countDocuments(),
   ])
@@ -281,6 +283,7 @@ const getUsuarioById = async (req, res = response) => {
     const usuarioDB = await Usuario.findById(uid)
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('role')
+      .populate('tipoCentro', 'nombre clave _id')
       .populate('salon')
     if (!usuarioDB) {
       return res.status(404).json({
@@ -306,6 +309,7 @@ const getUsuarioByCreador = async (req, res = response) => {
     const usuarioDB = await Usuario.find({ usuarioCreated: creador })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('role', 'nombre clave _id')
+      .populate('tipoCentro', 'nombre clave _id')
 
 
     if (!usuarioDB) {
@@ -332,7 +336,7 @@ const getUsuarioByCreatedUid = async (req, res = response) => {
     const usuarioDB = await Usuario.find({ usuarioCreated: user })
 
       .populate('role', 'nombre clave _id')
-
+      .populate('tipoCentro', 'nombre clave _id')
 
     if (!usuarioDB) {
       return res.status(404).json({
@@ -361,7 +365,7 @@ const deleteUserUid = async (req, res = response) => {
     const usuarioDB = await Usuario.find({ usuarioCreated: user })
 
       .populate('role', 'nombre clave _id')
-
+      .populate('tipoCentro', 'nombre clave _id')
 
     if (!usuarioDB) {
       return res.status(404).json({
@@ -416,7 +420,7 @@ const getUsuarioByEmail = async (req, res = response) => {
 
       .populate('role', 'nombre clave _id')
 
-
+      .populate('tipoCentro', 'nombre clave _id')
 
     if (!usuarioDB) {
       return res.status(404).json({

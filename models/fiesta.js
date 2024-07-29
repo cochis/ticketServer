@@ -10,7 +10,7 @@ const FiestaSchema = Schema({
   },
   cantidad: {
     type: Number,
-    required: true,
+    default: 0
   },
 
   fecha: {
@@ -80,7 +80,7 @@ const FiestaSchema = Schema({
   },
   invitacion: {
     type: String,
-    
+
 
   },
   activacreadated: {
@@ -92,6 +92,14 @@ const FiestaSchema = Schema({
     default: false,
   },
   galeria: {
+    type: Boolean,
+    default: false,
+  },
+  checking: {
+    type: Boolean,
+    default: false,
+  },
+  mesaOk: {
     type: Boolean,
     default: false,
   },
