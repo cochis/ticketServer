@@ -24,16 +24,16 @@ const getLogs = async (req, res) => {
 }
 const getMyLogs = async (req, res) => {
   const uid = req.params.uid
- const [logs, total] = await Promise.all([
-    Log.find({usuarioCreated: uid})
-    .populate('tipoLog')
-    .populate('estado')
-    
-    .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+  const [logs, total] = await Promise.all([
+    Log.find({ usuarioCreated: uid })
+      .populate('tipoLog')
+      .populate('estado')
+
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Log.countDocuments(),
   ])
- 
+
 
   res.json({
     ok: true,
@@ -43,14 +43,14 @@ const getMyLogs = async (req, res) => {
   })
 }
 const getAllLogs = async (req, res) => {
- const [logs, total] = await Promise.all([
+  const [logs, total] = await Promise.all([
     Log.find({})
-   
-    .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
+
+      .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .sort({ nombre: 1 }),
     Log.countDocuments(),
   ])
- 
+
 
   res.json({
     ok: true,
@@ -63,14 +63,14 @@ const getAllLogs = async (req, res) => {
 //crearLog Log
 const crearLog = async (req, res = response) => {
   const { email, password } = req.body
- 
+
   const uid = req.uid
- 
+
   const campos = {
-    ...req.body 
-    
+    ...req.body
+
   }
-   
+
   try {
 
 
@@ -79,7 +79,7 @@ const crearLog = async (req, res = response) => {
     })
 
 
-    
+
     await log.save()
 
 
@@ -88,12 +88,12 @@ const crearLog = async (req, res = response) => {
       log
     })
   } catch (error) {
-    console.log('error', error)
-   
+    console.error('error', error)
+
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
-      error:error
+      error: error
     })
   }
 }
@@ -104,14 +104,14 @@ const actualizarLog = async (req, res = response) => {
   const uid = req.params.id
   try {
     const tipostockDB = await Log.findById(uid)
- 
+
     if (!tipostockDB) {
       return res.status(404).json({
         ok: false,
         msg: 'No exite un tipostock',
       })
     }
-     
+
 
 
     const tipostockActualizado = await Log.findByIdAndUpdate(uid, req.body, {
@@ -122,10 +122,10 @@ const actualizarLog = async (req, res = response) => {
       tipostockActualizado,
     })
   } catch (error) {
- 
+
     res.status(500).json({
       ok: false,
-      msg: 'Error inesperado',error:error,
+      msg: 'Error inesperado', error: error,
     })
   }
 }
@@ -150,11 +150,11 @@ const registrarAsistencia = async (req, res = response) => {
       tipostockActualizado,
     })
   } catch (error) {
-   
+
     res.status(500).json({
       ok: false,
-      msg: 'Error inesperado',error:error,
-      error:error
+      msg: 'Error inesperado', error: error,
+      error: error
     })
   }
 }
@@ -188,11 +188,11 @@ const confirmaLog = async (req, res = response) => {
       tipostockActualizado,
     })
   } catch (error) {
-   
+
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
-      error:error,
+      error: error,
     })
   }
 }
@@ -218,11 +218,11 @@ const isActive = async (req, res = response) => {
       tipostockActualizado,
     })
   } catch (error) {
-   
+
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
-      error:error
+      error: error
     })
   }
 }
@@ -244,13 +244,13 @@ const getLogById = async (req, res = response) => {
   } catch (error) {
     res.status(500).json({
       ok: false,
-      msg: 'Error inesperado',error:error,
+      msg: 'Error inesperado', error: error,
     })
   }
 }
- 
 
- 
+
+
 
 module.exports = {
   getLogs,

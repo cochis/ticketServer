@@ -113,7 +113,7 @@ const actualizarTokenPush = async (req, res = response) => {
       tokenPushActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -140,7 +140,7 @@ const isActive = async (req, res = response) => {
       tokenPushActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -219,7 +219,7 @@ const enviarNotificacion = async (req, res = response) => {
       })
 
     }).catch(err => {
-      console.log('err', err);
+      console.error('err', err);
       res.status(500).json({
         ok: false,
         msg: err,
@@ -294,7 +294,7 @@ const enviarNotificacionToUser = async (req, res = response) => {
 
           ressPush.push(resPush)
         }).catch(err => {
-          console.log('err', err);
+          console.error('err', err);
           ressError.push(err)
 
         })
@@ -310,7 +310,7 @@ const enviarNotificacionToUser = async (req, res = response) => {
 
 
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: error,
@@ -378,9 +378,9 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
           keys: pushDB.keys
         }
 
-        console.log('webpush', webpush.setVapidDetails)
-        console.log('ps', ps)
-        console.log('payload', payload)
+        // console.log('webpush', webpush.setVapidDetails)
+        // console.log('ps', ps)
+        // console.log('payload', payload)
         webpush.sendNotification(ps, JSON.stringify(payload)).then(resPush => {
 
 
@@ -409,7 +409,7 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
 
 
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: error,

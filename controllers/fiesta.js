@@ -61,7 +61,7 @@ const crearFiesta = async (req, res = response) => {
       fiesta
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -100,7 +100,7 @@ const actualizarFiesta = async (req, res = response) => {
       fiestaActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -137,7 +137,7 @@ const actualizarFiestaByUsr = async (req, res = response) => {
       fiestaActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -166,7 +166,7 @@ const isActive = async (req, res = response) => {
       fiestaActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -200,7 +200,7 @@ const getFiestaById = async (req, res = response) => {
 }
 const getFiestaByEmail = async (req, res = response) => {
   const email = req.params.email
- 
+
 
   try {
     const fiestaDB = await Fiesta.find({ usuarioCreated: email })
@@ -208,7 +208,7 @@ const getFiestaByEmail = async (req, res = response) => {
       .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
       .populate('salon')
       ;
-    
+
     if (!fiestaDB) {
       return res.status(404).json({
         ok: false,

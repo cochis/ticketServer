@@ -47,7 +47,7 @@ const crearCompra = async (req, res = response) => {
     ...req.body,
     usuarioCreated: req.uid
   }
- 
+
 
 
 
@@ -67,7 +67,7 @@ const crearCompra = async (req, res = response) => {
       compra
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -106,7 +106,7 @@ const actualizarCompra = async (req, res = response) => {
       compraActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -135,7 +135,7 @@ const isActive = async (req, res = response) => {
       compraActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

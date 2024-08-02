@@ -62,7 +62,7 @@ const crearSalon = async (req, res = response) => {
       salon
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -94,7 +94,7 @@ const actualizarSalon = async (req, res = response) => {
       salonActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -123,7 +123,7 @@ const isActive = async (req, res = response) => {
       salonActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

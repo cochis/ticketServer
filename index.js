@@ -116,11 +116,11 @@ app.get('*', function (req, res, next) {
   res.sendFile(path.resolve('client/index.html'))
 })
 app.listen(process.env.PORT, () => {
-  console.log(
+  console.info(
     '__________________________________________________________________________________________________',
   )
-  console.log(
+  console.info(
     '__________________________________________________________________________________________________',
   )
-  console.log('Servidor corriendo en puerto ' + process.env.PORT)
+  console.info('Servidor corriendo en puerto ' + process.env.PORT)
 })

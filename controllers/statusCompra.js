@@ -66,7 +66,7 @@ const crearStatusCompra = async (req, res = response) => {
       statusCompra
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -105,7 +105,7 @@ const actualizarStatusCompra = async (req, res = response) => {
       statusCompraActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -134,7 +134,7 @@ const isActive = async (req, res = response) => {
       statusCompraActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -194,7 +194,7 @@ const getStatusCompraByStep = async (req, res = response) => {
 
   try {
     const statusCompraDB = await StatusCompra.find({ step: step })
-    console.log('statusCompraDB::: ', statusCompraDB);
+    // console.log('statusCompraDB::: ', statusCompraDB);
 
     if (!statusCompraDB) {
       return res.status(404).json({

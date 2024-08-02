@@ -26,7 +26,7 @@ const getContactos = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.json({
       ok: false,
       error
@@ -68,7 +68,7 @@ const getAllContactos = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.json({
       ok: false,
       error
@@ -94,7 +94,7 @@ const crearContacto = async (req, res = response) => {
       contacto
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -163,7 +163,7 @@ const sendContact = async (req, res = response) => {
       msg: 'Mensaje envidado',
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     return res.status(400).json({ ok: false, message: 'Algo sacudió mal', error })
   }
 }
@@ -198,7 +198,7 @@ const actualizarContacto = async (req, res = response) => {
       contactoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -227,7 +227,7 @@ const isActive = async (req, res = response) => {
       contactoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

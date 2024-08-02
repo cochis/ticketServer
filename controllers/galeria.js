@@ -136,7 +136,7 @@ const downloadGaleriasFiesta = async (req, res = response) => {
   /* 
     var zp = []
     galerias.forEach(gal => {
-      // console.log('gal::: ', gal);
+       // console.log('gal::: ', gal);
       let file;
       file = img.file('http://localhost:3008/api/upload/galerias/' + gal.img, imgData, { base64: true });
   
@@ -174,7 +174,7 @@ const crearGaleria = async (req, res = response) => {
       galeria
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -206,7 +206,7 @@ const actualizarGaleria = async (req, res = response) => {
       galeriaActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -235,7 +235,7 @@ const isActive = async (req, res = response) => {
       galeriaActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

@@ -31,7 +31,7 @@ const sendMail = async (req, res) => {
   }
 
   var link = ''
-  console.log('fiestaDB::: ', fiestaDB);
+  // console.log('fiestaDB::: ', fiestaDB);
   if (fiestaDB.invitacion == 'default') {
 
     link = `${text_url}core/templates/${fiestaDB.invitacion}/${fiestaDB._id}/${boletoDB._id}`
@@ -463,7 +463,7 @@ const sendMail = async (req, res) => {
         sender,
       })
     } catch (error) {
-      console.log('error', error)
+      console.error('error', error)
       res.status(500).json({
         ok: false,
         msg: 'Error inesperado',
@@ -1402,7 +1402,7 @@ const sendMailByBoleto = async (req, res) => {
       sender,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     return res.status(500).json({
       ok: false,
       fiestaDB,

@@ -24,7 +24,7 @@ const getTipoModulos = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.json({
       ok: false,
       error
@@ -66,7 +66,7 @@ const getAllTipoModulos = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.json({
       ok: false,
       error
@@ -101,7 +101,7 @@ const crearTipoModulo = async (req, res = response) => {
       tipoModulo
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -140,7 +140,7 @@ const actualizarTipoModulo = async (req, res = response) => {
       tipoModuloActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -169,7 +169,7 @@ const isActive = async (req, res = response) => {
       tipoModuloActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

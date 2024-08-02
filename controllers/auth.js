@@ -33,7 +33,7 @@ const login = async (req, res = response) => {
           msg: 'Usuario desactivado',
         })
       } catch (error) {
-        console.log('error::: ', error);
+        console.error('error::: ', error);
         return res.status(400).json({ ok: false, message: 'Algo sacudió mal', error })
       }
     }
@@ -58,7 +58,7 @@ const login = async (req, res = response) => {
       uid: usuarioDB._id,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     return res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -97,7 +97,7 @@ const loginGoogle = async (req, res = response) => {
       token: tokenR,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     return res.status(400).json({
       ok: false,
       msg: 'Loggin de google no es correcto',
@@ -138,7 +138,7 @@ const activeUser = async (req, res = response) => {
       usuarioActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -164,7 +164,7 @@ const existUser = async (req, res = response) => {
       usuarioDB,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

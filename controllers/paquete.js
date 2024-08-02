@@ -66,7 +66,7 @@ const crearPaquete = async (req, res = response) => {
       paquete
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -105,7 +105,7 @@ const actualizarPaquete = async (req, res = response) => {
       paqueteActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -134,7 +134,7 @@ const isActive = async (req, res = response) => {
       paqueteActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

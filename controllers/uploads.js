@@ -43,7 +43,7 @@ const fileUpload = async (req, res = response) => {
   const path = `./uploads/${tipo}/${nombreArchivo}`
   file.mv(path, async (err) => {
     if (err) {
-      console.log('err', err)
+      console.error('err', err)
       return res.status(500).json({
         ok: false,
         msg: 'Error al subir la imagen',
@@ -85,7 +85,7 @@ const fileUploadTemplate = async (req, res = response) => {
   const path = `./uploads/${tipo}/${nombreArchivo}`
   file.mv(path, async (err) => {
     if (err) {
-      console.log('err', err)
+      console.error('err', err)
       return res.status(500).json({
         ok: false,
         msg: 'Error al subir la imagen',

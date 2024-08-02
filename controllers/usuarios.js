@@ -80,7 +80,7 @@ const crearUsuario = async (req, res = response) => {
       token,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -139,7 +139,7 @@ const crearUsuarioSalon = async (req, res = response) => {
 
 
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -189,7 +189,7 @@ const actualizarUsuario = async (req, res = response) => {
       usuarioActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -240,7 +240,7 @@ const actualizarPassUsuario = async (req, res = response) => {
       usuarioActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -268,7 +268,7 @@ const isActive = async (req, res = response) => {
       usuarioActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -350,7 +350,7 @@ const getUsuarioByCreatedUid = async (req, res = response) => {
       usuarios: usuarioDB,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.status(500).json({
       ok: false,
       error: error,
@@ -379,7 +379,7 @@ const deleteUserUid = async (req, res = response) => {
       usuarios: usuarioDB,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.status(500).json({
       ok: false,
       error: error,
@@ -404,7 +404,7 @@ const deleteUsersOfUser = async (req, res = response) => {
       usuario: user
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.status(500).json({
       ok: false,
       error: error,
@@ -434,7 +434,7 @@ const getUsuarioByEmail = async (req, res = response) => {
       usuarios: usuarioDB,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.status(500).json({
       ok: false,
       error: error,

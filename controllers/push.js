@@ -24,7 +24,7 @@ const getPushs = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.json({
       ok: false,
       error
@@ -66,7 +66,7 @@ const getAllPushs = async (req, res) => {
       total,
     })
   } catch (error) {
-    console.log('error::: ', error);
+    console.error('error::: ', error);
     res.json({
       ok: false,
       error
@@ -79,31 +79,31 @@ const getAllPushs = async (req, res) => {
 //crearPush Push
 const crearPush = async (req, res = response) => {
   const campos = {
-    ...req.body 
+    ...req.body
   }
-  
+
   try {
     const pushDB = await Push.findOne({
-        ...campos
+      ...campos
+    })
+    if (pushDB) {
+      return res.status(200).json({
+        ok: true,
+        new: false,
+        pushDB
       })
-      if (pushDB) {
-        return res.status(200).json({
-          ok: true,
-          new:false,
-          pushDB
-        })
-      }
+    }
     const push = new Push({
       ...campos
     })
     await push.save()
     res.json({
       ok: true,
-      new:true,
+      new: true,
       push
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -142,7 +142,7 @@ const actualizarPush = async (req, res = response) => {
       pushActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -171,7 +171,7 @@ const isActive = async (req, res = response) => {
       pushActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

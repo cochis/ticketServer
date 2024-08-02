@@ -62,7 +62,7 @@ const crearGrupo = async (req, res = response) => {
       grupo
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -101,7 +101,7 @@ const actualizarGrupo = async (req, res = response) => {
       grupoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -130,7 +130,7 @@ const isActive = async (req, res = response) => {
       grupoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',

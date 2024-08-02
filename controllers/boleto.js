@@ -71,7 +71,7 @@ const crearBoleto = async (req, res = response) => {
       boleto
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -111,7 +111,7 @@ const actualizarBoleto = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -144,7 +144,7 @@ const setPushBoleto = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -173,7 +173,7 @@ const registrarAsistencia = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -210,7 +210,7 @@ const confirmaBoleto = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',
@@ -239,7 +239,7 @@ const isActive = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -267,7 +267,7 @@ const isVista = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -292,7 +292,7 @@ const cambiarBoletos = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Hable con el administrador',
@@ -409,7 +409,7 @@ const setPushNotificationBoleto = async (req, res = response) => {
       boletoActualizado,
     })
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado',

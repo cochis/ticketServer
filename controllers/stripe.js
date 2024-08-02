@@ -11,7 +11,7 @@ const { generarJWT } = require('../helpers/jwt')
 //crearStripe Stripe
 const checkout = async (req, res = response) => {
   const { url_success, url_cancel, usuarioCreated, activated, lastEdited, dateCreated, ev } = req.body
-  console.log('ev::: ', ev);
+  // console.log('ev::: ', ev);
 
 
 
@@ -53,7 +53,7 @@ const checkout = async (req, res = response) => {
 
       })
       await compraDB.save()
-      console.log('session::: ', session);
+      // console.log('session::: ', session);
       res.status(200).json(session)
     } else {
 
@@ -68,14 +68,14 @@ const checkout = async (req, res = response) => {
 
       })
       await compraDB.save()
-      console.log('session::: ', session);
+      // console.log('session::: ', session);
       res.status(200).json(session)
     }
 
 
 
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
@@ -110,7 +110,7 @@ const checkSession = async (req, res = response) => {
 
 
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
     res.status(500).json({
       ok: false,
       msg: 'Error inesperado...  revisar logs',
