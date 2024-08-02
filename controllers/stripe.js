@@ -2,17 +2,16 @@ const { response } = require('express')
 const bcrypt = require('bcryptjs')
 
 const Compra = require('../models/compra')
-/* const stripeSdk = require('stripe')('pk_live_51PipskAbE4XYrXNxZ0yWqN3yzqmd10zuGlQfrTjw5Xq6qJKieygAzLP82XsSdLC108X9U6fpR7JesWItmvnQBv2H00fBlsrNTw'); */
-
-
-const stripeSdk = require('stripe')('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');
+const stripeSdkD = require('stripe')('sk_test_51PipskAbE4XYrXNxREoHGBkBAhAE13a2N4IfbhqUKQZp8R8bzHKUtTBifVKyVDF5irB0bVtnmQqiib3JU2KRvuEn00U2nv5EsR');
+const stripeSdkP = require('stripe')('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');
 const { generarJWT } = require('../helpers/jwt')
 //getStripes Stripe
 
 
 //crearStripe Stripe
 const checkout = async (req, res = response) => {
-  const { url_success, url_cancel, usuarioCreated, activated, lastEdited, dateCreated } = req.body
+  const { url_success, url_cancel, usuarioCreated, activated, lastEdited, dateCreated, ev } = req.body
+  console.log('ev::: ', ev);
 
 
 
@@ -20,7 +19,7 @@ const checkout = async (req, res = response) => {
   try {
 
     const items = req.body.items.map((item) => {
-      console.log('item::: ', item);
+
       return {
         price_data: {
           currency: 'mxn',
@@ -41,22 +40,40 @@ const checkout = async (req, res = response) => {
       cancel_url: `${url_cancel}`,
 
     }
+    if (ev == 'D') {
 
-    const session = await stripeSdk.checkout.sessions.create(compra);
-    const compraDB = new Compra({
-      compra,
-      session,
-      activated,
-      usuarioCreated,
-      lastEdited,
-      dateCreated
+      const session = await stripeSdkD.checkout.sessions.create(compra);
+      const compraDB = new Compra({
+        compra,
+        session,
+        activated,
+        usuarioCreated,
+        lastEdited,
+        dateCreated
 
-    })
+      })
+      await compraDB.save()
+      console.log('session::: ', session);
+      res.status(200).json(session)
+    } else {
+
+      const session = await stripeSdkP.checkout.sessions.create(compra);
+      const compraDB = new Compra({
+        compra,
+        session,
+        activated,
+        usuarioCreated,
+        lastEdited,
+        dateCreated
+
+      })
+      await compraDB.save()
+      console.log('session::: ', session);
+      res.status(200).json(session)
+    }
 
 
-    await compraDB.save()
-    console.log('session::: ', session);
-    res.status(200).json(session)
+
   } catch (error) {
     console.log('error', error)
     res.status(500).json({
@@ -67,15 +84,22 @@ const checkout = async (req, res = response) => {
 }
 const checkSession = async (req, res = response) => {
   const session_id = req.params.session_id
+  const ev = req.params.ev
 
 
 
 
   try {
+    if (ev == 'D') {
+
+      const session = await stripeSdk.checkoutD.sessions.retrieve(session_id);
+    } else {
+
+      const session = await stripeSdk.checkoutP.sessions.retrieve(session_id);
+    }
 
 
 
-    const session = await stripeSdk.checkout.sessions.retrieve(session_id);
 
     res.send({
       session,
