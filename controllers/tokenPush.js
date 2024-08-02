@@ -371,23 +371,23 @@ const enviarNotificacionToBoleto = async (req, res = response) => {
             ok: false, message: 'No se encontro push'
           })
         }
-        
+
         let ps = {
           endpoint: pushDB.endpoint,
-          expirationTime:null,
+          expirationTime: null,
           keys: pushDB.keys
         }
-        
+
         console.log('webpush', webpush.setVapidDetails)
         console.log('ps', ps)
         console.log('payload', payload)
         webpush.sendNotification(ps, JSON.stringify(payload)).then(resPush => {
-          
+
 
 
           ressPush.push(resPush)
         }).catch(err => {
-          
+
           ressError.push(err)
 
         })
