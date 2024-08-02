@@ -5,7 +5,7 @@ const Compra = require('../models/compra')
 /* const stripeSdk = require('stripe')('pk_live_51PipskAbE4XYrXNxZ0yWqN3yzqmd10zuGlQfrTjw5Xq6qJKieygAzLP82XsSdLC108X9U6fpR7JesWItmvnQBv2H00fBlsrNTw'); */
 
 
-const stripeSdk = require('stripe')('pk_live_51PipskAbE4XYrXNxZ0yWqN3yzqmd10zuGlQfrTjw5Xq6qJKieygAzLP82XsSdLC108X9U6fpR7JesWItmvnQBv2H00fBlsrNTw');
+const stripeSdk = require('stripe')('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');
 const { generarJWT } = require('../helpers/jwt')
 //getStripes Stripe
 
