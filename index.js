@@ -54,7 +54,7 @@ const routes = [
   '/core/eventos/editar-evento',
   '/core/eventos/crear-evento',
   '/core/tipo-cantidad',
-  '/core/tipo-cantidad/vista-tipo-cantidades',
+  '/core/tipo-cantidad/vista-paquetes',
   '/core/tipo-cantidad/editar-tipo-cantidad',
   '/core/tipo-cantidad/crear-tipo-cantidad',
   '/core/status-compra',
@@ -95,7 +95,7 @@ app.use('/api/login', require('./routes/auth'))
 app.use('/api/eventos', require('./routes/evento'))
 app.use('/api/compras', require('./routes/compra'))
 app.use('/api/status-compras', require('./routes/statusCompra'))
-app.use('/api/tipo-cantidades', require('./routes/tipoCantidad'))
+app.use('/api/paquetes', require('./routes/paquete'))
 app.use('/api/email', require('./routes/email'))
 app.use('/api/grupos', require('./routes/grupo'))
 app.use('/api/tickets', require('./routes/ticket'))
@@ -111,6 +111,7 @@ app.use('/api/upload', require('./routes/uploads'))
 app.use('/api/search', require('./routes/busquedas'))
 app.use('/api/galeria', require('./routes/galeria'))
 app.use('/api/logs', require('./routes/log'))
+app.use('/api/stripes', require('./routes/stripe'))
 app.get('*', function (req, res, next) {
   res.sendFile(path.resolve('client/index.html'))
 })

@@ -1,6 +1,6 @@
 {
   "name": "Ticket CochisWeb",
-  "version": "1.6.6",
+  "version": "1.0.0",
   "description": "Tickets Server",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "mongoose": "^6.10.5",
     "nodemailer": "^6.9.5",
     "request-promise": "^4.2.6",
+    "stripe": "^16.5.0",
     "uuid": "^8.3.2",
     "web-push": "^3.6.6",
     "xmlbuilder": "^15.1.1"

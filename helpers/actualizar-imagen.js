@@ -4,6 +4,7 @@ const Salon = require('../models/salon')
 const Fiesta = require('../models/fiesta')
 const Galeria = require('../models/galeria')
 const Invitacion = require('../models/invitacion')
+const Paquete = require('../models/paquete')
 
 const borrarImagen = (path) => {
   // console.log('path::: ', path);
@@ -72,6 +73,20 @@ const actualizarImagen = async (tipo, id, nombreArchivo) => {
       }
       galeria.img = nombreArchivo
       await galeria.save()
+      return true
+      break
+    case 'paquetes':
+      const paquete = await Paquete.findById(id)
+      if (!paquete) {
+        return false
+      }
+      pathViejo = `./uploads/paquetes/${paquete.img}`
+      if (paquete.img && paquete.img !== '') {
+
+        borrarImagen(pathViejo)
+      }
+      paquete.img = nombreArchivo
+      await paquete.save()
       return true
       break
     default:

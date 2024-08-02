@@ -1,45 +1,45 @@
 const { response } = require('express')
 const bcrypt = require('bcryptjs')
-const TipoCantidad = require('../models/tipoCantidad')
+const Paquete = require('../models/paquete')
 const { generarJWT } = require('../helpers/jwt')
-//getTipoCantidads TipoCantidad
-const getTipoCantidads = async (req, res) => {
+//getPaquetes Paquete
+const getPaquetes = async (req, res) => {
   const desde = Number(req.query.desde) || 0
   const cant = Number(req.query.cant) || 10
-  const [tipoCantidades, total] = await Promise.all([
-    TipoCantidad.find({})
+  const [paquetes, total] = await Promise.all([
+    Paquete.find({})
       .sort({ nombre: 1 })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
       .skip(desde)
       .limit(cant),
-    TipoCantidad.countDocuments(),
+    Paquete.countDocuments(),
   ])
 
   res.json({
     ok: true,
-    tipoCantidades,
+    paquetes,
     uid: req.uid,
     total,
   })
 }
-const getAllTipoCantidads = async (req, res) => {
-  const [tipoCantidades, total] = await Promise.all([
-    TipoCantidad.find({})
+const getAllPaquetes = async (req, res) => {
+  const [paquetes, total] = await Promise.all([
+    Paquete.find({})
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
-      .sort({ nombre: 1 }),
-    TipoCantidad.countDocuments(),
+      .sort({ dateCreated: 1 }),
+    Paquete.countDocuments(),
   ])
 
   res.json({
     ok: true,
-    tipoCantidades,
+    paquetes,
     uid: req.uid,
     total,
   })
 }
 
-//crearTipoCantidad TipoCantidad
-const crearTipoCantidad = async (req, res = response) => {
+//crearPaquete Paquete
+const crearPaquete = async (req, res = response) => {
   const { email, password } = req.body
   const uid = req.uid
 
@@ -53,17 +53,17 @@ const crearTipoCantidad = async (req, res = response) => {
   try {
 
 
-    const tipoCantidad = new TipoCantidad({
+    const paquete = new Paquete({
       ...campos
     })
 
 
-    await tipoCantidad.save()
+    await paquete.save()
 
 
     res.json({
       ok: true,
-      tipoCantidad
+      paquete
     })
   } catch (error) {
     console.log('error', error)
@@ -74,35 +74,35 @@ const crearTipoCantidad = async (req, res = response) => {
   }
 }
 
-//actualizarTipoCantidad TipoCantidad
-const actualizarTipoCantidad = async (req, res = response) => {
-  //Validar token y comporbar si es el stipoCantidad
+//actualizarPaquete Paquete
+const actualizarPaquete = async (req, res = response) => {
+  //Validar token y comporbar si es el spaquete
   const uid = req.params.id
   try {
-    const tipoCantidadDB = await TipoCantidad.findById(uid)
-    if (!tipoCantidadDB) {
+    const paqueteDB = await Paquete.findById(uid)
+    if (!paqueteDB) {
       return res.status(404).json({
         ok: false,
-        msg: 'No exite un tipoCantidad',
+        msg: 'No exite un paquete',
       })
     }
     const { password, google, email, ...campos } = req.body
-    if (!tipoCantidadDB.google) {
+    if (!paqueteDB.google) {
       campos.email = email
-    } else if (tipoCantidadDB.email !== email) {
+    } else if (paqueteDB.email !== email) {
       return res.status(400).json({
         ok: false,
-        msg: 'El tipoCantidad de Google  no se puede actualizar',
+        msg: 'El paquete de Google  no se puede actualizar',
       })
     }
 
 
-    const tipoCantidadActualizado = await TipoCantidad.findByIdAndUpdate(uid, campos, {
+    const paqueteActualizado = await Paquete.findByIdAndUpdate(uid, campos, {
       new: true,
     })
     res.json({
       ok: true,
-      tipoCantidadActualizado,
+      paqueteActualizado,
     })
   } catch (error) {
     console.log('error', error)
@@ -117,21 +117,21 @@ const actualizarTipoCantidad = async (req, res = response) => {
 const isActive = async (req, res = response) => {
   const uid = req.params.id
   try {
-    const tipoCantidadDB = await TipoCantidad.findById(uid)
-    if (!tipoCantidadDB) {
+    const paqueteDB = await Paquete.findById(uid)
+    if (!paqueteDB) {
       return res.status(404).json({
         ok: false,
-        msg: 'No exite un tipoCantidad',
+        msg: 'No exite un paquete',
       })
     }
     const campos = req.body
-    campos.activated = !tipoCantidadDB.activated
-    const tipoCantidadActualizado = await TipoCantidad.findByIdAndUpdate(uid, campos, {
+    campos.activated = !paqueteDB.activated
+    const paqueteActualizado = await Paquete.findByIdAndUpdate(uid, campos, {
       new: true,
     })
     res.json({
       ok: true,
-      tipoCantidadActualizado,
+      paqueteActualizado,
     })
   } catch (error) {
     console.log('error', error)
@@ -142,19 +142,19 @@ const isActive = async (req, res = response) => {
   }
 }
 
-const getTipoCantidadById = async (req, res = response) => {
+const getPaqueteById = async (req, res = response) => {
   const uid = req.params.uid
   try {
-    const tipoCantidadDB = await TipoCantidad.findById(uid)
-    if (!tipoCantidadDB) {
+    const paqueteDB = await Paquete.findById(uid)
+    if (!paqueteDB) {
       return res.status(404).json({
         ok: false,
-        msg: 'No exite un tipoCantidad',
+        msg: 'No exite un paquete',
       })
     }
     res.json({
       ok: true,
-      tipoCantidad: tipoCantidadDB,
+      paquete: paqueteDB,
     })
   } catch (error) {
     res.status(500).json({
@@ -163,20 +163,20 @@ const getTipoCantidadById = async (req, res = response) => {
     })
   }
 }
-const getTipoCantidadByClave = async (req, res = response) => {
+const getPaqueteByClave = async (req, res = response) => {
 
   const clave = req.params.clave
   try {
-    const tipoCantidadDB = await TipoCantidad.find({ clave: clave })
-    if (!tipoCantidadDB) {
+    const paqueteDB = await Paquete.find({ clave: clave })
+    if (!paqueteDB) {
       return res.status(404).json({
         ok: false,
-        msg: 'No exite un tipoCantidad',
+        msg: 'No exite un paquete',
       })
     }
     res.json({
       ok: true,
-      tipoCantidad: tipoCantidadDB[0],
+      paquete: paqueteDB[0],
     })
   } catch (error) {
     res.status(500).json({
@@ -185,17 +185,17 @@ const getTipoCantidadByClave = async (req, res = response) => {
     })
   }
 }
-const getTipoCantidadsByEmail = async (req, res = response) => {
+const getPaquetesByEmail = async (req, res = response) => {
   const email = req.params.email
 
 
 
   try {
-    const tipoCantidadDB = await TipoCantidad.find({ usuarioCreated: email })
+    const paqueteDB = await Paquete.find({ usuarioCreated: email })
       .populate('usuarioCreated', 'nombre apellidoPaterno apellidoMaterno email _id')
 
 
-    if (!tipoCantidadDB) {
+    if (!paqueteDB) {
       return res.status(404).json({
         ok: false,
         msg: 'No exite un salon',
@@ -203,7 +203,7 @@ const getTipoCantidadsByEmail = async (req, res = response) => {
     }
     res.json({
       ok: true,
-      tipoCantidades: tipoCantidadDB,
+      paquetes: paqueteDB,
     })
   } catch (error) {
     res.status(500).json({
@@ -214,13 +214,13 @@ const getTipoCantidadsByEmail = async (req, res = response) => {
 }
 
 module.exports = {
-  getTipoCantidads,
-  crearTipoCantidad,
-  actualizarTipoCantidad,
+  getPaquetes,
+  crearPaquete,
+  actualizarPaquete,
   isActive,
-  getTipoCantidadById,
-  getAllTipoCantidads,
-  getTipoCantidadsByEmail,
-  getTipoCantidadByClave
+  getPaqueteById,
+  getAllPaquetes,
+  getPaquetesByEmail,
+  getPaqueteByClave
 
 }

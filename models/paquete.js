@@ -1,10 +1,18 @@
 const { Schema, model } = require('mongoose')
-const TipoCantidadSchema = Schema({
+const PaqueteSchema = Schema({
   nombre: {
     type: String,
     required: true,
   },
   tipo: {
+    type: String,
+    required: true,
+  },
+  tipoCosto: {
+    type: String,
+    required: true,
+  },
+  tipoPaquete: {
     type: String,
     required: true,
   },
@@ -20,10 +28,15 @@ const TipoCantidadSchema = Schema({
     type: Number,
     required: true,
   },
-  descripcion: {
+  img: {
     type: String,
-    required: true,
   },
+  descripciones: [{
+    info: {
+      type: String,
+      required: true,
+    }
+  }],
   usuarioCreated: {
     type: Schema.Types.ObjectId,
     ref: "Usuario",
@@ -46,9 +59,9 @@ const TipoCantidadSchema = Schema({
 
 })
 
-TipoCantidadSchema.method('toJSON', function () {
+PaqueteSchema.method('toJSON', function () {
   const { __v, _id, password, ...object } = this.toObject()
   object.uid = _id
   return object
 })
-module.exports = model('TipoCantidad', TipoCantidadSchema)
+module.exports = model('Paquete', PaqueteSchema)

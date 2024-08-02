@@ -1,35 +1,17 @@
 const { Schema, model } = require('mongoose')
 const CompraSchema = Schema({
-  usuario: {
-    type: Schema.Types.ObjectId,
-    ref: "Usuario",
+
+  compra: {
+    type: Object,
     required: true
   },
-  status: {
-    type: Schema.Types.ObjectId,
-    ref: "StatusCompra",
+
+  session: {
+    type: Object,
     required: true
   },
-  paquete: {
-    type: Schema.Types.ObjectId,
-    ref: "TipoCantidad",
-    required: true
-  },
-  cantidadFiestas: {
-    type: Number,
-    required: true
-  },
-  costo: {
-    type: Number,
-    required: true
-  },
-  iva: {
-    type: Number,
-    required: true
-  },
-  paypalData: {
-    type: Object
-  },
+
+
   usuarioCreated: {
     type: Schema.Types.ObjectId,
     ref: "Usuario",

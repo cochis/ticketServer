@@ -191,8 +191,10 @@ const getStatusCompraByStep = async (req, res = response) => {
   const step = req.params.step
 
 
+
   try {
     const statusCompraDB = await StatusCompra.find({ step: step })
+    console.log('statusCompraDB::: ', statusCompraDB);
 
     if (!statusCompraDB) {
       return res.status(404).json({

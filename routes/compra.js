@@ -27,10 +27,10 @@ router.post(
     validarJWT,
     check("usuario", "El usuario es obligatorio").not().isEmpty(),
     check("status", "El status es obligatorio").not().isEmpty(),
-    check("paquete", "El paquete es obligatorio").not().isEmpty(),
+    check("paquetes", "Los paquetes son obligatorios").not().isEmpty(),
     check("costo", "El costo es obligatorio").not().isEmpty(),
     check("iva", "El iva es obligatorio").not().isEmpty(),
-    check("cantidadFiestas", "La cantidadFiestas es obligatoria").not().isEmpty(),
+
 
     validarCampos,
   ],

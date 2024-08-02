@@ -12,7 +12,8 @@ const fileUpload = async (req, res = response) => {
     'usuarios',
     'fiestas',
     'salones',
-    'galerias'
+    'galerias',
+    'paquetes'
   ]
   if (!tiposValidos.includes(tipo)) {
     return res.status(400).json({
@@ -165,15 +166,15 @@ const deleteGaleria = async (req, res = response) => {
       activated: false,
       lastEdited: Date.now()
     }
-     if (fs.existsSync(path)) {
-    
+    if (fs.existsSync(path)) {
+
       fs.unlinkSync(path)
 
       const galeriaActualizada = await Galeria.findByIdAndUpdate(galeriaDB._id.toString(), glDB, {
         new: true,
       })
 
-      
+
       return await res.status(200).json({
         ok: true,
         msg: 'Archivo borrado',

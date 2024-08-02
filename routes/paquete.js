@@ -1,28 +1,28 @@
 /*
-Ruta : api/tipoCantidads
+Ruta : api/paquetes
 */
 
 const { Router } = require("express");
 const { check } = require("express-validator");
 const { validarCampos } = require("../middlewares/validar-campos");
 const {
-  getTipoCantidads,
-  crearTipoCantidad,
-  actualizarTipoCantidad,
+  getPaquetes,
+  crearPaquete,
+  actualizarPaquete,
   isActive,
-  getTipoCantidadById,
-  getAllTipoCantidads,
-  getTipoCantidadsByEmail,
-  getTipoCantidadByClave
-} = require("../controllers/tipoCantidad");
+  getPaqueteById,
+  getAllPaquetes,
+  getPaquetesByEmail,
+  getPaqueteByClave
+} = require("../controllers/paquete");
 const { validarJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
-router.get("/", validarJWT, getTipoCantidads);
-router.get("/all", validarJWT, getAllTipoCantidads);
-router.get("/:uid", validarJWT, getTipoCantidadById);
-router.get("/clave/:clave", getTipoCantidadByClave);
-router.get("/email/:email", validarJWT, getTipoCantidadsByEmail);
+router.get("/", validarJWT, getPaquetes);
+router.get("/all", getAllPaquetes);
+router.get("/:uid", getPaqueteById);
+router.get("/clave/:clave", getPaqueteByClave);
+router.get("/email/:email", getPaquetesByEmail);
 router.post(
   "/",
   [
@@ -32,7 +32,7 @@ router.post(
 
     validarCampos,
   ],
-  crearTipoCantidad
+  crearPaquete
 );
 
 router.put(
@@ -45,7 +45,7 @@ router.put(
     check("lastEdited", "La fecha de edición es obligatoria").not().isEmpty(),
     validarCampos,
   ],
-  actualizarTipoCantidad
+  actualizarPaquete
 );
 
 
