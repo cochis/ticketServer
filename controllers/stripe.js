@@ -2,7 +2,7 @@ const { response } = require('express')
 const bcrypt = require('bcryptjs')
 
 const Compra = require('../models/compra')
-const stripeSdk = require('stripe')(process.env.STRIPEKEY);
+const stripeSdk = require('stripe')('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');
 const { generarJWT } = require('../helpers/jwt')
 //getStripes Stripe
 
