@@ -2,7 +2,7 @@ const { response } = require('express')
 const bcrypt = require('bcryptjs')
 
 const Compra = require('../models/compra')
-const stripeSdk = require('stripe')('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');
+const stripeSdk = require('stripe')('pk_live_51PipskAbE4XYrXNxZ0yWqN3yzqmd10zuGlQfrTjw5Xq6qJKieygAzLP82XsSdLC108X9U6fpR7JesWItmvnQBv2H00fBlsrNTw');
 const { generarJWT } = require('../helpers/jwt')
 //getStripes Stripe
 
