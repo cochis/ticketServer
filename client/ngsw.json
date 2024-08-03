@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1722575795434,
+  "timestamp": 1722678541746,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.c8aad369cbfd6b16.js",
+        "/main.c56307442dbca24b.js",
         "/manifest.webmanifest",
         "/polyfills.0a14238993673413.js",
         "/runtime.8f33b8458085c89f.js",
         "/scripts.3a384ad5c5dd731b.js",
-        "/styles.fc9d936b8c49836c.css"
+        "/styles.3f92d0b86eb04136.css"
       ],
       "patterns": []
     },
@@ -74,6 +74,7 @@
         "/assets/icons/school.png",
         "/assets/icons/social.jpeg",
         "/assets/icons/social.png",
+        "/assets/images/404.png",
         "/assets/images/businesswoman-using-tablet-analysis.jpg",
         "/assets/images/colleagues-working-cozy-office-medium-shot.jpg",
         "/assets/images/faq_graphic.jpg",
@@ -190,6 +191,7 @@
     "/assets/icons/school.png": "75d3175cf5452e09d0da1e145cabb28b635a6aa1",
     "/assets/icons/social.jpeg": "5b157d06c62100d1accbcf8440f593120ec411b8",
     "/assets/icons/social.png": "e282d74447f14c5c9ba98e1fd8a1a46f90f9baf8",
+    "/assets/images/404.png": "8002cfe39e72d39472de5e8d53f29db758872652",
     "/assets/images/businesswoman-using-tablet-analysis.jpg": "610aec239228882ce4f7be6fe277de8ef426a758",
     "/assets/images/colleagues-working-cozy-office-medium-shot.jpg": "990cb87f1f6f066b63b352e9923e318f809a3c16",
     "/assets/images/faq_graphic.jpg": "07e50f3aa9b810d96f734d7629def2a279a0a3b2",
@@ -257,13 +259,13 @@
     "/assets/js/jquery.sticky.js": "7fd0ecfd2534f00a8a97f8db64fc9ece30303863",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "fb4e71af827112370c2fa9c9b77fb5089a344b3e",
-    "/main.c8aad369cbfd6b16.js": "e069ec809231e7a0aaa97ba3fc7311c3c2f226cd",
+    "/index.html": "3a4d8561d3f73096c39a7388d035cdce387a982c",
+    "/main.c56307442dbca24b.js": "c005743cb9265052330bbeff2882dd85235247c1",
     "/manifest.webmanifest": "f3ee09a9f3b96c8dbc496fb3ae8595a14ab22bd1",
     "/polyfills.0a14238993673413.js": "e8e41c297a3fb24560fa851e08d4e483cac81e10",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
     "/scripts.3a384ad5c5dd731b.js": "8aa86e89b2ed1d914d2ebfa9c482816219e9e7ac",
-    "/styles.fc9d936b8c49836c.css": "2d3237b99a637769520a1d86c53501cb288ca8ae"
+    "/styles.3f92d0b86eb04136.css": "25e5f1265c54da52813f1d2630481fe8cbd7c7de"
   },
   "navigationUrls": [
     {

@@ -28,6 +28,18 @@ const PaqueteSchema = Schema({
     type: Number,
     required: true,
   },
+  tipoVigencia: {
+    type: String,
+    required: true,
+  },
+  typeOfVigencia: {
+    type: String,
+    required: true,
+  },
+  vigencia: {
+    type: String,
+    required: true,
+  },
   img: {
     type: String,
   },

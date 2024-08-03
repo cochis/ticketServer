@@ -12,7 +12,6 @@ const {
 const { validarJWT, validarAdminJWT } = require("../middlewares/validar-jwt");
 const router = Router();
 
-router.get("/:ev/:session_id", validarJWT, checkSession);
 
 router.post(
   "/",
@@ -26,6 +25,7 @@ router.post(
   ],
   checkout
 );
+router.get("/:ev/:session_id", checkSession);
 
 
 module.exports = router;

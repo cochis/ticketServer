@@ -53,12 +53,15 @@ const UsuarioSchema = Schema({
     default: 0,
 
   },
-  paqueteActual: {
-    type: Schema.Types.ObjectId,
-    ref: "TipoCantidad",
-    default: null
+  cantidadGalerias: {
+    type: Number,
+    default: 0,
 
   },
+  compras: [{
+    type: Object
+
+  }],
   pushNotification: {
     type: Object,
     default: null
