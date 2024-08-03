@@ -93,7 +93,7 @@ const checkout = async (req, res = response) => {
         infoPaq = infoPaq[0]
         if (item.tipoVigencia == 'Uso') {
           let infoUso = await {
-            cantidad: item.value,
+            cantidad: (infoPaq.value < 0) ? item.value : item.value * infoPaq.value,
             cantidadUsada: 0,
             tipoPaquete: item.tipoPaquete,
             tipoVigencia: item.tipoVigencia,
@@ -104,7 +104,7 @@ const checkout = async (req, res = response) => {
           await uso.push(infoUso)
         } else {
           let infoTime = await {
-            cantidad: item.value,
+            cantidad: (infoPaq.value < 0) ? item.value : item.value * infoPaq.value,
             cantidadUsada: 0,
             tipoPaquete: item.tipoPaquete,
             tipoVigencia: item.tipoVigencia,
@@ -162,8 +162,9 @@ const checkout = async (req, res = response) => {
         infoPaq = infoPaq[0]
         if (item.tipoVigencia == 'Uso') {
           let infoUso = await {
-            cantidad: item.value,
+            cantidad: (infoPaq.value < 0) ? item.value : item.value * infoPaq.value,
             cantidadUsada: 0,
+            usada: false,
             tipoPaquete: item.tipoPaquete,
             tipoVigencia: item.tipoVigencia,
             typeOfVigencia: item.typeOfVigencia,
@@ -173,8 +174,9 @@ const checkout = async (req, res = response) => {
           await uso.push(infoUso)
         } else {
           let infoTime = await {
-            cantidad: item.value,
+            cantidad: (infoPaq.value < 0) ? item.value : item.value * infoPaq.value,
             cantidadUsada: 0,
+            usada: false,
             tipoPaquete: item.tipoPaquete,
             tipoVigencia: item.tipoVigencia,
             typeOfVigencia: item.typeOfVigencia,
