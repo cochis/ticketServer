@@ -8,6 +8,10 @@ const TipoCentroSchema = Schema({
     type: String,
     required: true,
   },
+  descripcion: {
+    type: String,
+
+  },
   usuarioCreated: {
     type: Schema.Types.ObjectId,
     ref: "Usuario",

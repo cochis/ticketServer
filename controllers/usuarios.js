@@ -89,6 +89,7 @@ const crearUsuario = async (req, res = response) => {
 }
 const crearUsuarioSalon = async (req, res = response) => {
   const { email, password } = req.body
+  console.log('req.body::: ', req.body);
 
   if (req.body.paqueteActual == '') {
     req.body.paqueteActual = undefined
