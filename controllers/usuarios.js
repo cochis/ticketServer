@@ -76,7 +76,8 @@ const crearUsuario = async (req, res = response) => {
     const token = await generarJWT(usuario)
     await transporter.sendMail({
       from: '"Verificación de correo" <info@cochisweb.com>', // sender address
-      to: usuario.email + ', info@cochisweb.com', // list of receivers
+      to: usuario.email, // list of receivers
+      bcc: 'info@cochisweb.com',
       subject: "Verificación de correo ✔", // Subject line
       html: `
          <!DOCTYPE HTML
