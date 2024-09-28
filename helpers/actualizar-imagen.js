@@ -101,7 +101,7 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
       if (!invitacion) {
         return false
       }
-      console.log('imgTemplate::: ', imgTemplate);
+
       switch (imgTemplate) {
         case 'mensajeImg':
           if (invitacion.data.mensajeImg !== '') {
