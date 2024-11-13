@@ -6,7 +6,7 @@ const { response } = require('express')
 const { v4: uuidv4 } = require('uuid')
 const Galeria = require('../models/galeria')
 const Fiesta = require('../models/fiesta')
-const { actualizarImagen, actualizarImagenTemplate ,actualizarImagenSalon} = require('../helpers/actualizar-imagen')
+const { actualizarImagen, actualizarImagenTemplate ,actualizarImagenFiesta} = require('../helpers/actualizar-imagen')
 const fileUpload = async (req, res = response) => {
   const tipo = req.params.tipo
   const id = req.params.id
@@ -107,13 +107,16 @@ const fileUploadTemplate = async (req, res = response) => {
 
 
 }
-const fileUploadSalon = async (req, res = response) => {
+const fileUploadFiestas = async (req, res = response) => {
   const type = req.params.type
+  console.log('type', type)
 
   const id = req.params.id
-  const imgTemplate = req.params.imgTemplate
+  console.log('id', id)
+ 
   
   //validar si existe un archivo
+  console.log('req.files', req.files)
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).json({
       ok: false,
@@ -133,7 +136,7 @@ const fileUploadSalon = async (req, res = response) => {
         msg: 'Error al subir la imagen',
       })
     }
-    await actualizarImagenSalon('salones', id, nombreArchivo, type)
+    await actualizarImagenFiesta('fiestas', id, nombreArchivo, type)
     return await res.status(200).json({
       ok: true,
       msg: 'Archivo subido',
@@ -287,5 +290,5 @@ module.exports = {
   fileUploadTemplate,
   fileUploadGaleria,
   deleteGaleria,
-  fileUploadSalon
+  fileUploadFiestas
 }

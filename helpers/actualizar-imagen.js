@@ -205,37 +205,43 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
       break
   }
 }
-const actualizarImagenSalon = async (tipo, id, nombreArchivo, type) => {
+const actualizarImagenFiesta = async (tipo, id, nombreArchivo, type) => {
+  console.log('type', type)
+  console.log('nombreArchivo', nombreArchivo)
+  console.log('id', id)
+  console.log('tipo', tipo)
 
   let pathViejo = ''
   switch (tipo) {
-    case 'salones':
-      var salon = await Salon.findOne({ salon: id })
+    case 'fiestas':
+      var fiesta = await  Fiesta.findById(id)
+      console.log('fiesta', fiesta)
 
-      if (!salon) {
+      if (!fiesta) {
         return false
       }
 
+      console.log('type', type)
       switch (type) {
         case 'img':
-          if (salon.img !== '') {
-            pathViejo = `./uploads/salones/${salon.img}`
+          if (fiesta.img !== '') {
+            pathViejo = `./uploads/fiestas/${fiesta.img}`
             borrarImagen(pathViejo)
           }
-          salon.img= nombreArchivo
+          fiesta.img= nombreArchivo
 
-          await salon.save()
+          await fiesta.save()
 
           return true
           break;
         case 'croquis':
-          if (salon.croquis !== '') {
-            pathViejo = `./uploads/salones/${salon.croquis}`
+          if (fiesta.croquis !== '') {
+            pathViejo = `./uploads/fiestas/${fiesta.croquis}`
             borrarImagen(pathViejo)
           }
-          salon.croquis= nombreArchivo
+          fiesta.croquis= nombreArchivo
 
-          await salon.save()
+          await fiesta.save()
 
           return true
           break;
@@ -263,5 +269,5 @@ const actualizarImagenSalon = async (tipo, id, nombreArchivo, type) => {
 module.exports = {
   actualizarImagen,
   actualizarImagenTemplate,
-  actualizarImagenSalon
+  actualizarImagenFiesta
 }
