@@ -205,8 +205,63 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
       break
   }
 }
+const actualizarImagenSalon = async (tipo, id, nombreArchivo, type) => {
+
+  let pathViejo = ''
+  switch (tipo) {
+    case 'salones':
+      var salon = await Salon.findOne({ salon: id })
+
+      if (!salon) {
+        return false
+      }
+
+      switch (type) {
+        case 'img':
+          if (salon.img !== '') {
+            pathViejo = `./uploads/salones/${salon.img}`
+            borrarImagen(pathViejo)
+          }
+          salon.img= nombreArchivo
+
+          await salon.save()
+
+          return true
+          break;
+        case 'croquis':
+          if (salon.croquis !== '') {
+            pathViejo = `./uploads/salones/${salon.croquis}`
+            borrarImagen(pathViejo)
+          }
+          salon.croquis= nombreArchivo
+
+          await salon.save()
+
+          return true
+          break;
+         
+          if (invitacion.data.byFileInvitacion !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.byFileInvitacion}`
+            borrarImagen(pathViejo)
+          }
+          invitacion.data.byFileInvitacion = nombreArchivo
+
+          await invitacion.save()
+
+          return true
+          break;
+
+        default:
+          break;
+      }
+
+    default:
+      break
+  }
+}
 
 module.exports = {
   actualizarImagen,
-  actualizarImagenTemplate
+  actualizarImagenTemplate,
+  actualizarImagenSalon
 }

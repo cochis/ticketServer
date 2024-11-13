@@ -187,6 +187,7 @@ const getFiestaById = async (req, res = response) => {
       .populate('evento')
       .populate('salon')
       .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('salon')
     if (!fiestaDB) {
       return res.status(404).json({
         ok: false,
@@ -214,6 +215,7 @@ const getFiestaByEmail = async (req, res = response) => {
       .populate('evento')
       .populate('salon')
       .populate('usuarioFiesta', 'nombre apellidoPaterno apellidoMaterno email _id')
+      .populate('salon')
       ;
 
     if (!fiestaDB) {

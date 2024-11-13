@@ -2,7 +2,8 @@ const { Schema, model } = require('mongoose')
 const UsuarioSchema = Schema({
   tipoCentro: {
     type: Schema.Types.ObjectId,
-    ref: "TipoCentro"
+    ref: "TipoCentro",
+    default: null
 
   },
   nombre: {

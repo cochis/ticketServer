@@ -1,8 +1,8 @@
 const { response } = require('express')
 const bcrypt = require('bcryptjs')
 const Usuario = require('../models/usuario')
-const { transporter } = require('../helpers/mailer')
 const { generarJWT } = require('../helpers/jwt')
+const { transporter } = require('../helpers/mailer')
 //getUsuarios Usuario
 const getUsuarios = async (req, res) => {
   const desde = Number(req.query.desde) || 0
@@ -74,13 +74,17 @@ const crearUsuario = async (req, res = response) => {
     await usuario.save()
     // Generar el TOKEN - JWT
     const token = await generarJWT(usuario)
+
+
+
+
     await transporter.sendMail({
       from: '"Verificación de correo" <info@cochisweb.com>', // sender address
       to: usuario.email, // list of receivers
       bcc: 'info@cochisweb.com',
       subject: "Verificación de correo ✔", // Subject line
       html: `
-         <!DOCTYPE HTML
+          <!DOCTYPE HTML
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
   xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -413,6 +417,7 @@ const crearUsuario = async (req, res = response) => {
 </html>
           `,
     });
+
     res.json({
       ok: true,
       usuario,
@@ -432,29 +437,21 @@ const crearUsuarioSalon = async (req, res = response) => {
     req.body.paqueteActual = undefined
   }
   const uid = req.uid
-
-
   try {
     const existeEmail = await Usuario.findOne({ email })
     if (existeEmail) {
-
       if (!existeEmail.usuarioCreated.includes(uid)) {
         existeEmail.usuarioCreated.push(uid)
       }
       if (!existeEmail.salon.includes(req.body.salon)) {
         existeEmail.salon.push(req.body.salon)
       }
-
       await existeEmail.save()
       return res.json({
         ok: true,
         existeEmail
       })
-
     }
-
-
-
     const usuario = new Usuario({
       ...req.body
     })

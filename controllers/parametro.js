@@ -190,7 +190,6 @@ const getParametrosByEmail = async (req, res = response) => {
     })
   }
 }
-
 const getParametrosByClave = async (req, res = response) => {
   const clave = req.params.clave
 

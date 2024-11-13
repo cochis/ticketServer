@@ -6,7 +6,7 @@ const { response } = require('express')
 const { v4: uuidv4 } = require('uuid')
 const Galeria = require('../models/galeria')
 const Fiesta = require('../models/fiesta')
-const { actualizarImagen, actualizarImagenTemplate } = require('../helpers/actualizar-imagen')
+const { actualizarImagen, actualizarImagenTemplate ,actualizarImagenSalon} = require('../helpers/actualizar-imagen')
 const fileUpload = async (req, res = response) => {
   const tipo = req.params.tipo
   const id = req.params.id
@@ -94,6 +94,46 @@ const fileUploadTemplate = async (req, res = response) => {
       })
     }
     await actualizarImagenTemplate(tipo, id, nombreArchivo, imgTemplate)
+    return await res.status(200).json({
+      ok: true,
+      msg: 'Archivo subido',
+      nombreArchivo,
+    })
+  })
+
+
+
+
+
+
+}
+const fileUploadSalon = async (req, res = response) => {
+  const type = req.params.type
+
+  const id = req.params.id
+  const imgTemplate = req.params.imgTemplate
+  
+  //validar si existe un archivo
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).json({
+      ok: false,
+      msg: 'No se envío ningún archivo',
+    })
+  }
+  const file = await req.files.imagen
+  const nombreCortado = file.name.split('.')
+  const extensionArchivo = nombreCortado[nombreCortado.length - 1]
+  const nombreArchivo = `${uuidv4()}.${extensionArchivo}`
+  const path = `./uploads/salones/${nombreArchivo}`
+  file.mv(path, async (err) => {
+    if (err) {
+      console.error('err', err)
+      return res.status(500).json({
+        ok: false,
+        msg: 'Error al subir la imagen',
+      })
+    }
+    await actualizarImagenSalon('salones', id, nombreArchivo, type)
     return await res.status(200).json({
       ok: true,
       msg: 'Archivo subido',
@@ -246,5 +286,6 @@ module.exports = {
   retornaImagen,
   fileUploadTemplate,
   fileUploadGaleria,
-  deleteGaleria
+  deleteGaleria,
+  fileUploadSalon
 }
