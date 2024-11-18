@@ -214,7 +214,7 @@ const actualizarImagenFiesta = async (tipo, id, nombreArchivo, type) => {
   let pathViejo = ''
   switch (tipo) {
     case 'fiestas':
-      var fiesta = await  Fiesta.findById(id)
+      var fiesta = await Fiesta.findById(id)
       console.log('fiesta', fiesta)
 
       if (!fiesta) {
@@ -228,7 +228,7 @@ const actualizarImagenFiesta = async (tipo, id, nombreArchivo, type) => {
             pathViejo = `./uploads/fiestas/${fiesta.img}`
             borrarImagen(pathViejo)
           }
-          fiesta.img= nombreArchivo
+          fiesta.img = nombreArchivo
 
           await fiesta.save()
 
@@ -239,13 +239,13 @@ const actualizarImagenFiesta = async (tipo, id, nombreArchivo, type) => {
             pathViejo = `./uploads/fiestas/${fiesta.croquis}`
             borrarImagen(pathViejo)
           }
-          fiesta.croquis= nombreArchivo
+          fiesta.croquis = nombreArchivo
 
           await fiesta.save()
 
           return true
           break;
-         
+
           if (invitacion.data.byFileInvitacion !== '') {
             pathViejo = `./uploads/invitaciones/${invitacion.data.byFileInvitacion}`
             borrarImagen(pathViejo)

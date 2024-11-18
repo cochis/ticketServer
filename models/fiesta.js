@@ -107,9 +107,9 @@ const FiestaSchema = Schema({
     type: Boolean,
     default: false,
   },
-    img: {
+  img: {
     type: String,
-    default: 'fiesta-default.jpg',
+    default: '',
 
   },
   croquis: {

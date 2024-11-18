@@ -24,6 +24,8 @@ router.get("/:uid", validarJWT, getParametroById);
 router.get("/email/:email", validarJWT, getParametrosByEmail);
 router.get("/clave/:clave", getParametrosByClave);
 
+
+
 router.post(
   "/",
   [
