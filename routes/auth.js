@@ -34,6 +34,6 @@ router.get(
   existUser
 );
 
-router.get("/renew/:uid", validarJWT, renewToken);
+router.get("/renew/:uid", renewToken);
 
 module.exports = router;

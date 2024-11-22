@@ -6,7 +6,7 @@ const { response } = require('express')
 const { v4: uuidv4 } = require('uuid')
 const Galeria = require('../models/galeria')
 const Fiesta = require('../models/fiesta')
-const { actualizarImagen, actualizarImagenTemplate ,actualizarImagenFiesta} = require('../helpers/actualizar-imagen')
+const { actualizarImagen, actualizarImagenTemplate, actualizarImagenFiesta } = require('../helpers/actualizar-imagen')
 const fileUpload = async (req, res = response) => {
   const tipo = req.params.tipo
   const id = req.params.id
@@ -113,8 +113,8 @@ const fileUploadFiestas = async (req, res = response) => {
 
   const id = req.params.id
   console.log('id', id)
- 
-  
+
+
   //validar si existe un archivo
   console.log('req.files', req.files)
   if (!req.files || Object.keys(req.files).length === 0) {
@@ -127,7 +127,7 @@ const fileUploadFiestas = async (req, res = response) => {
   const nombreCortado = file.name.split('.')
   const extensionArchivo = nombreCortado[nombreCortado.length - 1]
   const nombreArchivo = `${uuidv4()}.${extensionArchivo}`
-  const path = `./uploads/salones/${nombreArchivo}`
+  const path = `./uploads/fiestas/${nombreArchivo}`
   file.mv(path, async (err) => {
     if (err) {
       console.error('err', err)
