@@ -2,22 +2,20 @@ const fs = require('fs')
 const Usuario = require('../models/usuario')
 const Salon = require('../models/salon')
 const Fiesta = require('../models/fiesta')
+const Proveedor = require('../models/proveedor')
 const Galeria = require('../models/galeria')
 const Invitacion = require('../models/invitacion')
 const Paquete = require('../models/paquete')
+const Item = require('../models/item')
+const ImgItem = require('../models/imgItem')
 
 const borrarArchivo = (path) => {
-
-
   try {
-
     if (fs.existsSync(path)) {
-
+      console.log('borro');
       fs.unlinkSync(path)
-
     } else {
-
-
+      console.log('no borro');
     }
   } catch (error) {
     console.error('error::: ', error);
@@ -25,7 +23,7 @@ const borrarArchivo = (path) => {
   }
 }
 const actualizarImagen = async (tipo, id, nombreArchivo) => {
-  let pathViejo = ''
+
   switch (tipo) {
     case 'usuarios':
       const usuario = await Usuario.findById(id)
@@ -94,6 +92,85 @@ const actualizarImagen = async (tipo, id, nombreArchivo) => {
       }
       paquete.img = nombreArchivo
       await paquete.save()
+      return true
+    case 'items':
+      const item = await Item.findById(id)
+      if (!item) {
+        return false
+      }
+
+      switch (type) {
+        case 'img':
+          if (fiesta.img !== '') {
+            pathViejo = `./uploads/fiestas/${fiesta.img}`
+            borrarArchivo(pathViejo)
+          }
+          fiesta.img = nombreArchivo
+
+          await fiesta.save()
+
+          return true
+          break;
+        case 'croquis':
+          if (fiesta.croquis !== '') {
+            pathViejo = `./uploads/fiestas/${fiesta.croquis}`
+            borrarArchivo(pathViejo)
+          }
+          fiesta.croquis = nombreArchivo
+
+          await fiesta.save()
+
+          return true
+          break;
+
+          if (invitacion.data.byFileInvitacion !== '') {
+            pathViejo = `./uploads/invitaciones/${invitacion.data.byFileInvitacion}`
+            borrarArchivo(pathViejo)
+          }
+          invitacion.data.byFileInvitacion = nombreArchivo
+
+          await invitacion.save()
+
+          return true
+          break;
+
+        default:
+          break;
+      }
+
+
+
+
+
+
+
+
+
+
+
+      pathViejo = `./uploads/items/${item.img}`
+      if (item.img && item.img !== '') {
+
+        borrarArchivo(pathViejo)
+      }
+      item.img = nombreArchivo
+      await item.save()
+      return true
+      break
+    case 'imgItems':
+
+      const imgItem = await ImgItem.findById(id)
+      if (!imgItem) {
+        return false
+      }
+      pathViejo = `./uploads/imgItems/${imgItem.img}`
+
+      if (imgItem.img && imgItem.img !== '') {
+
+        borrarArchivo(pathViejo)
+      }
+      imgItem.img = nombreArchivo
+      await imgItem.save()
       return true
       break
     default:
@@ -206,7 +283,7 @@ const actualizarImagenTemplate = async (tipo, id, nombreArchivo, imgTemplate) =>
       break
   }
 }
-const actualizarImagenFiesta = async (tipo, id, nombreArchivo, type) => {
+const actualizarImagenType = async (tipo, id, nombreArchivo, type) => {
   let pathViejo = ''
   switch (tipo) {
     case 'fiestas':
@@ -252,6 +329,66 @@ const actualizarImagenFiesta = async (tipo, id, nombreArchivo, type) => {
         default:
           break;
       }
+    case 'items':
+      var item = await Item.findById(id)
+      if (!item) {
+        return false
+      }
+
+      item.photos.forEach(async (photo, id) => {
+        if (id == Number(type)) {
+          pathViejo = `./uploads/items/${photo.img}`
+          borrarArchivo(pathViejo)
+          item.photos[type].img = nombreArchivo
+
+        }
+      });
+      if (item.photos[type]) {
+        await item.save()
+
+      }
+
+
+
+    default:
+      break
+  }
+}
+const actualizarImagenProveedor = async (tipo, id, nombreArchivo, type) => {
+  let pathViejo = ''
+  switch (tipo) {
+    case 'proveedor':
+      var proveedor = await Proveedor.findById(id)
+      if (!proveedor) {
+        return false
+      }
+      switch (type) {
+        case 'img':
+          if (proveedor.img !== '') {
+            pathViejo = `./uploads/proveedores/${proveedor.img}`
+            borrarArchivo(pathViejo)
+          }
+          proveedor.img = nombreArchivo
+
+          await proveedor.save()
+
+          return true
+          break;
+        case 'bannerImg':
+          if (proveedor.bannerImg !== '') {
+            pathViejo = `./uploads/proveedores/${proveedor.bannerImg}`
+            borrarArchivo(pathViejo)
+          }
+          proveedor.bannerImg = nombreArchivo
+
+          await proveedor.save()
+
+          return true
+          break;
+
+        default:
+          break;
+      }
 
     default:
       break
@@ -281,6 +418,7 @@ const actualizarMusicaInvitacion = async (id, nombreArchivo) => {
 module.exports = {
   actualizarImagen,
   actualizarImagenTemplate,
-  actualizarImagenFiesta,
-  actualizarMusicaInvitacion
+  actualizarImagenType,
+  actualizarMusicaInvitacion,
+  actualizarImagenProveedor
 }
