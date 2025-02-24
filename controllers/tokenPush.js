@@ -197,7 +197,7 @@ const enviarNotificacion = async (req, res = response) => {
       "title": "Saludo",
       "body": "Que pacho",
       "vibrate": [100, 50, 100],
-      "image": "http://localhost:4200/assets/invitaciones/xv/july.jpeg",
+      "image": "https://www.myticketparty.com/assets/invitaciones/xv/july.jpeg",
       "data": {
         "dateOfArrival": Date.now(),
         "primaryKey": 1
