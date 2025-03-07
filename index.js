@@ -25,58 +25,19 @@ const routes = [
   '/core/market',
   '/core/faqs',
   '/core/pricing',
-  '/core/examples',
   '/core/mis-fiestas',
-  '/core/info-fiesta',
   '/core/galeria',
-  '/core/salones',
-  '/core/salones/vista-salones',
-  '/core/salones/editar-salon',
-  '/core/salones/crear-salon',
-  '/core/usuarios',
-  '/core/usuarios/vista-usuarios',
-  '/core/usuarios/editar-usuario',
-  '/core/usuarios/crear-usuario',
-  '/core/fiestas',
-  '/core/fiestas/vista-fiestas',
-  '/core/fiestas/editar-fiesta',
-  '/core/fiestas/crear-fiesta',
-  '/core/agregar-invitado',
-  '/core/boletos',
-  '/core/boletos/vista-boletos',
-  '/core/boletos/editar-boleto',
-  '/core/boletos/crear-boleto',
-  '/core/roles',
-  '/core/roles/vista-roles',
-  '/core/roles/editar-rol',
-  '/core/roles/crear-rol',
-  '/core/grupos',
-  '/core/grupos/vista-grupos',
-  '/core/grupos/editar-grupo',
-  '/core/grupos/crear-grupo',
-  '/core/eventos',
-  '/core/eventos/vista-eventos',
-  '/core/eventos/editar-evento',
-  '/core/eventos/crear-evento',
   '/core/ejemplos',
-  '/core/ejemplos/vista-ejemplos',
-  '/core/ejemplos/editar-ejemplo',
-  '/core/ejemplos/crear-ejemplo',
-  '/core/tipo-cantidad',
-  '/core/tipo-cantidad/vista-paquetes',
-  '/core/tipo-cantidad/editar-tipo-cantidad',
-  '/core/tipo-cantidad/crear-tipo-cantidad',
-  '/core/status-compra',
-  '/core/status-compra/vista-status-compra',
-  '/core/status-compra/crear-status-compra',
-  '/core/status-compra/editar-status-compra',
   '/core/check-in',
-  '/core/invitaciones/xv/xv2',
-  '/core/templates/default',
+  '/core/templates/default/',
+  '/core/templates/byFile/',
   '/core/examples',
+  '/core/market',
+  '/core/vista-proveedor/',
+  '/core/faqs',
+  '/core/templates/default/',
   '/auth/login',
   '/auth/register',
-
   // Add more routes as needed
 ];
 app.get('/api/sitemap.xml', (req, res) => {
@@ -153,7 +114,7 @@ app.listen(process.env.PORT, () => {
   )
   console.info('Servidor corriendo en puerto ' + process.env.PORT)
 })
-//cron.schedule(' * * * * * *', () => {
+
 cron.schedule(' 0 0 * * *', () => {
   let invitacionesURL = process.env.URLAPI + 'fiestas/changeStatus'
   request(invitacionesURL, function (error, response, body) {
