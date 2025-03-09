@@ -225,7 +225,9 @@ const fileUploadGaleria = async (req, res = response) => {
 }
 const deleteGaleria = async (req, res = response) => {
   const tipo = req.params.tipo
+  console.log('tipo::: ', tipo);
   const foto = req.params.foto
+  console.log('foto::: ', foto);
   try {
     const galeriaDB = await Galeria.findById(foto)
     if (!galeriaDB) {
