@@ -25,10 +25,10 @@ const Paquete = require('../models/paquete')
 const StatusCompra = require('../models/statusCompra')
 const delDataByUsr = async (req, res) => {
   const id = req.params.id
-  console.log('id::: ', id);
+
   try {
     const usuarioDB = await Usuario.find({ email: id })
-    console.log('usuarioDB::: ', usuarioDB);
+
     if (usuarioDB.length == 0) {
       return res.status(200).json({
         ok: false,
