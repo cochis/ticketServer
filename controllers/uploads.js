@@ -17,7 +17,8 @@ const fileUpload = async (req, res = response) => {
     'galerias',
     'paquetes',
     'imgItems',
-    'items'
+    'items',
+    'fondos'
   ]
 
   if (!tiposValidos.includes(tipo)) {
