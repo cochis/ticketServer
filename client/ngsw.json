@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1743054344025,
+  "timestamp": 1744945352786,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.12b2144dda306a21.js",
+        "/main.a5daea17080fc4dd.js",
         "/manifest.webmanifest",
         "/polyfills.0a14238993673413.js",
         "/runtime.8f33b8458085c89f.js",
         "/scripts.3a384ad5c5dd731b.js",
-        "/styles.3be0c1fda79124d2.css"
+        "/styles.c8e0ecd59b54f27f.css"
       ],
       "patterns": []
     },
@@ -59,6 +59,9 @@
         "/assets/fonts/antiga.otf",
         "/assets/fonts/bootstrap-icons.woff",
         "/assets/fonts/bootstrap-icons.woff2",
+        "/assets/fonts/daemon.ttf",
+        "/assets/fonts/esponja.ttf",
+        "/assets/fonts/saiyan.ttf",
         "/assets/icons/1evento-checking.png",
         "/assets/icons/QRExample.png",
         "/assets/icons/baile.png",
@@ -149,6 +152,7 @@
         "/assets/icons/social.jpeg",
         "/assets/icons/social.png",
         "/assets/icons/sport.png",
+        "/assets/icons/tarjeta.svg",
         "/assets/icons/tiktok.png",
         "/assets/icons/treasure.png",
         "/assets/icons/vals1.png",
@@ -341,6 +345,9 @@
     "/assets/fonts/antiga.otf": "56b7cede86a9bac53e3657e24286b39e9372d868",
     "/assets/fonts/bootstrap-icons.woff": "a77e6a2f335f3fcb4f2930794907c88ed7de7ca1",
     "/assets/fonts/bootstrap-icons.woff2": "3a284b0618771f29da8eb6be900e99439253dce0",
+    "/assets/fonts/daemon.ttf": "9ac701cebd060ed06867e7e2e88004ffb7f76ec1",
+    "/assets/fonts/esponja.ttf": "70114c91e423c7961e7f7f3fbf81f343f0650d8f",
+    "/assets/fonts/saiyan.ttf": "78c884308db564720698927e9ab13ea4688facf5",
     "/assets/icons/1evento-checking.png": "97b65b046e9fc9188375f4de2a90cde99c2c7b6e",
     "/assets/icons/QRExample.png": "4172596eebd876744b236d3d97b9199b2d92863b",
     "/assets/icons/baile.png": "edbae2c7fdb5865c0c2e8a6cf4a9ce8761337fcf",
@@ -431,6 +438,7 @@
     "/assets/icons/social.jpeg": "5b157d06c62100d1accbcf8440f593120ec411b8",
     "/assets/icons/social.png": "e282d74447f14c5c9ba98e1fd8a1a46f90f9baf8",
     "/assets/icons/sport.png": "ed62a79b211fd4659b1fabd0bf628e7355243f4d",
+    "/assets/icons/tarjeta.svg": "737fcb42fdf5d333efa8b105ca4eb1d9afc2b898",
     "/assets/icons/tiktok.png": "e6a289a5c93024a9cc541ee68b01ee683461c689",
     "/assets/icons/treasure.png": "d72434369b90548e9bef57ffe291be6607a237f2",
     "/assets/icons/vals1.png": "53c54c25fddab2669c8556804ba79a004c728624",
@@ -589,13 +597,13 @@
     "/assets/js/jquery.sticky.js": "7fd0ecfd2534f00a8a97f8db64fc9ece30303863",
     "/favicon.ico": "406cd1a4f1dfae8dc91cbc20c60996913a826cdc",
     "/fiesta.8de27df8aa39d37a.jpeg": "5fc75c8f4a993818546a99d6ffb7e8d8ad95d3f3",
-    "/index.html": "3194ca1019803464a97a840a812c56818994963f",
-    "/main.12b2144dda306a21.js": "51fd13bc7225e64f6a9335dcb10528e4c92878af",
+    "/index.html": "564193fbc650db7144fa8fad6a5fd8c14281022d",
+    "/main.a5daea17080fc4dd.js": "7a63d6400d1e04015d8e08e7a1fb1c0155c506cd",
     "/manifest.webmanifest": "f3ee09a9f3b96c8dbc496fb3ae8595a14ab22bd1",
     "/polyfills.0a14238993673413.js": "e8e41c297a3fb24560fa851e08d4e483cac81e10",
     "/runtime.8f33b8458085c89f.js": "7561a8f72dd5c989426d3c2f453504c5ee27f44a",
     "/scripts.3a384ad5c5dd731b.js": "8aa86e89b2ed1d914d2ebfa9c482816219e9e7ac",
-    "/styles.3be0c1fda79124d2.css": "5504e4a2fd5edae1bcc5d2467e03b12ee8be9ac3"
+    "/styles.c8e0ecd59b54f27f.css": "f0a380d6cfd244f890c49541cb789fafc621f8b4"
   },
   "navigationUrls": [
     {
