@@ -2,6 +2,7 @@ const { response } = require('express')
 const bcrypt = require('bcryptjs')
 const Boleto = require('../models/boleto')
 const Fiesta = require('../models/fiesta')
+const Shared = require('../models/shared')
 const Usuario = require('../models/usuario')
 const { generarJWT } = require('../helpers/jwt')
 const { transporter } = require('../helpers/mailer')
@@ -49,7 +50,7 @@ const getAllBoletos = async (req, res) => {
 
 //crearBoleto Boleto
 const crearBoleto = async (req, res = response) => {
-  const { email, password } = req.body
+
   const uid = req.uid
 
   const campos = {
@@ -69,9 +70,31 @@ const crearBoleto = async (req, res = response) => {
 
     await boleto.save()
 
+    const shared = new Shared({
+      type: 'invitacion',
+      boleto: boleto._id,
+      fiesta: boleto.fiesta,
+      data: {
+        boleto: boleto,
+        fiesta: await Fiesta.findById(boleto.fiesta)
+      },
+      compartidas: 0,
+      vistas: 0,
+      usuarioCreated: boleto.usuarioCreated,
+      dateCreated: Date.now(),
+      lastEdited: Date.now(),
+    })
+
+    await shared.save()
+
+
+    boleto.shared = shared._id
+    const blt = await Boleto.findByIdAndUpdate(boleto._id, boleto, {
+      new: true,
+    })
     res.json({
       ok: true,
-      boleto
+      boleto: blt
     })
   } catch (error) {
     console.error('error', error)
@@ -877,6 +900,37 @@ const getBoletoByFiesta = async (req, res = response) => {
         msg: 'No exite un boleto',
       })
     }
+
+
+    boletoDB.forEach(async (blt, i) => {
+      var idb = await blt._id.toString()
+      var idf = await blt.fiesta.toString()
+      if (!blt.shared) {
+        const shared = new Shared({
+          type: 'invitacion',
+          boleto: idb,
+          fiesta: idf,
+          data: {
+            boleto: boletoDB[i],
+            fiesta: await Fiesta.findById(idf)
+          },
+          compartidas: 0,
+          vistas: 0,
+          usuarioCreated: boletoDB[i].usuarioCreated,
+          dateCreated: Date.now(),
+          lastEdited: Date.now(),
+        })
+        await shared.save()
+        boletoDB[i].shared = shared._id
+        const blt = await Boleto.findByIdAndUpdate(idb, boletoDB[i], {
+          new: true,
+        })
+      }
+    });
+
+
+
+
     res.json({
       ok: true,
       boleto: boletoDB,
@@ -926,9 +980,6 @@ const getBoletosByEmail = async (req, res = response) => {
     })
   }
 }
-
-
-
 const setPushNotificationBoleto = async (req, res = response) => {
   //Validar token y comporbar si es el sboleto
   const uid = req.params.id
@@ -957,6 +1008,32 @@ const setPushNotificationBoleto = async (req, res = response) => {
       msg: 'Error inesperado',
     })
   }
+}
+
+
+const getSharedAllBoletos = async (req, res) => {
+  const [boletos, total] = await Promise.all([
+    Boleto.find({})
+
+
+      .populate({
+        path: 'fiesta',
+        // Get friends of friends - populate the 'friends' array for every friend
+        populate: { path: 'salon' }
+      })
+      .sort({ nombre: 1 }),
+    Boleto.countDocuments(),
+  ])
+
+
+
+
+  res.json({
+    ok: true,
+    boletos,
+    uid: req.uid,
+    total,
+  })
 }
 
 
